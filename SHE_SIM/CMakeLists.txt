@@ -6,4 +6,4 @@ find_package(ElementsProject)
 #---------------------------------------------------------------
 
 # Declare project name and version
-elements_project(SheSim 1.0 USE Elements 3.6)
+elements_project(SheSim 1.0 USE Elements 3.8)

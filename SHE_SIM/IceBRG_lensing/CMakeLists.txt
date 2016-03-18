@@ -8,7 +8,7 @@ elements_depends_on_subdirs(ElementsKernel)
 
 # Declare library dependencies
 find_package(Boost)
-find_package(Eigen)
+find_package(Eigen3)
 find_package(IceBRG_main)
 find_package(IceBRG_physics)
 
@@ -16,10 +16,3 @@ find_package(IceBRG_physics)
 elements_add_library(IceBRG_lensing src/lib/*.cpp
                      LINK_LIBRARIES ElementsKernel Boost Eigen IceBRG_main IceBRG_physics
                      PUBLIC_HEADERS IceBRG_lensing)
-
-# Instruction for Python module installation
-elements_install_python_modules()
-
-# Install the configuration files
-elements_install_conf_files()
-                 

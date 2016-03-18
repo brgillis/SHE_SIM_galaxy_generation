@@ -30,10 +30,10 @@
 #define BOOST_TEST_DYN_LINK
 #include <boost/test/unit_test.hpp>
 
-#include "../SHE_SIM/common.hpp"
-#include "../SHE_SIM/param_declarations.hpp"
-#include "../SHE_SIM/levels/Survey.hpp"
-#include "../SHE_SIM/param_params/IndFixed.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/param_declarations.hpp"
+#include "SHE_SIM/levels/Survey.hpp"
+#include "SHE_SIM/param_params/IndFixed.hpp"
 
 namespace SHE_SIM
 {

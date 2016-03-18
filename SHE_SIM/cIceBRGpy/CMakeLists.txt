@@ -20,5 +20,3 @@ elements_add_swig_binding(cIceBRGpy cIceBRGpy/cIceBRGpy.i
 						  INCLUDE_DIRS cIceBRGpy
 						  NO_PUBLIC_HEADERS)
 
-# Install the configuration files
-elements_install_conf_files()
