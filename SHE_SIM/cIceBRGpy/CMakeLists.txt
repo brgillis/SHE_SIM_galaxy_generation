@@ -3,11 +3,11 @@ elements_subdir(cIceBRGpy)
 
 # Declare Elements module dependencies
 elements_depends_on_subdirs(ElementsKernel)
+elements_depends_on_subdirs(IceBRG_main)
+elements_depends_on_subdirs(IceBRG_physics)
+elements_depends_on_subdirs(IceBRG_lensing)
 
 # Declare library dependencies
-find_package(IceBRG_main)
-find_package(IceBRG_physics)
-find_package(IceBRG_lensing)
 
 # Instruction for creating a C++ library
 elements_add_library(cIceBRGpy src/lib/*.cpp

@@ -3,11 +3,11 @@ elements_subdir(IceBRG_physics)
 
 # Declare Elements module dependencies
 elements_depends_on_subdirs(ElementsKernel)
+elements_depends_on_subdirs(IceBRG_main)
 
 # Declare library dependencies
 find_package(Boost)
 find_package(Eigen3)
-find_package(IceBRG_main)
 
 # Instruction for creating a C++ library
 elements_add_library(IceBRG_physics src/lib/*.cpp

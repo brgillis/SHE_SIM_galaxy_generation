@@ -3,9 +3,9 @@ elements_subdir(IceBRGpy)
 
 # Declare Elements module dependencies
 elements_depends_on_subdirs(ElementsKernel)
+elements_depends_on_subdirs(cIceBRGpy)
 
 # Declare library dependencies
-find_package(cIceBRGpy)
 
 # Instruction for creating a C++ library
 
