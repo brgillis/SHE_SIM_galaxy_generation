@@ -26,6 +26,6 @@ elements_add_swig_binding(SHE_SIM SHE_SIM/SHE_SIM.i
 # Instruction for building C++ tests
 elements_add_unit_test(SHE_SIM_tests                  
                        tests/src/*_test.cpp
-                       LINK_LIBRARIES ElementsKernel _SHE_SIM Boost Eigen3 IceBRG_main IceBRG_physics IceBRG_lensing _SHE_SIM
-                       INCLUDE_DIRS ElementsKernel _SHE_SIM Boost Eigen3 IceBRG_main IceBRG_physics IceBRG_lensing SHE_SIM
+                       LINK_LIBRARIES ElementsKernel Boost Eigen3 IceBRG_main IceBRG_physics IceBRG_lensing _SHE_SIM
+                       INCLUDE_DIRS ElementsKernel Boost Eigen3 IceBRG_main IceBRG_physics IceBRG_lensing SHE_SIM
                        TYPE Boost )

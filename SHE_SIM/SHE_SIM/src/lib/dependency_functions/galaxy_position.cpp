@@ -27,7 +27,6 @@
 #include "config.h"
 #endif
 
-#include <boost/log/trivial.hpp>
 #include <cmath>
 
 #include "SHE_SIM/dependency_functions/galaxy_type.hpp"
