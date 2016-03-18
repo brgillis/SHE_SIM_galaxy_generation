@@ -20,9 +20,6 @@
 
 \**********************************************************************/
 
-
-#include "../IceBRG_lensing/detail/lensing_tNFW_caches.hpp"
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -36,6 +33,7 @@
 #include "IceBRG_main/units/units.hpp"
 
 #include "IceBRG_lensing/lensing_tNFW_profile.hpp"
+#include "IceBRG_lensing/detail/lensing_tNFW_caches.hpp"
 
 namespace IceBRG {
 
@@ -55,7 +53,7 @@ DEFINE_BRG_CACHE_3D( tNFW_sig_cache,
 
 		,
 
-);
+)
 
 // Initialisation for IceBRG::tNFW_offset_sig_cache
 DEFINE_BRG_CACHE_4D( tNFW_offset_sig_cache,
@@ -75,7 +73,7 @@ DEFINE_BRG_CACHE_4D( tNFW_offset_sig_cache,
 			tNFW_sig_cache().load();
 		,
 
-);
+)
 
 // Initialisation for IceBRG::tNFW_group_sig_cache
 DEFINE_BRG_CACHE_4D( tNFW_group_sig_cache,
@@ -95,7 +93,7 @@ DEFINE_BRG_CACHE_4D( tNFW_group_sig_cache,
 			tNFW_offset_sig_cache().load();
 		,
 
-);
+)
 
 // Initialisation for IceBRG::tNFW_shifted_sig_cache
 DEFINE_BRG_CACHE_3D( tNFW_shifted_sig_cache,
@@ -113,7 +111,7 @@ DEFINE_BRG_CACHE_3D( tNFW_shifted_sig_cache,
 			tNFW_offset_sig_cache().load();
 		,
 			tNFW_offset_sig_cache().unload();
-);
+)
 
 // Initialisation for IceBRG::tNFW_shifted_sig_no_enh_cache
 DEFINE_BRG_CACHE_3D( tNFW_shifted_no_enh_sig_cache,
@@ -131,7 +129,7 @@ DEFINE_BRG_CACHE_3D( tNFW_shifted_no_enh_sig_cache,
 			tNFW_offset_sig_cache().load();
 		,
 			tNFW_offset_sig_cache().unload();
-		);
+		)
 
 // Initialisation for IceBRG::tNFW_Sigma_cache
 DEFINE_BRG_CACHE_3D( tNFW_Sigma_cache,
@@ -149,7 +147,7 @@ DEFINE_BRG_CACHE_3D( tNFW_Sigma_cache,
 
 		,
 
-		);
+		)
 
 // Initialisation for IceBRG::tNFW_offset_Sigma_cache
 DEFINE_BRG_CACHE_4D( tNFW_offset_Sigma_cache,
@@ -169,7 +167,7 @@ DEFINE_BRG_CACHE_4D( tNFW_offset_Sigma_cache,
 			tNFW_Sigma_cache().load();
 		,
 
-		);
+		)
 
 // Initialisation for IceBRG::tNFW_group_Sigma_cache
 DEFINE_BRG_CACHE_4D( tNFW_group_Sigma_cache,
@@ -189,7 +187,7 @@ DEFINE_BRG_CACHE_4D( tNFW_group_Sigma_cache,
 			tNFW_offset_Sigma_cache().load();
 		,
 			tNFW_offset_Sigma_cache().unload();
-		);
+		)
 
 } // namespace IceBRG
 

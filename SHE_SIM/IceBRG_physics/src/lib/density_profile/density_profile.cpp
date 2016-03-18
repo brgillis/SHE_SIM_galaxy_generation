@@ -129,7 +129,7 @@ IceBRG::mass_type IceBRG::density_profile::enc_mass( const distance_type & r ) c
 	IceBRG::spherical_density_functor func( this );
 	distance_type min_in_params( units_cast<distance_type>(0.) ), max_in_params( r_to_use );
 	mass_type out_params = IceBRG::integrate_Romberg( func,min_in_params,
-			max_in_params, 0.00001, false );
+			max_in_params, 0.00001 );
 	return out_params;
 }
 

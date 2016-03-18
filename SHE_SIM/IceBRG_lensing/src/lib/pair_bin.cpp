@@ -24,7 +24,6 @@
  \**********************************************************************/
 
 
-#include "../IceBRG_lensing/detail/pair_bin.hpp"
 
 #include <limits>
 
@@ -47,12 +46,13 @@
 #include "IceBRG_lensing/lens_source_pair.hpp"
 #include "IceBRG_lensing/detail/pair_bin_summary.hpp"
 
-#include "../IceBRG_lensing/magnification/detail/mag_calibration_cache.hpp"
-#include "../IceBRG_lensing/magnification/detail/mag_signal_integral_cache.hpp"
-#include "../IceBRG_lensing/magnification/detail/mag_weight_integral_cache.hpp"
-#include "../IceBRG_lensing/magnification/detail/magnification_functors.hpp"
+#include "IceBRG_lensing/magnification/detail/mag_calibration_cache.hpp"
+#include "IceBRG_lensing/magnification/detail/mag_signal_integral_cache.hpp"
+#include "IceBRG_lensing/magnification/detail/mag_weight_integral_cache.hpp"
+#include "IceBRG_lensing/magnification/detail/magnification_functors.hpp"
 #include "IceBRG_lensing/magnification/mag_global_values.hpp"
 #include "IceBRG_lensing/magnification/magnification_alpha.hpp"
+#include "IceBRG_lensing/detail/pair_bin.hpp"
 
 namespace IceBRG {
 

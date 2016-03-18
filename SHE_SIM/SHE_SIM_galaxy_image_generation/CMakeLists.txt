@@ -16,5 +16,5 @@ elements_install_python_modules()
 elements_install_conf_files()
 
 # Instruction for creating a Python executable
-elements_add_python_program(generate_galaxy_images ExampleModule.gen_galsim_images)
+elements_add_python_program(generate_galaxy_images SHE_SIM_galaxy_image_generation.gen_galsim_images)
                 

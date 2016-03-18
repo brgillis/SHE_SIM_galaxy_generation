@@ -17,6 +17,6 @@ elements_add_library(IceBRG_physics src/lib/*.cpp src/lib/*/*.cpp
 # Instruction for building C++ tests
 elements_add_unit_test(IceBRG_physics_test                  
                        tests/src/*_test.cpp
-                       LINK_LIBRARIES ${CMAKE_DL_LIBS} ElementsKernel Boost Eigen3 IceBRG_main
+                       LINK_LIBRARIES ${CMAKE_DL_LIBS} ElementsKernel Boost Eigen3 IceBRG_main IceBRG_physics
                        INCLUDE_DIRS ElementsKernel Boost Eigen3 IceBRG_main
                        TYPE Boost )

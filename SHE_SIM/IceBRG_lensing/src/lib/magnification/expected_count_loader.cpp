@@ -24,7 +24,7 @@
  \**********************************************************************/
 
 
-#include "../../IceBRG_lensing/magnification/detail/expected_count_loader.hpp"
+#include "../IceBRG_lensing/magnification/detail/expected_count_loader.hpp"
 
 #include <stdexcept>
 #include <string>

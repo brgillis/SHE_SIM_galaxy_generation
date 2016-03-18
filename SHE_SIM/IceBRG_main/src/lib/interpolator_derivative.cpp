@@ -20,7 +20,7 @@
 
 \**********************************************************************/
 
-#include "interpolator_derivative.hpp"
+#include "IceBRG_main/math/interpolator/interpolator_derivative.hpp"
 
 #include <utility>
 
@@ -325,8 +325,7 @@ IceBRG::flt_t IceBRG::interpolator_derivative::operator()( flt_t xval ) const
 				out_params = integrate_weighted_Romberg(
 						spline_derivative_functor_val,
 						spline_derivative_weight_functor_val,
-						min_in_params, max_in_params, _sample_precision_,
-						false );
+						min_in_params, max_in_params, _sample_precision_ );
 
 				_estimated_interpolator_.add_point( t, out_params );
 
