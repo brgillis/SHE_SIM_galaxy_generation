@@ -10,6 +10,7 @@ find_package(Eigen3)
 
 # Instruction for creating a C++ library
 elements_add_library(IceBRG_main src/lib/*.cpp
-                     LINK_LIBRARIES ElementsKernel Boost Eigen
+                     LINK_LIBRARIES ElementsKernel Boost Eigen3
+                     INCLUDE_DIRS ElementsKernel Boost Eigen3
                      PUBLIC_HEADERS IceBRG_main)
                      

@@ -10,13 +10,10 @@ elements_depends_on_subdirs(IceBRG_lensing)
 # Declare library dependencies
 
 # Instruction for creating a C++ library
-elements_add_library(cIceBRGpy src/lib/*.cpp
-                     LINK_LIBRARIES ElementsKernel Boost Eigen IceBRG_main IceBRG_physics IceBRG_lensing
-                     PUBLIC_HEADERS cIceBRGpy)
 
 # Instructions for creating a SWIG binding
 elements_add_swig_binding(cIceBRGpy cIceBRGpy/cIceBRGpy.i
-						  LINK_LIBRARIES cIceBRGpy
-						  INCLUDE_DIRS cIceBRGpy
+                          LINK_LIBRARIES IceBRG_main IceBRG_physics IceBRG_lensing
+                          INCLUDE_DIRS IceBRG_main IceBRG_physics IceBRG_lensing
 						  NO_PUBLIC_HEADERS)
 

@@ -20,9 +20,6 @@
 
 \**********************************************************************/
 
-
-#include "../../IceBRG_physics/density_profile/detail/density_profile.hpp"
-
 #include <iostream>
 
 #include "IceBRG_main/common.hpp"
@@ -32,7 +29,8 @@
 #include "IceBRG_main/math/solvers/solvers.hpp"
 #include "IceBRG_main/units/units.hpp"
 
-#include "../../IceBRG_physics/density_profile/detail/density_profile_functors.hpp"
+#include "IceBRG_physics/density_profile/detail/density_profile_functors.hpp"
+#include "IceBRG_physics/density_profile/detail/density_profile.hpp"
 
 // IceBRG::density_profile class methods
 #if (1)
@@ -125,7 +123,7 @@ IceBRG::distance_type IceBRG::density_profile::rhmvir() const
 
 IceBRG::mass_type IceBRG::density_profile::enc_mass( const distance_type & r ) const
 {
-	if ( value_of(r) == 0 )
+	if ( is_zero(value_of(r)) )
 		return units_cast<mass_type>(0.);
 	distance_type r_to_use = abs( r );
 	IceBRG::spherical_density_functor func( this );

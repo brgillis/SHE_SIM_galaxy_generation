@@ -418,8 +418,7 @@ inline auto integrate_mc( const f * func,
 // Scalar-in, scalar-out version.
 template< typename f, typename Tin >
 inline auto integrate_Romberg( const f & func,
-		const Tin & min_in_param, const Tin & max_in_param, flt_t precision = 0.00001,
-		bool tighten_precision = false ) -> decltype(func(min_in_param)*min_in_param)
+		const Tin & min_in_param, const Tin & max_in_param, flt_t precision = 0.00001 ) -> decltype(func(min_in_param)*min_in_param)
 {
 	typedef decltype(func(min_in_param)) Tfout;
 	typedef decltype(Tfout()*min_in_param) Tout;
