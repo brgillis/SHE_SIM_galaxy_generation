@@ -23,7 +23,7 @@
 
 \**********************************************************************/
 
-#include "../SHE_SIM/param_params_map.hpp"
+#include "SHE_SIM/param_params_map.hpp"
 
 namespace SHE_SIM {
 

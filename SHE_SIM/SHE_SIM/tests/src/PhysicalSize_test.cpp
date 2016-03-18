@@ -32,12 +32,12 @@
 
 #include "IceBRG_main/math/misc_math.hpp"
 
-#include "../SHE_SIM/common.hpp"
-#include "../SHE_SIM/default_values.hpp"
-#include "../SHE_SIM/param_declarations.hpp"
-#include "../SHE_SIM/dependency_functions/galaxy_size_detail.hpp"
-#include "../SHE_SIM/levels/Survey.hpp"
-#include "../SHE_SIM/levels/Galaxy.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/default_values.hpp"
+#include "SHE_SIM/param_declarations.hpp"
+#include "SHE_SIM/dependency_functions/galaxy_size_detail.hpp"
+#include "SHE_SIM/levels/Survey.hpp"
+#include "SHE_SIM/levels/Galaxy.hpp"
 
 namespace SHE_SIM
 {

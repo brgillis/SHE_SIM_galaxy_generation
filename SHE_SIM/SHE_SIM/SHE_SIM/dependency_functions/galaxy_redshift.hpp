@@ -26,7 +26,7 @@
 #ifndef SHE_SIM_GAL_PARAMS_DEPENDENCY_FUNCTIONS_GALAXY_REDSHIFT_HPP_
 #define SHE_SIM_GAL_PARAMS_DEPENDENCY_FUNCTIONS_GALAXY_REDSHIFT_HPP_
 
-#include "../../SHE_SIM/common.hpp"
+#include "SHE_SIM/common.hpp"
 #include "IceBRG_main/units/units.hpp"
 
 namespace SHE_SIM {

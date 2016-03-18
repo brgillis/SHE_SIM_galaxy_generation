@@ -29,8 +29,8 @@
 #include <stdexcept>
 #include <initializer_list>
 
-#include "../../SHE_SIM/common.hpp"
-#include "../../SHE_SIM/ParamParam.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/ParamParam.hpp"
 #include "IceBRG_main/math/random/random_functions.hpp"
 
 namespace SHE_SIM

@@ -28,9 +28,9 @@
 
 #include <utility>
 
-#include "../SHE_SIM/common.hpp"
-#include "../SHE_SIM/ParamGenerator.hpp"
-#include "../SHE_SIM/ParamHierarchyLevel.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/ParamGenerator.hpp"
+#include "SHE_SIM/ParamHierarchyLevel.hpp"
 
 
 namespace SHE_SIM {

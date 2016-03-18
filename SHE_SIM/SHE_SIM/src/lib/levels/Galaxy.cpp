@@ -27,11 +27,11 @@
 #include "config.h"
 #endif
 
-#include "../../SHE_SIM/common.hpp"
-#include "../../SHE_SIM/params_list.hpp"
-#include "../../SHE_SIM/param_declarations.hpp"
-#include "../../SHE_SIM/dependency_functions/galaxy_type.hpp"
-#include "../../SHE_SIM/levels/Galaxy.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/params_list.hpp"
+#include "SHE_SIM/param_declarations.hpp"
+#include "SHE_SIM/dependency_functions/galaxy_type.hpp"
+#include "SHE_SIM/levels/Galaxy.hpp"
 
 namespace SHE_SIM
 {

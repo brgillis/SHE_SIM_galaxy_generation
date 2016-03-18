@@ -30,18 +30,18 @@
 #define BOOST_TEST_DYN_LINK
 #include <boost/test/unit_test.hpp>
 
-#include "../SHE_SIM/common.hpp"
-#include "../SHE_SIM/ParamParam.hpp"
-#include "../SHE_SIM/param_params/IndFixed.hpp"
-#include "../SHE_SIM/param_params/IndContRayleigh.hpp"
-#include "../SHE_SIM/param_params/IndGaussian.hpp"
-#include "../SHE_SIM/param_params/IndLogNormalPeak.hpp"
-#include "../SHE_SIM/param_params/IndLogNormalMean.hpp"
-#include "../SHE_SIM/param_params/IndPoisson.hpp"
-#include "../SHE_SIM/param_params/IndRayleigh.hpp"
-#include "../SHE_SIM/param_params/IndTruncGaussian.hpp"
-#include "../SHE_SIM/param_params/IndTruncRayleigh.hpp"
-#include "../SHE_SIM/param_params/IndUniform.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/ParamParam.hpp"
+#include "SHE_SIM/param_params/IndFixed.hpp"
+#include "SHE_SIM/param_params/IndContRayleigh.hpp"
+#include "SHE_SIM/param_params/IndGaussian.hpp"
+#include "SHE_SIM/param_params/IndLogNormalPeak.hpp"
+#include "SHE_SIM/param_params/IndLogNormalMean.hpp"
+#include "SHE_SIM/param_params/IndPoisson.hpp"
+#include "SHE_SIM/param_params/IndRayleigh.hpp"
+#include "SHE_SIM/param_params/IndTruncGaussian.hpp"
+#include "SHE_SIM/param_params/IndTruncRayleigh.hpp"
+#include "SHE_SIM/param_params/IndUniform.hpp"
 
 namespace SHE_SIM
 {

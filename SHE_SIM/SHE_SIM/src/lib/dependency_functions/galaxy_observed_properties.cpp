@@ -30,9 +30,9 @@
 #include <boost/log/trivial.hpp>
 #include <stdexcept>
 
-#include "../../SHE_SIM/dependency_functions/misc_dependencies.hpp"
-#include "../../SHE_SIM/common.hpp"
-#include "../../SHE_SIM/default_values.hpp"
+#include "SHE_SIM/dependency_functions/misc_dependencies.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/default_values.hpp"
 
 #include "IceBRG_main/math/misc_math.hpp"
 #include "IceBRG_main/math/random/random_functions.hpp"

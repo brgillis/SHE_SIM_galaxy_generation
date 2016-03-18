@@ -29,9 +29,9 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "../SHE_SIM/common.hpp"
-#include "../SHE_SIM/ParamHierarchyLevel.hpp"
-#include "../SHE_SIM/ParamParam.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/ParamHierarchyLevel.hpp"
+#include "SHE_SIM/ParamParam.hpp"
 
 namespace SHE_SIM
 {

@@ -23,15 +23,15 @@
 
  \**********************************************************************/
 
-#include "../SHE_SIM/ParamGenerator.hpp"
+#include "SHE_SIM/ParamGenerator.hpp"
 
 #include <limits>
 #include <stdexcept>
 
-#include "../SHE_SIM/common.hpp"
-#include "../SHE_SIM/default_param_params.hpp"
-#include "../SHE_SIM/ParamHierarchyLevel.hpp"
-#include "../SHE_SIM/ParamParam.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/default_param_params.hpp"
+#include "SHE_SIM/ParamHierarchyLevel.hpp"
+#include "SHE_SIM/ParamParam.hpp"
 
 #define UNCACHED_VALUE std::numeric_limits<flt_t>::infinity()
 

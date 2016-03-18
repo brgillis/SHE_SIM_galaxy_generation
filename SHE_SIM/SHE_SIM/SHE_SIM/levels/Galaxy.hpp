@@ -26,10 +26,10 @@
 #ifndef SHE_SIM_GAL_PARAMS_LEVELS_GALAXY_HPP_
 #define SHE_SIM_GAL_PARAMS_LEVELS_GALAXY_HPP_
 
-#include "../../SHE_SIM/common.hpp"
-#include "../../SHE_SIM/default_values.hpp"
-#include "../../SHE_SIM/level_names.hpp"
-#include "../../SHE_SIM/ParamHierarchyLevel.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/default_values.hpp"
+#include "SHE_SIM/level_names.hpp"
+#include "SHE_SIM/ParamHierarchyLevel.hpp"
 
 namespace SHE_SIM
 {

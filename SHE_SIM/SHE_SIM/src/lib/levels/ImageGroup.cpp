@@ -29,10 +29,10 @@
 
 #include <utility>
 
-#include "../../SHE_SIM/common.hpp"
-#include "../../SHE_SIM/params_list.hpp"
-#include "../../SHE_SIM/levels/Image.hpp"
-#include "../../SHE_SIM/levels/ImageGroup.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/params_list.hpp"
+#include "SHE_SIM/levels/Image.hpp"
+#include "SHE_SIM/levels/ImageGroup.hpp"
 
 namespace SHE_SIM
 {

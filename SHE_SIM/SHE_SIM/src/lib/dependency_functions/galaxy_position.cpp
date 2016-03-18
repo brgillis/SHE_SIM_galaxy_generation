@@ -30,9 +30,9 @@
 #include <boost/log/trivial.hpp>
 #include <cmath>
 
-#include "../../SHE_SIM/dependency_functions/galaxy_type.hpp"
-#include "../../SHE_SIM/dependency_functions/misc_dependencies.hpp"
-#include "../../SHE_SIM/common.hpp"
+#include "SHE_SIM/dependency_functions/galaxy_type.hpp"
+#include "SHE_SIM/dependency_functions/misc_dependencies.hpp"
+#include "SHE_SIM/common.hpp"
 
 #include "IceBRG_main/math/random/random_functions.hpp"
 #include <IceBRG_lensing/lensing_tNFW_profile.hpp>

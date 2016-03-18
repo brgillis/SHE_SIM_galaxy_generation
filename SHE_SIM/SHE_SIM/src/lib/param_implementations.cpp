@@ -25,26 +25,26 @@
 
 #include <utility>
 
-#include "../SHE_SIM/default_param_params.hpp"
-#include "../SHE_SIM/default_values.hpp"
-#include "../SHE_SIM/dependency_functions/cosmology.hpp"
-#include "../SHE_SIM/dependency_functions/galaxy_redshift.hpp"
-#include "../SHE_SIM/dependency_functions/galaxy_type.hpp"
-#include "../SHE_SIM/dependency_functions/halos.hpp"
-#include "../SHE_SIM/dependency_functions/misc_dependencies.hpp"
-#include "../SHE_SIM/dependency_functions/morphology.hpp"
-#include "../SHE_SIM/param_declarations.hpp"
-#include "../SHE_SIM/param_params/Calculated.hpp"
-#include "../SHE_SIM/param_params/DepFieldRedshift.hpp"
-#include "../SHE_SIM/param_params/IndClusterRedshift.hpp"
-#include "../SHE_SIM/param_params/IndContRayleigh.hpp"
-#include "../SHE_SIM/param_params/IndFixed.hpp"
-#include "../SHE_SIM/param_params/IndLogNormalMean.hpp"
-#include "../SHE_SIM/param_params/IndTruncLogNormalMean.hpp"
-#include "../SHE_SIM/param_params/IndUniform.hpp"
-#include "../SHE_SIM/ParamGenerator.hpp"
-#include "../SHE_SIM/ParamHierarchyLevel.hpp"
-#include "../SHE_SIM/ParamParam.hpp"
+#include "SHE_SIM/default_param_params.hpp"
+#include "SHE_SIM/default_values.hpp"
+#include "SHE_SIM/dependency_functions/cosmology.hpp"
+#include "SHE_SIM/dependency_functions/galaxy_redshift.hpp"
+#include "SHE_SIM/dependency_functions/galaxy_type.hpp"
+#include "SHE_SIM/dependency_functions/halos.hpp"
+#include "SHE_SIM/dependency_functions/misc_dependencies.hpp"
+#include "SHE_SIM/dependency_functions/morphology.hpp"
+#include "SHE_SIM/param_declarations.hpp"
+#include "SHE_SIM/param_params/Calculated.hpp"
+#include "SHE_SIM/param_params/DepFieldRedshift.hpp"
+#include "SHE_SIM/param_params/IndClusterRedshift.hpp"
+#include "SHE_SIM/param_params/IndContRayleigh.hpp"
+#include "SHE_SIM/param_params/IndFixed.hpp"
+#include "SHE_SIM/param_params/IndLogNormalMean.hpp"
+#include "SHE_SIM/param_params/IndTruncLogNormalMean.hpp"
+#include "SHE_SIM/param_params/IndUniform.hpp"
+#include "SHE_SIM/ParamGenerator.hpp"
+#include "SHE_SIM/ParamHierarchyLevel.hpp"
+#include "SHE_SIM/ParamParam.hpp"
 #include "IceBRG_main/math/misc_math.hpp"
 #include "IceBRG_main/units/unit_conversions.hpp"
 #include "IceBRG_physics/cluster_visibility.hpp"
@@ -142,10 +142,10 @@ param##_initializer param##_initializer_instance;
 
 using namespace IceBRG;
 
-#include "src/param_implementation_detail/high_level_param_implementations.hh"
+#include "src/lib/param_implementation_detail/high_level_param_implementations.hh"
 
-#include "src/param_implementation_detail/mid_level_param_implementations.hh"
+#include "src/lib/param_implementation_detail/mid_level_param_implementations.hh"
 
-#include "src/param_implementation_detail/galaxy_level_param_implementations.hh"
+#include "src/lib/param_implementation_detail/galaxy_level_param_implementations.hh"
 
 } // namespace SHE_SIM

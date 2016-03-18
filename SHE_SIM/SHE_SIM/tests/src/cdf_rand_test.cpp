@@ -32,7 +32,7 @@
 
 #include <Eigen/Core>
 
-#include "../SHE_SIM/common.hpp"
+#include "SHE_SIM/common.hpp"
 #include "IceBRG_main/math/random/random_functions.hpp"
 
 namespace SHE_SIM

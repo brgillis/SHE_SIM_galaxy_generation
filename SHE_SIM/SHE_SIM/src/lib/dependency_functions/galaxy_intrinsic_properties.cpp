@@ -37,10 +37,10 @@
 #include "IceBRG_physics/abundance_matching.hpp"
 #include "IceBRG_physics/luminosity.hpp"
 
-#include "../../SHE_SIM/dependency_functions/galaxy_type.hpp"
-#include "../../SHE_SIM/dependency_functions/misc_dependencies.hpp"
-#include "../../SHE_SIM/common.hpp"
-#include "../../SHE_SIM/default_values.hpp"
+#include "SHE_SIM/dependency_functions/galaxy_type.hpp"
+#include "SHE_SIM/dependency_functions/misc_dependencies.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/default_values.hpp"
 
 namespace SHE_SIM {
 

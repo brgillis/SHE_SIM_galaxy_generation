@@ -30,7 +30,7 @@
 
 #include <Eigen/Core>
 
-#include "../../SHE_SIM/common.hpp"
+#include "SHE_SIM/common.hpp"
 
 namespace SHE_SIM {
 

@@ -31,7 +31,7 @@
 
 #include "IceBRG_main/math/misc_math.hpp"
 
-#include "../../SHE_SIM/common.hpp"
+#include "SHE_SIM/common.hpp"
 
 namespace SHE_SIM {
 

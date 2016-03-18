@@ -32,8 +32,8 @@
 
 #include <Eigen/Core>
 
-#include "../SHE_SIM/common.hpp"
-#include "../SHE_SIM/dependency_functions/cosmology.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/dependency_functions/cosmology.hpp"
 
 namespace SHE_SIM
 {

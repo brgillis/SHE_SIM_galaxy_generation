@@ -23,13 +23,13 @@
 
 \**********************************************************************/
 
-#include "../../SHE_SIM/dependency_functions/galaxy_redshift.hpp"
+#include "SHE_SIM/dependency_functions/galaxy_redshift.hpp"
 
 #include <cmath>
 
 #include <boost/log/trivial.hpp>
 
-#include "../../SHE_SIM/common.hpp"
+#include "SHE_SIM/common.hpp"
 #include "IceBRG_main/math/misc_math.hpp"
 #include "IceBRG_main/math/random/random_functions.hpp"
 #include "IceBRG_main/units/units.hpp"

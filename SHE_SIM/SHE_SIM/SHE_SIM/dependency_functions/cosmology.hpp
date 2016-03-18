@@ -26,7 +26,7 @@
 #ifndef SHE_SIM_GAL_PARAMS_DEPENDENCY_FUNCTIONS_COSMOLOGY_HPP_
 #define SHE_SIM_GAL_PARAMS_DEPENDENCY_FUNCTIONS_COSMOLOGY_HPP_
 
-#include "../../SHE_SIM/common.hpp"
+#include "SHE_SIM/common.hpp"
 
 namespace SHE_SIM {
 

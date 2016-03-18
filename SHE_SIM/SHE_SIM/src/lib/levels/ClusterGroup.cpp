@@ -29,10 +29,10 @@
 
 #include <utility>
 
-#include "../../SHE_SIM/common.hpp"
-#include "../../SHE_SIM/params_list.hpp"
-#include "../../SHE_SIM/levels/Cluster.hpp"
-#include "../../SHE_SIM/levels/ClusterGroup.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/params_list.hpp"
+#include "SHE_SIM/levels/Cluster.hpp"
+#include "SHE_SIM/levels/ClusterGroup.hpp"
 
 namespace SHE_SIM
 {

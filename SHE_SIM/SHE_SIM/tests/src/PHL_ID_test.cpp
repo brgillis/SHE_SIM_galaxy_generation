@@ -32,11 +32,11 @@
 #define BOOST_TEST_DYN_LINK
 #include <boost/test/unit_test.hpp>
 
-#include "../SHE_SIM/common.hpp"
-#include "../SHE_SIM/param_declarations.hpp"
-#include "../SHE_SIM/levels/Survey.hpp"
-#include "../SHE_SIM/levels/ImageGroup.hpp"
-#include "../SHE_SIM/levels/Image.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/param_declarations.hpp"
+#include "SHE_SIM/levels/Survey.hpp"
+#include "SHE_SIM/levels/ImageGroup.hpp"
+#include "SHE_SIM/levels/Image.hpp"
 
 namespace SHE_SIM
 {

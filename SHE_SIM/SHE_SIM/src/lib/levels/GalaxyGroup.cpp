@@ -29,10 +29,10 @@
 
 #include <vector>
 
-#include "../../SHE_SIM/common.hpp"
-#include "../../SHE_SIM/params_list.hpp"
-#include "../../SHE_SIM/levels/Galaxy.hpp"
-#include "../../SHE_SIM/levels/GalaxyGroup.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/params_list.hpp"
+#include "SHE_SIM/levels/Galaxy.hpp"
+#include "SHE_SIM/levels/GalaxyGroup.hpp"
 
 namespace SHE_SIM
 {

@@ -31,16 +31,16 @@
 
 #include "IceBRG_main/math/misc_math.hpp"
 
-#include "../../SHE_SIM/common.hpp"
-#include "../../SHE_SIM/params_list.hpp"
-#include "../../SHE_SIM/param_declarations.hpp"
-#include "../../SHE_SIM/levels/Cluster.hpp"
-#include "../../SHE_SIM/levels/ClusterGroup.hpp"
-#include "../../SHE_SIM/levels/Field.hpp"
-#include "../../SHE_SIM/levels/FieldGroup.hpp"
-#include "../../SHE_SIM/levels/Galaxy.hpp"
-#include "../../SHE_SIM/levels/GalaxyGroup.hpp"
-#include "../../SHE_SIM/levels/Image.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/params_list.hpp"
+#include "SHE_SIM/param_declarations.hpp"
+#include "SHE_SIM/levels/Cluster.hpp"
+#include "SHE_SIM/levels/ClusterGroup.hpp"
+#include "SHE_SIM/levels/Field.hpp"
+#include "SHE_SIM/levels/FieldGroup.hpp"
+#include "SHE_SIM/levels/Galaxy.hpp"
+#include "SHE_SIM/levels/GalaxyGroup.hpp"
+#include "SHE_SIM/levels/Image.hpp"
 
 namespace SHE_SIM
 {

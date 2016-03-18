@@ -34,10 +34,10 @@
 #include "IceBRG_main/Eigen.hpp"
 #include "IceBRG_main/math/random/random_functions.hpp"
 
-#include "../../SHE_SIM/common.hpp"
+#include "SHE_SIM/common.hpp"
 
-#include "../../SHE_SIM/default_values.hpp"
-#include "../../SHE_SIM/dependency_functions/morphology.hpp"
+#include "SHE_SIM/default_values.hpp"
+#include "SHE_SIM/dependency_functions/morphology.hpp"
 
 namespace SHE_SIM {
 

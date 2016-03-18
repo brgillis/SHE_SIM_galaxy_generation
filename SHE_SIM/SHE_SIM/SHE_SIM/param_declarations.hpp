@@ -27,8 +27,8 @@
 #ifndef SHE_SIM_GAL_PARAMS_PARAM_DECLARATIONS_HPP_
 #define SHE_SIM_GAL_PARAMS_PARAM_DECLARATIONS_HPP_
 
-#include "../SHE_SIM/common.hpp"
-#include "../SHE_SIM/ParamGenerator.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/ParamGenerator.hpp"
 
 namespace SHE_SIM {
 

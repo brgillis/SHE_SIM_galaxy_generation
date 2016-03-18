@@ -28,9 +28,9 @@
 
 #include <initializer_list>
 
-#include "../../SHE_SIM/common.hpp"
-#include "../../SHE_SIM/dependency_functions/galaxy_redshift.hpp"
-#include "../../SHE_SIM/ParamParam.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/dependency_functions/galaxy_redshift.hpp"
+#include "SHE_SIM/ParamParam.hpp"
 
 namespace SHE_SIM
 {

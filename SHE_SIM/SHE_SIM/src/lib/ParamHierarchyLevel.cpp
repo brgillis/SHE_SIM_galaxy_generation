@@ -23,26 +23,26 @@
 
  \**********************************************************************/
 
-#include "../SHE_SIM/ParamHierarchyLevel.hpp"
+#include "SHE_SIM/ParamHierarchyLevel.hpp"
 
 #include <ctime>
 #include <memory>
 #include <random>
 #include <utility>
 
-#include "../SHE_SIM/common.hpp"
-#include "../SHE_SIM/levels/Cluster.hpp"
-#include "../SHE_SIM/levels/ClusterGroup.hpp"
-#include "../SHE_SIM/levels/Field.hpp"
-#include "../SHE_SIM/levels/FieldGroup.hpp"
-#include "../SHE_SIM/levels/Galaxy.hpp"
-#include "../SHE_SIM/levels/GalaxyGroup.hpp"
-#include "../SHE_SIM/levels/Image.hpp"
-#include "../SHE_SIM/levels/ImageGroup.hpp"
-#include "../SHE_SIM/levels/Survey.hpp"
-#include "../SHE_SIM/params_list.hpp"
-#include "../SHE_SIM/ParamGenerator.hpp"
-#include "../SHE_SIM/ParamParam.hpp"
+#include "SHE_SIM/common.hpp"
+#include "SHE_SIM/levels/Cluster.hpp"
+#include "SHE_SIM/levels/ClusterGroup.hpp"
+#include "SHE_SIM/levels/Field.hpp"
+#include "SHE_SIM/levels/FieldGroup.hpp"
+#include "SHE_SIM/levels/Galaxy.hpp"
+#include "SHE_SIM/levels/GalaxyGroup.hpp"
+#include "SHE_SIM/levels/Image.hpp"
+#include "SHE_SIM/levels/ImageGroup.hpp"
+#include "SHE_SIM/levels/Survey.hpp"
+#include "SHE_SIM/params_list.hpp"
+#include "SHE_SIM/ParamGenerator.hpp"
+#include "SHE_SIM/ParamParam.hpp"
 
 namespace SHE_SIM
 {

@@ -27,13 +27,14 @@
 #include "IceBRG_main/common.hpp"
 
 #include "IceBRG_main/math/interpolator/interpolator.hpp"
+#include "IceBRG_main/math/misc_math.hpp"
 #include "IceBRG_main/utility.hpp"
 
 
 // Global function implementations
 bool IceBRG::p1first_lt_p2first(std::pair<flt_t,flt_t> pair1, std::pair<flt_t,flt_t> pair2)
 {
-	assert(pair1.first != pair2.first);
+	assert(!is_zero(pair1.first - pair2.first));
 	return (pair1.first < pair2.first);
 }
 
@@ -145,7 +146,7 @@ void IceBRG::interpolator::try_add_point(const flt_t & x, const flt_t & y)
 {
 	for (ssize_t i=0;i<ssize(_data_);i++)
 	{
-		assert(x!=_data_[i].first);
+		assert(!is_zero(x -_data_[i].first));
 	}
 	_data_.push_back(std::make_pair(x,y));
 	_spline_cached_ = false;

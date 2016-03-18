@@ -23,13 +23,13 @@
 
  \**********************************************************************/
 
-#include "../SHE_SIM/ParamParam.hpp"
+#include "SHE_SIM/ParamParam.hpp"
 
 #include <stdexcept>
 
 #include <boost/bimap.hpp>
 
-#include "../SHE_SIM/common.hpp"
+#include "SHE_SIM/common.hpp"
 
 namespace SHE_SIM
 {
