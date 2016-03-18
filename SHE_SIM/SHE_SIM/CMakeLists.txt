@@ -16,6 +16,12 @@ elements_add_library(SHE_SIM src/lib/*.cpp
                      LINK_LIBRARIES ElementsKernel Boost Eigen IceBRG_main IceBRG_physics IceBRG_lensing
                      PUBLIC_HEADERS SHE_SIM)
 
+# Instructions for creating a SWIG binding
+elements_add_swig_binding(SHE_SIM SHE_SIM/SHE_SIM.i
+						  LINK_LIBRARIES SHE_SIM
+						  INCLUDE_DIRS SHE_SIM
+						  NO_PUBLIC_HEADERS)
+
 # Install the configuration files
 elements_install_conf_files()
 
