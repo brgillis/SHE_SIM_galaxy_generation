@@ -75,7 +75,7 @@ Eigen::ArrayXd mag_correlation_function_estimator::calculate_weighted(
 	auto increment_bin = [&] (Eigen::ArrayXd & array, int_t & pair_counter,
 			const position & p1,
 			const position & p2,
-			const flt_t & scale = 1.)
+			const flt_t & scale )
 	{
 		flt_t dz = std::get<2>(p2)-std::get<2>(p1);
 		if(dz<_z_buffer_) return;
@@ -114,7 +114,7 @@ Eigen::ArrayXd mag_correlation_function_estimator::calculate_weighted(
 		}
 		for(const auto & p2 : _R2_pos_list_)
 		{
-			increment_bin(D1R2_counts,D1R2_pairs,p1,p2);
+			increment_bin(D1R2_counts,D1R2_pairs,p1,p2,1.);
 		}
 	}
 	for(const auto & p1 : _R1_pos_list_)
@@ -129,7 +129,7 @@ Eigen::ArrayXd mag_correlation_function_estimator::calculate_weighted(
 		}
 		for(const auto & p2 : _R2_pos_list_)
 		{
-			increment_bin(R1R2_counts,R1R2_pairs,p1,p2);
+			increment_bin(R1R2_counts,R1R2_pairs,p1,p2,1.);
 		}
 	}
 
@@ -179,7 +179,7 @@ Eigen::ArrayXd mag_correlation_function_estimator::calculate() const
 	auto increment_bin = [&] (Eigen::ArrayXd & array, long_int_t & pair_counter,
 			const position & p1,
 			const position & p2,
-			const flt_t & scale = 1.)
+			const flt_t & scale )
 	{
 		++pair_counter;
 
@@ -215,13 +215,13 @@ Eigen::ArrayXd mag_correlation_function_estimator::calculate() const
 			am1m += am1;
 			++p2_count;
 
-			increment_bin(D1D2_unnorm_counts,D1D2_unnorm_pairs,p1,p2);
+			increment_bin(D1D2_unnorm_counts,D1D2_unnorm_pairs,p1,p2,1.);
 			increment_bin(D1D2_counts,D1D2_pairs,p1,p2,am1);
 		}
 		for(const auto & p2 : _R2_pos_list_)
 		{
-			increment_bin(D1R2_unnorm_counts,D1R2_unnorm_pairs,p1,p2);
-			increment_bin(D1R2_counts,D1R2_pairs,p1,p2);
+			increment_bin(D1R2_unnorm_counts,D1R2_unnorm_pairs,p1,p2,1.);
+			increment_bin(D1R2_counts,D1R2_pairs,p1,p2,1.);
 		}
 	}
 	for(const auto & p1 : _R1_pos_list_)
@@ -233,13 +233,13 @@ Eigen::ArrayXd mag_correlation_function_estimator::calculate() const
 
 			flt_t am1 = IceBRG::magnification_alpha(std::get<3>(p2),std::get<2>(p1)+_z_buffer_)-1;
 
-			increment_bin(R1D2_unnorm_counts,R1D2_unnorm_pairs,p1,p2);
+			increment_bin(R1D2_unnorm_counts,R1D2_unnorm_pairs,p1,p2,1.);
 			increment_bin(R1D2_counts,R1D2_pairs,p1,p2,am1);
 		}
 		for(const auto & p2 : _R2_pos_list_)
 		{
-			increment_bin(R1R2_unnorm_counts,R1R2_unnorm_pairs,p1,p2);
-			increment_bin(R1R2_counts,R1R2_pairs,p1,p2);
+			increment_bin(R1R2_unnorm_counts,R1R2_unnorm_pairs,p1,p2,1.);
+			increment_bin(R1R2_counts,R1R2_pairs,p1,p2,1);
 		}
 	}
 

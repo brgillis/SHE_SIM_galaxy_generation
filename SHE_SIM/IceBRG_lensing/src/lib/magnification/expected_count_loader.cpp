@@ -24,7 +24,7 @@
  \**********************************************************************/
 
 
-#include "../IceBRG_lensing/magnification/detail/expected_count_loader.hpp"
+#include "IceBRG_lensing/magnification/detail/expected_count_loader.hpp"
 
 #include <stdexcept>
 #include <string>
@@ -142,7 +142,7 @@ void expected_count_loader::_load()
 
 
 custom_unit_type<0,0,0,-2,0> expected_count_loader::_get_interp(const flt_t & mag, const flt_t & z,
-		const std::vector<std::vector<custom_unit_type<0,0,0,-2,0>>> & table, const custom_unit_type<0,0,0,-2,0> & default_result)
+		const std::vector<std::vector<custom_unit_type<0,0,0,-2,0>>> & table, const custom_unit_type<0,0,0,-2,0> & )
 {
 	// Load if necessary
 	_load();

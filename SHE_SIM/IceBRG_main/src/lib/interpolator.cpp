@@ -97,7 +97,8 @@ void IceBRG::interpolator::set_default_interpolation_type(
 		const bool override_current)
 {
 	_default_interpolation_type_ = new_default_type;
-	set_interpolation_type(_default_interpolation_type_);
+	if(override_current)
+	  set_interpolation_type(_default_interpolation_type_);
 }
 void IceBRG::interpolator::set_interpolation_type(
 		const allowed_interpolation_type new_type)

@@ -67,7 +67,7 @@ public:
 	{
 		_offset_R_ = new_offset_R;
 	}
-	const distance_type offset_R()
+	distance_type offset_R()
 	{
 		return _offset_R_;
 	}

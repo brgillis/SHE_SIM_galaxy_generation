@@ -23,11 +23,11 @@
 
 \**********************************************************************/
 
-#include "../IceBRG_lensing/magnification/detail/mag_calibration_cache.hpp"
+#include "IceBRG_lensing/magnification/detail/mag_calibration_cache.hpp"
 
 #include "IceBRG_main/common.hpp"
 
-#include "../IceBRG_lensing/magnification/detail/mag_calibration_loader.hpp"
+#include "IceBRG_lensing/magnification/detail/mag_calibration_loader.hpp"
 #include "IceBRG_lensing/magnification/mag_global_values.hpp"
 
 
@@ -41,7 +41,7 @@ DEFINE_BRG_CACHE( mag_calibration_cache,IceBRG::flt_t,IceBRG::flt_t,
 				  ,
 
 				  ,
-);
+)
 
 } // namespace IceBRG
 

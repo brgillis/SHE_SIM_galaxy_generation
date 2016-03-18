@@ -24,13 +24,13 @@
  \**********************************************************************/
 
 
-#include "../IceBRG_lensing/magnification/detail/expected_count_cache.hpp"
+#include "IceBRG_lensing/magnification/detail/expected_count_cache.hpp"
 
 #include <cstdlib>
 
 #include "IceBRG_main/common.hpp"
 
-#include "../IceBRG_lensing/magnification/detail/expected_count_loader.hpp"
+#include "IceBRG_lensing/magnification/detail/expected_count_loader.hpp"
 #include "IceBRG_lensing/magnification/mag_global_values.hpp"
 
 
@@ -50,6 +50,6 @@ DEFINE_BRG_CACHE_2D( expected_count_cache,
 			expected_count_loader::get_count(0,0);
 		,
 
-);
+)
 
 } // namespace IceBRG
