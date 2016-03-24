@@ -26,6 +26,8 @@
 #ifndef SHE_SIM_GAL_PARAMS_DEPENDENCY_FUNCTIONS_GALAXY_TYPE_HPP_
 #define SHE_SIM_GAL_PARAMS_DEPENDENCY_FUNCTIONS_GALAXY_TYPE_HPP_
 
+#include "IceBRG_main/math/misc_math.hpp"
+
 #include "SHE_SIM/common.hpp"
 
 namespace SHE_SIM {
@@ -42,7 +44,7 @@ inline bool is_central_galaxy( flt_t const & galaxy_type )
 
 inline bool is_field_galaxy( flt_t const & galaxy_type )
 {
-	return galaxy_type==0;
+	return IceBRG::is_zero(galaxy_type);
 }
 
 inline bool is_satellite_galaxy( flt_t const & galaxy_type )

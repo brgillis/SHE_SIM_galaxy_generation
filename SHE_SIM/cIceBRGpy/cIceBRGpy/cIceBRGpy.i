@@ -122,7 +122,7 @@ import_array();
 %}
  
 // Parse the header files to generate wrappers
-%include "/disk2/brg/include/IceBRG_main/units/unit_conversions.hpp"
+%include "IceBRG_main/units/unit_conversions.hpp"
 
 %apply (int* INPLACE_ARRAY2, int DIM1, int DIM2)
 	{( int * p_image,
@@ -151,7 +151,7 @@ import_array();
 
 %template() std::pair<int,int>;
 
-%include "/disk2/brg/include/IceBRG_main/vector/rebin.hpp"
+%include "IceBRG_main/vector/rebin.hpp"
 
 
 template< typename T >
@@ -196,35 +196,35 @@ rebin_wrap( T * p_image,
 %template(rebin_float) rebin_wrap<float>;
 %template(rebin_double) rebin_wrap<double>;
 
-%include "/disk2/brg/include/IceBRG_physics/abundance_matching.hpp"
-%include "/disk2/brg/include/IceBRG_physics/cluster_visibility.hpp"
-%include "/disk2/brg/include/IceBRG_physics/constants.hpp"
-%include "/disk2/brg/include/IceBRG_physics/cosmology.hpp"
-%include "/disk2/brg/include/IceBRG_physics/distance_measures.hpp"
-%include "/disk2/brg/include/IceBRG_physics/galaxy_visibility.hpp"
-%include "/disk2/brg/include/IceBRG_physics/luminosity.hpp"
-%include "/disk2/brg/include/IceBRG_physics/mass_function.hpp"
+%include "IceBRG_physics/abundance_matching.hpp"
+%include "IceBRG_physics/cluster_visibility.hpp"
+%include "IceBRG_physics/constants.hpp"
+%include "IceBRG_physics/cosmology.hpp"
+%include "IceBRG_physics/distance_measures.hpp"
+%include "IceBRG_physics/galaxy_visibility.hpp"
+%include "IceBRG_physics/luminosity.hpp"
+%include "IceBRG_physics/mass_function.hpp"
 
-%include "/disk2/brg/include/IceBRG_physics/detail/redshift_obj.hpp"
-%include "/disk2/brg/include/IceBRG_physics/density_profile/detail/density_profile.hpp"
-%include "/disk2/brg/include/IceBRG_physics/density_profile/point_mass_profile.hpp"
-%include "/disk2/brg/include/IceBRG_physics/density_profile/tNFW_profile.hpp"
-%include "/disk2/brg/include/IceBRG_physics/sky_obj/detail/sky_obj.hpp"
-%include "/disk2/brg/include/IceBRG_physics/sky_obj/galaxy.hpp"
+%include "IceBRG_physics/detail/redshift_obj.hpp"
+%include "IceBRG_physics/density_profile/detail/density_profile.hpp"
+%include "IceBRG_physics/density_profile/point_mass_profile.hpp"
+%include "IceBRG_physics/density_profile/tNFW_profile.hpp"
+%include "IceBRG_physics/sky_obj/detail/sky_obj.hpp"
+%include "IceBRG_physics/sky_obj/galaxy.hpp"
 
-%include "/disk2/brg/include/IceBRG_lensing/detail/lensing_profile_extension.hpp"
-%include "/disk2/brg/include/IceBRG_lensing/detail/pair_bin_summary.hpp"
-%include "/disk2/brg/include/IceBRG_lensing/detail/pair_bin.hpp"
-%include "/disk2/brg/include/IceBRG_lensing/detail/pair_bins_summary.hpp"
-%include "/disk2/brg/include/IceBRG_lensing/detail/source_obj.hpp"
-%include "/disk2/brg/include/IceBRG_lensing/lens_source_pair.hpp"
+%include "IceBRG_lensing/detail/lensing_profile_extension.hpp"
+%include "IceBRG_lensing/detail/pair_bin_summary.hpp"
+%include "IceBRG_lensing/detail/pair_bin.hpp"
+%include "IceBRG_lensing/detail/pair_bins_summary.hpp"
+%include "IceBRG_lensing/detail/source_obj.hpp"
+%include "IceBRG_lensing/lens_source_pair.hpp"
 
 %template(lensing_tNFW_profile_extension)
 	IceBRG::lensing_profile_extension< IceBRG::lensing_tNFW_profile >;
-%include "/disk2/brg/include/IceBRG_lensing/lensing_tNFW_profile.hpp"
+%include "IceBRG_lensing/lensing_tNFW_profile.hpp"
 
-%include "/disk2/brg/include/IceBRG_lensing/pair_binner.hpp"
-%include "/disk2/brg/include/IceBRG_lensing/source_galaxy.hpp"
+%include "IceBRG_lensing/pair_binner.hpp"
+%include "IceBRG_lensing/source_galaxy.hpp"
 
 // Tell Swig about typedefs in use
 typedef double flt_t;

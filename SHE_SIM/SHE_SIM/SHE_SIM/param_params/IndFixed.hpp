@@ -67,7 +67,7 @@ public:
 	virtual name_t name() const override { return "fixed"; };
 
 	// Get the value
-	virtual flt_t get_independently( gen_t & gen = IceBRG::rng ) const override
+	virtual flt_t get_independently( gen_t & = IceBRG::rng ) const override
 	{
 		return _value;
 	}

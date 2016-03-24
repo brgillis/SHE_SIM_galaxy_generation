@@ -27,12 +27,11 @@
 #include "config.h"
 #endif
 
-#include <boost/log/trivial.hpp>
-
 #include "SHE_SIM/dependency_functions/misc_dependencies.hpp"
 #include "SHE_SIM/common.hpp"
 #include "SHE_SIM/default_values.hpp"
 
+#include "IceBRG_main/logging.hpp"
 #include "IceBRG_main/math/random/random_functions.hpp"
 #include "IceBRG_main/units/unit_conversions.hpp"
 #include "IceBRG_main/units/units.hpp"

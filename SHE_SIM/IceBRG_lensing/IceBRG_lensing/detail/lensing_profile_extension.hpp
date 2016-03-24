@@ -162,7 +162,7 @@ private:
 				min_in_param, max_in_param, 0.00001);
 		return out_param;
 	}
-	surface_density_type _two_halo_Delta_Sigma( const distance_type & R ) const
+	surface_density_type _two_halo_Delta_Sigma( const distance_type &  ) const
 	{
 		assert(false); // TODO: Fill this out
 		return surface_density_type();
@@ -272,7 +272,7 @@ private:
 		distance_type min_in_param( units_cast<distance_type>(0.) ), max_in_param( 4.*sigma );
 
 		surface_density_type out_param = IceBRG::integrate_weighted_Romberg( func, weight_func,
-				min_in_param, max_in_param, precision, false );
+				min_in_param, max_in_param, precision );
 
 		return out_param;
 	}
@@ -309,7 +309,7 @@ private:
 		distance_type min_in_param( units_cast<distance_type>(0.) ), max_in_param( 4.*sigma );
 
 		surface_density_type out_param = IceBRG::integrate_weighted_Romberg( func, weight_func,
-				min_in_param, max_in_param, precision, false );
+				min_in_param, max_in_param, precision );
 
 		return out_param;
 	}

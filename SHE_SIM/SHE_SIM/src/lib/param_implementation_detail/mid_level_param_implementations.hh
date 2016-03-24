@@ -36,7 +36,7 @@ IMPLEMENT_PARAM(cluster_mass, dv::cluster_level, Calculated
 		_cached_value = generate_cluster_mass(REQUEST(cluster_redshift), get_rng());
 	,
 		_cached_value = generate_cluster_mass(REQUEST(cluster_redshift), get_rng());
-	);
+	)
 IMPLEMENT_PARAM(cluster_redshift, dv::cluster_level, IndClusterRedshift(
 		dv::cluster_redshift_enhancement,
 		dv::cluster_redshift_min,
@@ -45,19 +45,19 @@ IMPLEMENT_PARAM(cluster_redshift, dv::cluster_level, IndClusterRedshift(
 		_cached_value = _p_params->get_independently(get_rng());
 	,
 		_cached_value = _p_params->get_independently(get_rng());
-	);
+	)
 IMPLEMENT_PARAM(cluster_xp, dv::cluster_level, Calculated
 	,
 		_cached_value = IceBRG::drand(0.,REQUEST(image_size_xp));
 	,
 		_cached_value = IceBRG::drand(0.,REQUEST(image_size_xp));
-	);
+	)
 IMPLEMENT_PARAM(cluster_yp, dv::cluster_level, Calculated
 	,
 		_cached_value = IceBRG::drand(0.,REQUEST(image_size_yp));
 	,
 		_cached_value = IceBRG::drand(0.,REQUEST(image_size_yp));
-	);
+	)
 
 IMPLEMENT_PARAM(cluster_num_satellites, dv::cluster_level, Calculated
 	,
@@ -66,7 +66,7 @@ IMPLEMENT_PARAM(cluster_num_satellites, dv::cluster_level, Calculated
 	,
 		_cached_value = generate_count( get_cluster_richness(REQUEST(cluster_mass),
 				REQUEST(cluster_redshift)) - 1, get_rng());
-	);
+	)
 
 // Field level
 
@@ -109,7 +109,7 @@ IMPLEMENT_PARAM(num_field_galaxies, dv::field_level, Calculated
 		flt_t ex_num_cluster_gals = get_ex_num_cluster_galaxies(REQUEST(image_area) * REQUEST(cluster_density),
 				 z_min, z_max);
 		 _cached_value = generate_count( ex_num_gals - ex_num_cluster_gals, get_rng());
-	);
+	)
 
 
 

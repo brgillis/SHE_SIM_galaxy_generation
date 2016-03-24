@@ -29,9 +29,9 @@
 
 #include <cassert>
 
-#include <boost/log/trivial.hpp>
 
 #include "IceBRG_main/Eigen.hpp"
+#include "IceBRG_main/logging.hpp"
 #include "IceBRG_main/math/random/random_functions.hpp"
 
 #include "SHE_SIM/common.hpp"
@@ -174,9 +174,9 @@ flt_t generate_bulge_class( flt_t const & stellar_mass, flt_t const & redshift, 
 	}
 }
 
-flt_t generate_sersic_index_from_apparent_mag_vis( flt_t const & apparent_mag_vis, gen_t & rng )
+flt_t generate_sersic_index_from_apparent_mag_vis( flt_t const & , gen_t &  )
 {
-	BOOST_LOG_TRIVIAL(warning) << "Dummy function generate_sersic_index_from_apparent_mag_vis used.";
+  ICEBRG_WARN_TRIVIAL() << "Dummy function generate_sersic_index_from_apparent_mag_vis used.";
 
 	return dv::sersic_index;
 }
@@ -209,9 +209,9 @@ flt_t generate_sersic_index_from_bulge_class( flt_t const & bulge_class, gen_t &
 	return sersic_index;
 }
 
-flt_t generate_bulge_fraction( flt_t const & apparent_mag_vis, flt_t const & sersic_index, gen_t & rng )
+flt_t generate_bulge_fraction( flt_t const & , flt_t const & , gen_t &  )
 {
-	BOOST_LOG_TRIVIAL(warning) << "Dummy function generate_bulge_fraction used.";
+	ICEBRG_WARN_TRIVIAL() << "Dummy function generate_bulge_fraction used.";
 
 	return dv::bulge_fraction;
 }

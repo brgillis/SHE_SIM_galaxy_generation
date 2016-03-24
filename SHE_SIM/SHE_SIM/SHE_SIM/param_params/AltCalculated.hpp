@@ -64,7 +64,7 @@ public:
 	virtual name_t name() const override { return "alt_calculated"; };
 
 	// Get the value
-	virtual flt_t get_independently( gen_t & gen = IceBRG::rng ) const override
+	virtual flt_t get_independently( gen_t &  = IceBRG::rng ) const override
 	{
 		throw std::logic_error("AltCalculated parameters cannot use the 'get_independently' method.");
 	}

@@ -33,13 +33,13 @@ IMPLEMENT_PARAM(num_images, dv::survey_level, IndFixed(dv::num_images)
 		_cached_value = _p_params->get_independently(get_rng());
 	,
 		_cached_value = _p_params->get_independently(get_rng());
-	);
+	)
 IMPLEMENT_PARAM(pixel_scale, dv::survey_level, IndFixed(dv::pixel_scale)
 	,
 		_cached_value = _p_params->get_independently(get_rng());
 	,
 		_cached_value = _p_params->get_independently(get_rng());
-	);
+	)
 
 // Image level
 
@@ -49,19 +49,19 @@ IMPLEMENT_PARAM(exp_time, dv::image_level, IndFixed(dv::exp_time)
 		_cached_value = _p_params->get_independently(get_rng());
 	,
 		_cached_value = _p_params->get_independently(get_rng());
-	);
+	)
 IMPLEMENT_PARAM(cluster_density, dv::image_level, Calculated
 	,
 		_cached_value = visible_clusters(1.*square(unitconv::amintorad*rad));
 	,
 		_cached_value = visible_clusters(1.*square(unitconv::amintorad*rad));
-	);
+	)
 IMPLEMENT_PARAM(galaxy_density, dv::image_level, Calculated
 	,
 		_cached_value = visible_galaxies(1.*square(unitconv::amintorad*rad));
 	,
 		_cached_value = visible_galaxies(1.*square(unitconv::amintorad*rad));
-	);
+	)
 IMPLEMENT_PARAM(image_area, dv::image_level, Calculated
 	,
 	 	 _cached_value = get_image_area(REQUEST(image_size_xp),REQUEST(image_size_yp),
@@ -69,19 +69,19 @@ IMPLEMENT_PARAM(image_area, dv::image_level, Calculated
 	,
 	 	 _cached_value = get_image_area(REQUEST(image_size_xp),REQUEST(image_size_yp),
 			 REQUEST(pixel_scale));
-	);
+	)
 IMPLEMENT_PARAM(image_size_xp, dv::image_level, IndFixed(dv::image_size_xp)
 	,
 		_cached_value = _p_params->get_independently(get_rng());
 	,
 		_cached_value = _p_params->get_independently(get_rng());
-	);
+	)
 IMPLEMENT_PARAM(image_size_yp, dv::image_level, IndFixed(dv::image_size_yp)
 	,
 		_cached_value = _p_params->get_independently(get_rng());
 	,
 		_cached_value = _p_params->get_independently(get_rng());
-	);
+	)
 IMPLEMENT_PARAM(num_clusters, dv::image_level, Calculated
 	,
 		_cached_value = generate_count( REQUEST(image_area) *
@@ -89,25 +89,25 @@ IMPLEMENT_PARAM(num_clusters, dv::image_level, Calculated
 	,
 		_cached_value = generate_count( REQUEST(image_area) *
 					 REQUEST(cluster_density) , get_rng());
-	);
+	)
 IMPLEMENT_PARAM(num_fields, dv::image_level, IndFixed(dv::num_fields)
 	,
 		_cached_value = _p_params->get_independently(get_rng());
 	,
 		_cached_value = _p_params->get_independently(get_rng());
-	);
+	)
 IMPLEMENT_PARAM(subtracted_background, dv::image_level,
 		IndLogNormalMean(dv::subtracted_background_l10_mean,dv::subtracted_background_l10_stddev)
 	,
 		_cached_value = _p_params->get_independently(get_rng());
 	,
 		_cached_value = _p_params->get_independently(get_rng());
-	);
+	)
 IMPLEMENT_PARAM(unsubtracted_background, dv::image_level, IndFixed(dv::unsubtracted_background)
 	,
 		_cached_value = _p_params->get_independently(get_rng());
 	,
 		_cached_value = _p_params->get_independently(get_rng());
-	);
+	)
 
 #endif // SRC_PARAM_IMPLEMENTATION_DETAIL_HIGH_LEVEL_PARAM_IMPLEMENTATIONS_HH_

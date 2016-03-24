@@ -28,15 +28,15 @@
 
 #define DEF_NAME(level) constexpr const char * level##_name = #level;
 
-DEF_NAME(survey);
-DEF_NAME(image_group);
-DEF_NAME(image);
-DEF_NAME(cluster_group);
-DEF_NAME(cluster);
-DEF_NAME(field_group);
-DEF_NAME(field);
-DEF_NAME(galaxy_group);
-DEF_NAME(galaxy);
+DEF_NAME(survey)
+DEF_NAME(image_group)
+DEF_NAME(image)
+DEF_NAME(cluster_group)
+DEF_NAME(cluster)
+DEF_NAME(field_group)
+DEF_NAME(field)
+DEF_NAME(galaxy_group)
+DEF_NAME(galaxy)
 
 #undef DEF_NAME
 

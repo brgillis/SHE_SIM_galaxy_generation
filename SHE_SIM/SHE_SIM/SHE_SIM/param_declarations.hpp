@@ -62,60 +62,60 @@ public: \
 
 // Survey level
 
-DECLARE_PARAM(num_images);
-DECLARE_PARAM(pixel_scale);
+DECLARE_PARAM(num_images)
+DECLARE_PARAM(pixel_scale)
 
 // Image level
 
-DECLARE_PARAM(cluster_density);
-DECLARE_PARAM(exp_time);
-DECLARE_PARAM(galaxy_density);
-DECLARE_PARAM(image_area);
-DECLARE_PARAM(image_size_xp);
-DECLARE_PARAM(image_size_yp);
-DECLARE_PARAM(num_clusters);
-DECLARE_PARAM(num_fields);
-DECLARE_PARAM(subtracted_background);
-DECLARE_PARAM(unsubtracted_background);
+DECLARE_PARAM(cluster_density)
+DECLARE_PARAM(exp_time)
+DECLARE_PARAM(galaxy_density)
+DECLARE_PARAM(image_area)
+DECLARE_PARAM(image_size_xp)
+DECLARE_PARAM(image_size_yp)
+DECLARE_PARAM(num_clusters)
+DECLARE_PARAM(num_fields)
+DECLARE_PARAM(subtracted_background)
+DECLARE_PARAM(unsubtracted_background)
 
 // Cluster level
 
-DECLARE_PARAM(cluster_mass);
-DECLARE_PARAM(cluster_redshift);
-DECLARE_PARAM(cluster_num_satellites);
-DECLARE_PARAM(cluster_xp);
-DECLARE_PARAM(cluster_yp);
+DECLARE_PARAM(cluster_mass)
+DECLARE_PARAM(cluster_redshift)
+DECLARE_PARAM(cluster_num_satellites)
+DECLARE_PARAM(cluster_xp)
+DECLARE_PARAM(cluster_yp)
 
 // Field level
 
-DECLARE_PARAM(num_field_galaxies);
+DECLARE_PARAM(num_field_galaxies)
 
 // Galaxy level
 
-DECLARE_PARAM(absolute_mag_vis);
-DECLARE_PARAM(apparent_mag_vis);
-DECLARE_PARAM(apparent_size_bulge);
-DECLARE_PARAM(apparent_size_disk);
-DECLARE_PARAM(bulge_class);
-DECLARE_PARAM(bulge_fraction);
-DECLARE_PARAM(bulge_axis_ratio);
-DECLARE_PARAM(bulge_ellipticity);
-DECLARE_PARAM(galaxy_type);
-DECLARE_PARAM(physical_size_bulge);
-DECLARE_PARAM(physical_size_disk);
-DECLARE_PARAM(psf_model);
-DECLARE_PARAM(redshift);
-DECLARE_PARAM(rotation);
-DECLARE_PARAM(rp);
-DECLARE_PARAM(sersic_index);
-DECLARE_PARAM(shear_angle);
-DECLARE_PARAM(shear_magnitude);
-DECLARE_PARAM(spin);
-DECLARE_PARAM(stellar_mass);
-DECLARE_PARAM(theta_sat);
-DECLARE_PARAM(tilt);
-DECLARE_PARAM(xp);
-DECLARE_PARAM(yp);
+DECLARE_PARAM(absolute_mag_vis)
+DECLARE_PARAM(apparent_mag_vis)
+DECLARE_PARAM(apparent_size_bulge)
+DECLARE_PARAM(apparent_size_disk)
+DECLARE_PARAM(bulge_class)
+DECLARE_PARAM(bulge_fraction)
+DECLARE_PARAM(bulge_axis_ratio)
+DECLARE_PARAM(bulge_ellipticity)
+DECLARE_PARAM(galaxy_type)
+DECLARE_PARAM(physical_size_bulge)
+DECLARE_PARAM(physical_size_disk)
+DECLARE_PARAM(psf_model)
+DECLARE_PARAM(redshift)
+DECLARE_PARAM(rotation)
+DECLARE_PARAM(rp)
+DECLARE_PARAM(sersic_index)
+DECLARE_PARAM(shear_angle)
+DECLARE_PARAM(shear_magnitude)
+DECLARE_PARAM(spin)
+DECLARE_PARAM(stellar_mass)
+DECLARE_PARAM(theta_sat)
+DECLARE_PARAM(tilt)
+DECLARE_PARAM(xp)
+DECLARE_PARAM(yp)
 
 #undef DECLARE_PARAM
 

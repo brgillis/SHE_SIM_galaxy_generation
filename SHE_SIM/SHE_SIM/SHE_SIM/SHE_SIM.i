@@ -33,37 +33,37 @@
 %{
 	 
 	/* Include the headers in the wrapper code */
-	#include "SHE_SIM_gal_params/common.hpp"
-	#include "SHE_SIM_gal_params/ParamHierarchyLevel.hpp"
-	#include "SHE_SIM_gal_params/levels/Cluster.hpp"
-	#include "SHE_SIM_gal_params/levels/ClusterGroup.hpp"
-	#include "SHE_SIM_gal_params/levels/Field.hpp"
-	#include "SHE_SIM_gal_params/levels/FieldGroup.hpp"
-	#include "SHE_SIM_gal_params/levels/Galaxy.hpp"
-	#include "SHE_SIM_gal_params/levels/GalaxyGroup.hpp"
-	#include "SHE_SIM_gal_params/levels/Image.hpp"
-	#include "SHE_SIM_gal_params/levels/ImageGroup.hpp"
-	#include "SHE_SIM_gal_params/levels/Survey.hpp"
+	#include "SHE_SIM/common.hpp"
+	#include "SHE_SIM/ParamHierarchyLevel.hpp"
+	#include "SHE_SIM/levels/Cluster.hpp"
+	#include "SHE_SIM/levels/ClusterGroup.hpp"
+	#include "SHE_SIM/levels/Field.hpp"
+	#include "SHE_SIM/levels/FieldGroup.hpp"
+	#include "SHE_SIM/levels/Galaxy.hpp"
+	#include "SHE_SIM/levels/GalaxyGroup.hpp"
+	#include "SHE_SIM/levels/Image.hpp"
+	#include "SHE_SIM/levels/ImageGroup.hpp"
+	#include "SHE_SIM/levels/Survey.hpp"
 	
 	// Include headers containing other useful functions
-	#include "SHE_SIM_gal_params/dependency_functions/cosmology.hpp"
+	#include "SHE_SIM/dependency_functions/cosmology.hpp"
 	 
 %}
  
 // Parse the header files to generate wrappers
-%include "SHE_SIM_gal_params/common.hpp"
-%include "SHE_SIM_gal_params/ParamHierarchyLevel.hpp"
-%include "SHE_SIM_gal_params/levels/Cluster.hpp"
-%include "SHE_SIM_gal_params/levels/ClusterGroup.hpp"
-%include "SHE_SIM_gal_params/levels/Field.hpp"
-%include "SHE_SIM_gal_params/levels/FieldGroup.hpp"
-%include "SHE_SIM_gal_params/levels/Galaxy.hpp"
-%include "SHE_SIM_gal_params/levels/GalaxyGroup.hpp"
-%include "SHE_SIM_gal_params/levels/Image.hpp"
-%include "SHE_SIM_gal_params/levels/ImageGroup.hpp"
-%include "SHE_SIM_gal_params/levels/Survey.hpp"
+%include "SHE_SIM/common.hpp"
+%include "SHE_SIM/ParamHierarchyLevel.hpp"
+%include "SHE_SIM/levels/Cluster.hpp"
+%include "SHE_SIM/levels/ClusterGroup.hpp"
+%include "SHE_SIM/levels/Field.hpp"
+%include "SHE_SIM/levels/FieldGroup.hpp"
+%include "SHE_SIM/levels/Galaxy.hpp"
+%include "SHE_SIM/levels/GalaxyGroup.hpp"
+%include "SHE_SIM/levels/Image.hpp"
+%include "SHE_SIM/levels/ImageGroup.hpp"
+%include "SHE_SIM/levels/Survey.hpp"
 
-%include "SHE_SIM_gal_params/dependency_functions/cosmology.hpp"
+%include "SHE_SIM/dependency_functions/cosmology.hpp"
 
 %apply int& {SHE_SIM::level_t&};
 

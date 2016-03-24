@@ -27,9 +27,8 @@
 
 #include <cmath>
 
-#include <boost/log/trivial.hpp>
-
 #include "SHE_SIM/common.hpp"
+#include "IceBRG_main/logging.hpp"
 #include "IceBRG_main/math/misc_math.hpp"
 #include "IceBRG_main/math/random/random_functions.hpp"
 #include "IceBRG_main/units/units.hpp"
@@ -87,7 +86,7 @@ flt_t generate_field_z( flt_t const & total_enhancement,
 	}
 	catch(std::runtime_error & e)
 	{
-		BOOST_LOG_TRIVIAL(warning) << "Cluster N(z) is uniformly greater than total N(z).";
+		ICEBRG_WARN_TRIVIAL() << "Cluster N(z) is uniformly greater than total N(z).";
 		return IceBRG::rand_from_pdf(&get_total_pz,40,z_min,z_max,rng);
 	}
 }

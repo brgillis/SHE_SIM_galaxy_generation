@@ -27,10 +27,10 @@
 #include "config.h"
 #endif
 
-#include <boost/log/trivial.hpp>
 #include <cassert>
 #include <stdexcept>
 
+#include "IceBRG_main/logging.hpp"
 #include "IceBRG_main/math/random/random_functions.hpp"
 #include "IceBRG_main/units/unit_conversions.hpp"
 #include "IceBRG_main/units/units.hpp"
@@ -46,14 +46,14 @@ namespace SHE_SIM {
 
 using namespace IceBRG;
 
-flt_t generate_rotation( flt_t const & xp, flt_t const & yp, flt_t const & cluster_xp, flt_t const & cluster_yp,
-				         flt_t const & sersic_index, flt_t const & stellar_mass, gen_t & rng  )
+flt_t generate_rotation( flt_t const & , flt_t const & , flt_t const & , flt_t const & ,
+				         flt_t const & , flt_t const & , gen_t & rng  )
 {
 	return IceBRG::drand( dv::rotation_min, dv::rotation_max, rng );
 }
 
-flt_t generate_tilt( flt_t const & xp, flt_t const & yp, flt_t const & cluster_xp, flt_t const & cluster_yp,
-				         flt_t const & sersic_index, flt_t const & stellar_mass, gen_t & rng  )
+flt_t generate_tilt( flt_t const & , flt_t const & , flt_t const & , flt_t const & ,
+				         flt_t const & , flt_t const & , gen_t & rng  )
 {
 	return IceBRG::drand( dv::tilt_min, dv::tilt_max, rng );
 }
@@ -69,7 +69,7 @@ flt_t get_central_abs_mag_vis( flt_t const & cluster_mass, flt_t const & redshif
 
 constexpr flt_t abs_mag_vis_scatter = 0.5; // FIXME Get realistic value for this
 
-flt_t generate_central_abs_mag_vis( flt_t const & redshift, flt_t const & cluster_mass, gen_t & rng  )
+flt_t generate_central_abs_mag_vis( flt_t const & redshift, flt_t const & cluster_mass, gen_t &   )
 {
 	flt_t central_abs_mag_vis = get_central_abs_mag_vis( cluster_mass, redshift );
 
