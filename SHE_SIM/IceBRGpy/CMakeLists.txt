@@ -1,9 +1,9 @@
 # Declare this directory as an Elements module
-elements_subdir(IceBRGpy)
+# elements_subdir(IceBRGpy)
 
 # Declare Elements module dependencies
-elements_depends_on_subdirs(ElementsKernel)
-elements_depends_on_subdirs(cIceBRGpy)
+# elements_depends_on_subdirs(ElementsKernel)
+# elements_depends_on_subdirs(cIceBRGpy)
 
 # Declare library dependencies
 
@@ -12,8 +12,7 @@ elements_depends_on_subdirs(cIceBRGpy)
 # Instruction for creating a C++ executable
 
 # Instruction for Python module installation
-elements_install_python_modules()
+# elements_install_python_modules()
 
 # Install the configuration files
-elements_install_conf_files()
          
