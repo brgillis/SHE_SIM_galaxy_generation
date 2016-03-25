@@ -44,10 +44,10 @@ inline void handle_error(str_t const & str)
 			throw std::runtime_error(str);
 			break;
 		case error_behavior_type::WARN:
-			std::cerr << "WARNING: " << str << std::endl;
+			std::cerr << "WARNING: " << str << "\n";
 			break;
 		case error_behavior_type::LOG:
-			ICEBRG_LOG_TRIVIAL(error) << str << std::endl;
+			ICEBRG_LOG_TRIVIAL(error) << str << "\n";
 			break;
 		case error_behavior_type::NOTHING:
 			break;
@@ -61,13 +61,13 @@ inline void handle_notification(str_t const & str)
 {
 	switch (globals::error_behavior) {
 		case error_behavior_type::THROW:
-			std::cout << str << std::endl;
+			std::cout << str << "\n";
 			break;
 		case error_behavior_type::WARN:
-			std::cout << str << std::endl;
+			std::cout << str << "\n";
 			break;
 		case error_behavior_type::LOG:
-			ICEBRG_LOG_TRIVIAL(info) << str << std::endl;
+			ICEBRG_LOG_TRIVIAL(info) << str << "\n";
 			break;
 		case error_behavior_type::NOTHING:
 			break;
@@ -81,13 +81,13 @@ inline void handle_error_message(str_t const & str)
 {
 	switch (globals::error_behavior) {
 		case error_behavior_type::THROW:
-			std::cerr << "WARNING: " << str << std::endl;
+			std::cerr << "WARNING: " << str << "\n";
 			break;
 		case error_behavior_type::WARN:
-			std::cerr << "WARNING: " << str << std::endl;
+			std::cerr << "WARNING: " << str << "\n";
 			break;
 		case error_behavior_type::LOG:
-			ICEBRG_WARN_TRIVIAL() << str << std::endl;
+			ICEBRG_WARN_TRIVIAL() << str << "\n";
 			break;
 		case error_behavior_type::NOTHING:
 			break;

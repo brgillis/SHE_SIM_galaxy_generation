@@ -36,7 +36,7 @@
 #include "IceBRG_main/units/unit_conversions.hpp"
 
 // Enable dimensional analysis unless the NDEBUG flag is defined
-#ifndef NDEBUG
+#if not (defined(NDEBUG) or defined(ELEMENTS_LINKER_LIBRARY) or defined(_FORTIFY_SOURCE) or defined(_GNU_SOURCE))
 #define _BRG_USE_UNITS_
 #endif // #ifndef NDEBUG
 

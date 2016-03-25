@@ -24,7 +24,7 @@
 #ifndef ICEBRG_MAIN_ICEBRG_MAIN_LOGGING_HPP_
 #define ICEBRG_MAIN_ICEBRG_MAIN_LOGGING_HPP_
 
-#ifdef ELEMENTS_LINKER_LIBRARY
+#if defined(ELEMENTS_LINKER_LIBRARY) or defined(_FORTIFY_SOURCE) or defined(_GNU_SOURCE)
 
 #include "ElementsKernel/Logging.h"
 
