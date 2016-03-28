@@ -27,58 +27,58 @@
 import pickle
 import sys
 
-import numpy as np
+from astropy.convolution import convolve_fft
 import scipy.signal
+
+from SHE_SIM_galaxy_image_generation import magic_values as mv
+from SHE_SIM_galaxy_image_generation.utility import timing
+from icebrgpy.convolve import fftw_convolve
+import numpy as np
 import pyfftw
 
-from galsim_images_generation import magic_values as mv
-from utility import timing
 
-from astropy.convolution import convolve_fft
-from icebrgpy.convolve import fftw_convolve
-    
 # Monkey patch in fftn and ifftn from pyfftw.interfaces.scipy_fftpack
 scipy.signal.signaltools.fftn = pyfftw.interfaces.scipy_fftpack.fft
 scipy.signal.signaltools.ifftn = pyfftw.interfaces.scipy_fftpack.ifftn
 
 size1 = 1000
 size2 = 1000
-im1_shape = (size1,size1)
-im2_shape = (size2,size2)
+im1_shape = (size1, size1)
+im2_shape = (size2, size2)
 
 scale = 0.1
 
 def main(argv):
     """ @TODO main docstring
     """
-    
+
     # Set up pyfftw
     pyfftw.interfaces.cache.enable()
     try:
-        pyfftw.import_wisdom(pickle.load( open( mv.fftw_wisdom_filename, "rb" ) ))
+        pyfftw.import_wisdom(pickle.load(open(mv.fftw_wisdom_filename, "rb")))
     except IOError as _e:
         print("WARNING: Could not load fftw wisdom. Rerun to get more accurate timings.")
-        
+
     for _i in range(100):
 #         im1 = np.random.rand(size1,size1)
 #         im2 = np.random.rand(size2,size2)
-        
-        im1 = np.outer(scipy.signal.gaussian(size1,1),
-                       scipy.signal.gaussian(size1,1),)
-        im2 = np.outer(scipy.signal.gaussian(size2,scale*(_i+1)),
-                       scipy.signal.gaussian(size2,scale*(_i+1)),)
-        
+
+        im1 = np.outer(scipy.signal.gaussian(size1, 1),
+                       scipy.signal.gaussian(size1, 1),)
+        im2 = np.outer(scipy.signal.gaussian(size2, scale * (_i + 1)),
+                       scipy.signal.gaussian(size2, scale * (_i + 1)),)
+
 #         _imc1 = scipy.signal.fftconvolve(im1, im2, mode='same')
-#         
+#
 #         _imc2 = convolve_fft(im1, im2, fftn=pyfftw.interfaces.scipy_fftpack.fftn,
 #                              ifftn=pyfftw.interfaces.scipy_fftpack.ifftn)
-        
+
         _imc3 = fftw_convolve(im1, im2)
-        
+
         pass
-    
+
     # Save fftw wisdom
-    pickle.dump(pyfftw.export_wisdom(),open(mv.fftw_wisdom_filename,"wb"))
+    pickle.dump(pyfftw.export_wisdom(), open(mv.fftw_wisdom_filename, "wb"))
 
 if __name__ == "__main__":
     main(sys.argv)

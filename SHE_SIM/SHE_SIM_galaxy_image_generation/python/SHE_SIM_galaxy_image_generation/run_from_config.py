@@ -47,12 +47,12 @@ profile = True
 import pickle
 import subprocess
 
-from galsim_images_generation import magic_values as mv
-from galsim_images_generation.config.config_default import (allowed_options,
+from SHE_SIM_galaxy_image_generation import magic_values as mv
+from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_options,
                                                             allowed_fixed_params,
                                                             allowed_survey_settings,
                                                             generation_levels)
-from galsim_images_generation.generate_images import generate_images
+from SHE_SIM_galaxy_image_generation.generate_images import generate_images
 import pyfftw
 
 
@@ -115,7 +115,7 @@ def run_from_survey_and_options(survey, options):
 def set_up_from_config_file(config_file_name):
 
     if config_file_name == "":
-        from galsim_images_generation.config.config_default import load_default_configurations
+        from SHE_SIM_galaxy_image_generation.config.config_default import load_default_configurations
         survey, options = load_default_configurations()
 
     else:
@@ -136,7 +136,7 @@ def set_up_from_config_file(config_file_name):
             # older config files.
             if(version == '2.0'):
 
-                from galsim_images_generation.config.config_v2_0 import load_config_2_0
+                from SHE_SIM_galaxy_image_generation.config.config_v2_0 import load_config_2_0
                 survey, options = load_config_2_0(config_lines[1:])
 
             else:

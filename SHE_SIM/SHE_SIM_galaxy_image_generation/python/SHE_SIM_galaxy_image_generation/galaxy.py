@@ -26,7 +26,7 @@ import galsim
 import numpy as np
 from os.path import join
 
-import galsim_images_generation.magic_values as mv
+import SHE_SIM_galaxy_image_generation.magic_values as mv
 
 from icebrgpy.function_cache import lru_cache
 

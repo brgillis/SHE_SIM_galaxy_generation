@@ -22,13 +22,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-import galsim_images_generation.magic_values as mv
+import SHE_SIM_galaxy_image_generation.magic_values as mv
 import numpy as np
 from gain import get_I_from_count
-from galsim_images_generation.magic_values import mag_i_zeropoint,\
+from SHE_SIM_galaxy_image_generation.magic_values import mag_i_zeropoint,\
     mag_vis_zeropoint
-from galsim_images_generation.gain import get_count_from_I
-from galsim_images_generation.get_I_from_SN import get_I_from_SN
+from SHE_SIM_galaxy_image_generation.gain import get_count_from_I
+from SHE_SIM_galaxy_image_generation.get_I_from_SN import get_I_from_SN
 
 def get_count_from_mag_vis(m, exp_time=mv.default_exp_time):
     """ Gets the expected count from a magnitude using Euclid's magnitude zeropoint.

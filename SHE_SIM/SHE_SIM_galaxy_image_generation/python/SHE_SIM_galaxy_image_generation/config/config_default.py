@@ -24,7 +24,8 @@
 """
 
 import SHE_SIM
-import galsim_images_generation.magic_values as mv
+
+import SHE_SIM_galaxy_image_generation.magic_values as mv
 
 
 __all__ = ['load_default_configurations']
@@ -159,7 +160,7 @@ def load_default_configurations():
 
     print "No configuration script loaded. The script will proceed using the set of"
     print "configuration parameters hardcoded into it. These can be viewed and edited in"
-    print "the file galsim_images_generation/magic_values.py."
+    print "the file SHE_SIM_galaxy_image_generation/magic_values.py."
 
     options = {}
     for option in allowed_options:

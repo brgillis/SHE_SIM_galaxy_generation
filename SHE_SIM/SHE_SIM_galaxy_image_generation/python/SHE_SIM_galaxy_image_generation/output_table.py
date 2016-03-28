@@ -25,7 +25,7 @@
 from astropy.io import fits
 import subprocess
 
-from galsim_images_generation import magic_values as mv
+from SHE_SIM_galaxy_image_generation import magic_values as mv
 
 names_and_dtypes = (('ID','i8','K'),
             ('x_center_pix','f4','E'),

@@ -1,4 +1,4 @@
-""" @file /disk2/brg/Program_Files/workspace/Generate_GalSim_Images/galsim_images_generation/cutouts.py
+""" @file /disk2/brg/Program_Files/workspace/Generate_GalSim_Images/SHE_SIM_galaxy_image_generation/cutouts.py
 
     Created 14 Mar 2016
 
@@ -27,7 +27,7 @@ from __future__ import division
 import galsim
 import numpy as np
 
-from galsim_images_generation.galaxy import is_target_galaxy
+from SHE_SIM_galaxy_image_generation.galaxy import is_target_galaxy
 
 def make_cutout_image( image, options, galaxies, otable,
                        centre_offset = 0 ):

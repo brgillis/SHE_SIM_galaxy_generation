@@ -42,8 +42,8 @@
     what's going on.
 """
 
-from galsim_images_generation.run_from_config import run_from_config_file
-from utility import timing
+from SHE_SIM_galaxy_image_generation.run_from_config import run_from_config_file
+from SHE_SIM_galaxy_image_generation.utility import timing
 
 
 def main(argv):

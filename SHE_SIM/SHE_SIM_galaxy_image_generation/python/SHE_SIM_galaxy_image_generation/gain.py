@@ -23,7 +23,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-import galsim_images_generation.magic_values as mv
+import SHE_SIM_galaxy_image_generation.magic_values as mv
 
 def get_I_from_count(c, gain=mv.default_gain):
     """ Calculated the intensity I from count with the given gain.

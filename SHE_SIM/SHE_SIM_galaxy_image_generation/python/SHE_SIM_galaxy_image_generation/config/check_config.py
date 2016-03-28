@@ -1,4 +1,4 @@
-""" @file /disk2/brg/Program_Files/workspace/Generate_GalSim_Images/galsim_images_generation/config/check_config.py
+""" @file /disk2/brg/Program_Files/workspace/Generate_GalSim_Images/SHE_SIM_galaxy_image_generation/config/check_config.py
 
     Created 15 Mar 2016
 
@@ -22,9 +22,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-from galsim_images_generation.config.config_default import (allowed_option_values,
+from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_option_values,
                                                             generation_levels)
-from galsim_images_generation import magic_values as mv
+from SHE_SIM_galaxy_image_generation import magic_values as mv
 
 def check_options(options):
     for name in options:

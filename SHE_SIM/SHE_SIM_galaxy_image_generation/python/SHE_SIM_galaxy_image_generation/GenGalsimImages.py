@@ -7,7 +7,7 @@
 import argparse
 import ElementsKernel.Logging as log
 
-from galsim_images_generation.config.config_default import (allowed_options,
+from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_options,
                                                             allowed_fixed_params,
                                                             allowed_survey_settings,
                                                             str2bool)
@@ -25,15 +25,15 @@ def defineSpecificProgramOptions():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--config-file', type=string, default="",
+    parser.add_argument('--config-file', type=str, default="",
                         help='Filename of the configuration file to use.')
 
     # Add in each allowed option, with a null default
-    for allowed_option in allowed_options:
-        type = allowed_option[1][0]
+    for option in allowed_options:
+        type = allowed_options[option][1]
         if type == str2bool:
             type = bool
-        parser.add_argument(allowed_option[0], type=type)
+        parser.add_argument(option, type=type)
 
     # Add allowed fixed params
     for allowed_fixed_param in allowed_fixed_params:
@@ -43,10 +43,10 @@ def defineSpecificProgramOptions():
     for allowed_survey_setting in allowed_survey_settings:
 
         generation_level = allowed_survey_setting + "_level"
-        parser.add_argument(generation_level, type=string)
+        parser.add_argument(generation_level, type=str)
 
         settings = allowed_survey_setting + "_setting"
-        parser.add_argument(settings, type=string)
+        parser.add_argument(settings, type=str)
 
     return parser
 

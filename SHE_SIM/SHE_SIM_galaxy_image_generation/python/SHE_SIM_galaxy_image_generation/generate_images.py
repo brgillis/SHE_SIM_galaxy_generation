@@ -36,17 +36,17 @@ from icebrgpy.rebin import rebin
 from icebrgpy.convolve import fftw_convolve
 
 from astropy.table import Table
-from galsim_images_generation.combine_dithers import combine_dithers
-from galsim_images_generation.compress_image import compress_image
-from galsim_images_generation.cutouts import make_cutout_image
-from galsim_images_generation.dither_schemes import get_dither_scheme
-from galsim_images_generation.galaxy import (get_bulge_galaxy_profile, 
+from SHE_SIM_galaxy_image_generation.combine_dithers import combine_dithers
+from SHE_SIM_galaxy_image_generation.compress_image import compress_image
+from SHE_SIM_galaxy_image_generation.cutouts import make_cutout_image
+from SHE_SIM_galaxy_image_generation.dither_schemes import get_dither_scheme
+from SHE_SIM_galaxy_image_generation.galaxy import (get_bulge_galaxy_profile, 
                                              get_disk_galaxy_image,
                                              is_target_galaxy)
-from galsim_images_generation.magnitude_conversions import get_I
-from galsim_images_generation.psf import get_psf_profile
-from galsim_images_generation import output_table
-from galsim_images_generation import magic_values as mv
+from SHE_SIM_galaxy_image_generation.magnitude_conversions import get_I
+from SHE_SIM_galaxy_image_generation.psf import get_psf_profile
+from SHE_SIM_galaxy_image_generation import output_table
+from SHE_SIM_galaxy_image_generation import magic_values as mv
 from parmap import parmap
 
 def generate_images( survey, options ):

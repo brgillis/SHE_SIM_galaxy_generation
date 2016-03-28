@@ -26,11 +26,11 @@ from string import split
 
 import SHE_SIM
 
-from galsim_images_generation.config.config_default import (allowed_options,
+from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_options,
                                                             allowed_fixed_params,
                                                             allowed_settings,
                                                             generation_levels)
-from galsim_images_generation.config.check_config import (check_options,
+from SHE_SIM_galaxy_image_generation.config.check_config import (check_options,
                                                           check_survey_settings,
                                                           handle_special_settings)
 

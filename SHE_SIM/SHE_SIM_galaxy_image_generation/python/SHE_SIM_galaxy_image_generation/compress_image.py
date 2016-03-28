@@ -24,7 +24,7 @@
 
 import subprocess
 
-import galsim_images_generation.magic_values as mv
+import SHE_SIM_galaxy_image_generation.magic_values as mv
 
 
 def compress_image(image_name,nx=None,lossy=False):
