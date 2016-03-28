@@ -11,6 +11,7 @@ from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_optio
                                                             allowed_fixed_params,
                                                             allowed_survey_settings,
                                                             str2bool)
+from SHE_SIM_galaxy_image_generation.run_from_config import run_from_config_file_and_args
 
 def defineSpecificProgramOptions():
     """
@@ -59,13 +60,11 @@ def mainMethod(args):
         similar to a main (and it is why it is called mainMethod()).
     """
 
-    logger = log.getLogger()
+    logger = log.getLogger("GenGalsimImages")
 
     logger.info('#')
     logger.info('# Entering GenGalsimImages mainMethod()')
     logger.info('#')
-
-    args.parse_args()
 
     config_file_name = args.config_file_name
 
@@ -74,6 +73,6 @@ def mainMethod(args):
     else:
         logger.info('Using configurations from file ' + config_filename + '.')
 
-    run_from_config_file(config_file_name)
+    run_from_config_file_and_args(config_file_name, args)
 
     logger.info('Exiting GenGalsimImages mainMethod()')

@@ -4,9 +4,8 @@ elements_subdir(SHE_SIM_galaxy_image_generation)
 # Declare Elements module dependencies
 elements_depends_on_subdirs(ElementsKernel)
 elements_depends_on_subdirs(cIceBRGpy)
+elements_depends_on_subdirs(IceBRGpy)
 elements_depends_on_subdirs(SHE_SIM)
-
-# Declare library dependencies
 
 # Instruction for Python module installation
 elements_install_python_modules()
