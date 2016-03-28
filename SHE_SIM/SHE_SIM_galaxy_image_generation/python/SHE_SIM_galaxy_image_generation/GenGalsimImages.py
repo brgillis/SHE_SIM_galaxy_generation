@@ -25,28 +25,28 @@ def defineSpecificProgramOptions():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--config-file', type=str, default="",
+    parser.add_argument('--config-file-name', type=str, default="",
                         help='Filename of the configuration file to use.')
 
     # Add in each allowed option, with a null default
     for option in allowed_options:
         type = allowed_options[option][1]
-        if type == str2bool:
-            type = bool
-        parser.add_argument(option, type=type)
+#         if type == str2bool:
+#             type = bool
+        parser.add_argument("--" + option, type=type)
 
     # Add allowed fixed params
     for allowed_fixed_param in allowed_fixed_params:
-        parser.add_argument(allowed_fixed_param, type=float)
+        parser.add_argument("--" + allowed_fixed_param, type=float)
 
     # Add allowed survey settings, with both level and setting possibilities
     for allowed_survey_setting in allowed_survey_settings:
 
         generation_level = allowed_survey_setting + "_level"
-        parser.add_argument(generation_level, type=str)
+        parser.add_argument("--" + generation_level, type=str)
 
         settings = allowed_survey_setting + "_setting"
-        parser.add_argument(settings, type=str)
+        parser.add_argument("--" + settings, type=str)
 
     return parser
 
@@ -67,9 +67,9 @@ def mainMethod(args):
 
     args.parse_args()
 
-    config_filename = args.config_filename
+    config_file_name = args.config_file_name
 
-    if(config_filename == ""):
+    if(config_file_name == ""):
         logger.info('Using default configurations.')
     else:
         logger.info('Using configurations from file ' + config_filename + '.')
