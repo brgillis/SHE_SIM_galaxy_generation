@@ -7,6 +7,11 @@
 import argparse
 import ElementsKernel.Logging as log
 
+from galsim_images_generation.config.config_default import (allowed_options,
+                                                            allowed_fixed_params,
+                                                            allowed_survey_settings,
+                                                            str2bool)
+
 def defineSpecificProgramOptions():
     """
     @brief Allows to define the (command line and configuration file) options
@@ -22,6 +27,27 @@ def defineSpecificProgramOptions():
 
     parser.add_argument('--config-file', type=string, default="",
                         help='Filename of the configuration file to use.')
+
+    # Add in each allowed option, with a null default
+    for allowed_option in allowed_options:
+        type = allowed_option[1][0]
+        if type == str2bool:
+            type = bool
+        parser.add_argument(allowed_option[0], type=type)
+
+    # Add allowed fixed params
+    for allowed_fixed_param in allowed_fixed_params:
+        parser.add_argument(allowed_fixed_param, type=float)
+
+    # Add allowed survey settings, with both level and setting possibilities
+    for allowed_survey_setting in allowed_survey_settings:
+
+        generation_level = allowed_survey_setting + "_level"
+        parser.add_argument(generation_level, type=string)
+
+        settings = allowed_survey_setting + "_setting"
+        parser.add_argument(settings, type=string)
+
     return parser
 
 
@@ -38,6 +64,8 @@ def mainMethod(args):
     logger.info('#')
     logger.info('# Entering GenGalsimImages mainMethod()')
     logger.info('#')
+
+    args.parse_args()
 
     config_filename = args.config_filename
 

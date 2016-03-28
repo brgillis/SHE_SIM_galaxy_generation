@@ -48,6 +48,10 @@ import pickle
 import subprocess
 
 from galsim_images_generation import magic_values as mv
+from galsim_images_generation.config.config_default import (allowed_options,
+                                                            allowed_fixed_params,
+                                                            allowed_survey_settings,
+                                                            generation_levels)
 from galsim_images_generation.generate_images import generate_images
 import pyfftw
 
@@ -55,9 +59,60 @@ import pyfftw
 if profile:
     import cProfile
 
-
-
 def run_from_config_file(config_file_name):
+
+    survey, options = set_up_from_config_file(config_file_name)
+
+    run_from_survey_and_options(survey, options)
+
+    return
+
+def run_from_config_file_and_args(config_file_name, args):
+
+    survey, options = set_up_from_config_file(config_file_name)
+
+    apply_args(survey, options, args)
+
+    run_from_survey_and_options(survey, options)
+
+    return
+
+def run_from_survey_and_options(survey, options):
+    # Ensure the base output folder exists
+    # At present there's no checking before trying to create it, so an error will
+    # be printed if it already exists. This can be disregarded.
+
+    # Check if the folder path was given with a slash at the end. If so, trim it
+    if(options['output_folder'][-1] == '/'):
+        options['output_folder'] = options['output_folder'][0:-1]
+
+    # Ensure that the output folder exists
+    cmd = 'mkdir -p ' + options['output_folder']
+    subprocess.call(cmd, shell=True)
+
+    # Set up pyfftw
+    pyfftw.interfaces.cache.enable()
+    try:
+        pyfftw.import_wisdom(pickle.load(open(mv.fftw_wisdom_filename, "rb")))
+    except IOError as _e:
+        pass
+
+    if profile:
+        def run_generate_images():
+            generate_images(survey, options)
+        # We have the input we want, now generate the images
+        cProfile.runctx('run_generate_images()', None, locals(),
+                        filename="profiling_data.prof", sort="time")
+    else:
+        # We have the input we want, now generate the images
+        generate_images(survey, options)
+
+    # Save fftw wisdom
+    pickle.dump(pyfftw.export_wisdom(), open(mv.fftw_wisdom_filename, "wb"))
+
+    return
+
+def set_up_from_config_file(config_file_name):
 
     if config_file_name == "":
         from galsim_images_generation.config.config_default import load_default_configurations
@@ -91,36 +146,47 @@ def run_from_config_file(config_file_name):
 
             # End reading in the configuration file
 
-    # Ensure the base output folder exists
-    # At present there's no checking before trying to create it, so an error will
-    # be printed if it already exists. This can be disregarded.
+    return survey, options
 
-    # Check if the folder path was given with a slash at the end. If so, trim it
-    if(options['output_folder'][-1] == '/'):
-        options['output_folder'] = options['output_folder'][0:-1]
+def apply_args(survey, options, args):
 
-    # Ensure that the output folder exists
-    cmd = 'mkdir -p ' + options['output_folder']
-    subprocess.call(cmd, shell=True)
+    arg_lib = vars(args)
 
-    # Set up pyfftw
-    pyfftw.interfaces.cache.enable()
-    try:
-        pyfftw.import_wisdom(pickle.load(open(mv.fftw_wisdom_filename, "rb")))
-    except IOError as _e:
-        pass
+    # Check if each option was overriden in the args
+    for option in allowed_options:
+        if option in arg_lib:
+            if arg_lib[option] is not None:
+                options[option] = arg_lib[option]
 
-    if profile:
-        def run_generate_images():
-            generate_images(survey, options)
-        # We have the input we want, now generate the images
-        cProfile.runctx('run_generate_images()', None, locals(),
-                        filename="profiling_data.prof", sort="time")
-    else:
-        # We have the input we want, now generate the images
-        generate_images(survey, options)
+    # Add allowed fixed params
+    for fixed_param in allowed_fixed_params:
+        if fixed_param in arg_lib:
+            if arg_lib[fixed_param] is not None:
+                survey.set_param_params(fixed_param, 'fixed', arg_lib[fixed_param])
 
-    # Save fftw wisdom
-    pickle.dump(pyfftw.export_wisdom(), open(mv.fftw_wisdom_filename, "wb"))
+
+    # Add allowed survey settings, with both level and setting possibilities
+    for param_name in allowed_survey_settings:
+
+        generation_level_name = param_name + "_level"
+        if generation_level_name in arg_lib:
+            if arg_lib[generation_level_name] is not None:
+                survey.set_generation_level(param_name,
+                                            generation_levels[arg_lib[generation_level_name]])
+
+
+        settings_name = survey_setting + "_setting"
+        if settings_name in arg_lib:
+            if arg_lib[settings_name] is not None:
+
+                split_params = split(arg_lib[settings_name])
+
+                flt_args = []
+                for str_arg in split_params[1:]:
+                    flt_args.append(float(str_arg.strip()))
+
+                survey.set_param_params(param_name, split_params[0].strip(), *flt_args)
+        else:
+            assert(False)
 
     return
