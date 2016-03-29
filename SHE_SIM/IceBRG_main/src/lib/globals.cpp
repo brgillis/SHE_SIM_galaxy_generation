@@ -29,6 +29,8 @@ namespace IceBRG {
 
 str_t globals::workdir = ".";
 
+str_t globals::program_name = "IceBRG_program";
+
 error_behavior_type globals::error_behavior = error_behavior_type::WARN;
 
 }

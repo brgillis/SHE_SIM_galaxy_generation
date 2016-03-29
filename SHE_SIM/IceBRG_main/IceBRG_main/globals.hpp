@@ -48,6 +48,9 @@ struct globals
 	/// Working directory
 	static str_t workdir;
 
+	/// Program name
+	static str_t program_name;
+
 	/// Error handling behaviour
 	static error_behavior_type error_behavior;
 
