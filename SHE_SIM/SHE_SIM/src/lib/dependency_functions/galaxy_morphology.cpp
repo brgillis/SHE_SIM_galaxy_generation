@@ -1,5 +1,5 @@
 /**********************************************************************\
- @file sersic_index.cpp
+ @file galaxy_morphology.cpp
  ------------------
 
  TODO <Insert file description here>
