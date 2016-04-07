@@ -1,13 +1,14 @@
-""" @file generate_images.py
+"""
+    @file generate_images.py
 
     Created 23 Jul 2015
 
-    This module contains the function "generate_images" which does the
-    heavy lifting of actually using GalSim to generate images.
+    This module contains the functions which do the heavy lifting of actually
+    generating images.
 
     ---------------------------------------------------------------------
 
-    Copyright (C) 2015 Bryan R. Gillis
+    Copyright (C) 2015, 2016 Bryan R. Gillis
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -54,17 +55,18 @@ except ImportError as _e:
     from scipy.signal import fftconvolve as convolve
 
 
-
-
 def generate_images(survey, options):
-    """ This function handles assigning specific images to be created by different parallel
-        threads.
+    """
+        @brief This function handles assigning specific images to be created by different parallel
+            threads.
 
-        @param survey <SHE_SIM.Survey>
-        @param options <dict>
+        @details If successful, generates images and corresponding details according to
+            the configuration stored in the survey and options objects.
 
-        Side-effects: If successful, generates images and corresponding details according to
-                      the configuration stored in the survey and options objects.
+        @param survey
+            <SHE_SIM.Survey> The survey object which specifies parameters for generation
+        @param options
+            <dict> The options dictionary for this run
     """
 
     # Seed the survey
@@ -100,6 +102,31 @@ def print_galaxies(image,
                  full_y_size,
                  pixel_scale,
                  otable):
+    """
+        @brief Prints galaxies onto a new image and stores details on them in the output table.
+        
+        @param image
+            <SHE_SIM.Image> Image-level object which will generate galaxies to print
+        @param options
+            <dict> Options dictionary for this run
+        @param centre_offset
+            <float> The difference between Galsim's stated centres and the actual centres
+        @param num_dithers
+            <int> How many dithers there are
+        @param dithers
+            <list<>> A list which will be populated with a galsim.Image for each dither
+        @param full_x_size
+            <int> The size in pixels of the x-axis of the generated images
+        @param full_y_size
+            <int> The size in pixels of the y-axis of the generated images
+        @param pixel_scale
+            <float> The scale of pixels in the generated images in arcsec/pixel
+        @param otable
+            <astropy.Table> The table containing details on each galaxy, to be filled in generation.
+       
+        @returns galaxies
+            <SHE_SIM.galaxy_list> Iterable list of the galaxies which were printed.
+    """
 
     galaxies = image.get_galaxy_descendants()
 
@@ -489,13 +516,16 @@ def print_galaxies(image,
     return galaxies
 
 def generate_image(image, options):
-    """ This function does the heavy lifting of actually generating an image with the GalSim toolkit.
+    """
+        @brief Creates a single image of galaxies
+        
+        @details If successful, generates an image and corresponding details according to
+            the configuration stored in the image and options objects.
 
-        @param image <SHE_SIM.Image>
-        @param options <dict>
-
-        Side-effects: If successful, generates an image and corresponding details according to
-                      the configuration stored in the image and options objects.
+        @param image
+            <SHE_SIM.Image> The Image-level object which specifies how galaxies are to be generated.
+        @param options
+            <dict> The options dictionary for this run.
     """
 
     # Magic numbers
