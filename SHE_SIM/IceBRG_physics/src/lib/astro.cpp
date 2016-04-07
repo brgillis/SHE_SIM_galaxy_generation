@@ -727,7 +727,7 @@ flt_t estimate_abs_mag_g_from_stellar_mass( mass_type const & stellar_mass )
 {
 	flt_t l10_m = std::log10(stellar_mass/(unitconv::Msuntokg*kg));
 
-	flt_t abs_mag_g = -1.5796318296942395 + -1.8325612213492519*l10_m;
+	flt_t abs_mag_g = (l10_m - 2.2480200524693386)/-0.37325475722757273;
 
 	return abs_mag_g;
 }
@@ -747,7 +747,7 @@ flt_t estimate_abs_mag_i_from_stellar_mass( mass_type const & stellar_mass )
 {
 	flt_t l10_m = std::log10(stellar_mass/(unitconv::Msuntokg*kg));
 
-	flt_t abs_mag_i = -0.36207933462416264 + -2.0667489478898244*l10_m;
+	flt_t abs_mag_i = (l10_m - 1.3190844893636555)/-0.40474903941295159;
 
 	return abs_mag_i;
 }
