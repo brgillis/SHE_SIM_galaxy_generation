@@ -1,8 +1,27 @@
-# #
-# @file: python/SHE_SIM_galaxy_image_generation/GenGalsimImages.py
-# @author: BRG
-# @date: 25/3/16
-# #
+"""
+    @file GenGalsimImages.py
+
+    Created 23 Mar 2016
+
+    Elements program for generating galaxy images.
+
+    ---------------------------------------------------------------------
+
+    Copyright (C) 2016 Bryan R. Gillis
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+"""
 
 import argparse
 import ElementsKernel.Logging as log
@@ -15,11 +34,8 @@ from SHE_SIM_galaxy_image_generation.run_from_config import run_from_config_file
 
 def defineSpecificProgramOptions():
     """
-    @brief Allows to define the (command line and configuration file) options
-    specific to this program
-
-    @details
-        See the Elements documentation for more details.
+    @brief Defines options for this program, using all possible configurations.
+    
     @return
         An  ArgumentParser.
     """
@@ -27,13 +43,12 @@ def defineSpecificProgramOptions():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--config-file-name', type=str, default="",
-                        help='Filename of the configuration file to use.')
+                        help='Filename of the configuration file to use for values not specified ' +
+                        'in the options here.')
 
     # Add in each allowed option, with a null default
     for option in allowed_options:
         type = allowed_options[option][1]
-#         if type == str2bool:
-#             type = bool
         parser.add_argument("--" + option, type=type)
 
     # Add allowed fixed params
@@ -54,7 +69,7 @@ def defineSpecificProgramOptions():
 
 def mainMethod(args):
     """
-    @brief The "main" method.
+    @brief The "main" method for this program, to generate galaxy images.
     @details
         This method is the entry point to the program. In this sense, it is
         similar to a main (and it is why it is called mainMethod()).
@@ -76,3 +91,5 @@ def mainMethod(args):
     run_from_config_file_and_args(config_file_name, args)
 
     logger.info('Exiting GenGalsimImages mainMethod()')
+    
+    return
