@@ -1,4 +1,5 @@
-""" @file dither_schemes.py
+"""
+    @file dither_schemes.py
 
     Created 5 Oct 2015
 
@@ -6,7 +7,7 @@
 
     ---------------------------------------------------------------------
 
-    Copyright (C) 2015 Bryan R. Gillis
+    Copyright (C) 2015, 2016 Bryan R. Gillis
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,11 +24,13 @@
 """
 
 def get_dither_scheme(scheme_name):
-    """ Gets the pixel shifts for a given dither scheme.
+    """
+        @brief Gets the pixel shifts for a given dither scheme.
     
-        @param scheme_name The name of the dithering scheme
+        @param scheme_name
+            <string> The name of the dithering scheme
         
-        @return tuple of tuples of x,y shifts
+        @return tuple<tuple<float,float>,...> x,y shifts for each dither in the scheme
     """
     
     if(scheme_name=='2x2'):

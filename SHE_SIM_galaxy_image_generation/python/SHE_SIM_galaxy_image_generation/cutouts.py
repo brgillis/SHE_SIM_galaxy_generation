@@ -1,8 +1,9 @@
-""" @file /disk2/brg/Program_Files/workspace/Generate_GalSim_Images/SHE_SIM_galaxy_image_generation/cutouts.py
+"""
+    @file cutouts.py
 
     Created 14 Mar 2016
 
-    @TODO: File docstring
+    Contains a function to make an image containing galaxy cutouts.
 
     ---------------------------------------------------------------------
 
@@ -31,6 +32,21 @@ from SHE_SIM_galaxy_image_generation.galaxy import is_target_galaxy
 
 def make_cutout_image( image, options, galaxies, otable,
                        centre_offset = 0 ):
+    """
+        @brief Makes an image containing cutouts of all galaxies in the provided image.
+        
+        @param image
+            <galsim.Image> The image from which to get galaxy cutouts
+        @param options
+            <dict> Dictionary containing the options used for this run.
+        @param galaxies
+            <list<SHE_SIM.galaxy>> List of galaxies, so we know what positions to cut out around
+        @param otable
+            <astropy.Table> Table of output data, so we can modify it with change galaxy positions.
+        @param centre_offset
+            <float> How much the galaxy's centre position is offset from the pixel coordinates
+            of its centre. Default 0
+    """
 
     # Get a list of only the target galaxies
     target_galaxies = []

@@ -1,4 +1,5 @@
-""" @file combine_dithers.py
+"""
+    @file combine_dithers.py
 
     Created 6 Oct 2015
 
@@ -6,7 +7,7 @@
 
     ---------------------------------------------------------------------
 
-    Copyright (C) 2015 Bryan R. Gillis
+    Copyright (C) 2015, 2016 Bryan R. Gillis
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -31,17 +32,18 @@ def combine_dithers(dithers,
                     dithering_scheme,
                     output_table=None,
                     copy_otable=False):
-    """ Combine the dithered images in a list, according to the specific plan for a
-        given dithering scheme.
+    """
+        @brief Combine the dithered images in a list, according to the specific plan for a
+            given dithering scheme.
         
         @param dithers List of galsim Image objects of the same size/shape/dtype.
         @param dithering_scheme String representing the name of the dithering scheme
         @param output_table Output table to (possibly) modify for combined image
         @param copy_otable If False, output table will be modified in place. If True,
-               it will be copied. In either case, the modified table will be returned
+            it will be copied. In either case, the modified table will be returned
     
-        @return Combined image
-        @return Modified output table
+        @returns Combined image
+        @returns Modified output table
     """
     
     # Set up the output table we'll modify, depending on whether or not we want to copy

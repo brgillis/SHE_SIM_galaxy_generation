@@ -1,12 +1,13 @@
-""" @file galaxy.py
+"""
+    @file galaxy.py
 
     Created 11 Dec 2015
 
-    @TODO: File docstring
+    Functions related to loading and preparing galaxy models.
 
     ---------------------------------------------------------------------
 
-    Copyright (C) 2015 Bryan R. Gillis
+    Copyright (C) 2015, 2016 Bryan R. Gillis
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -35,10 +36,40 @@ __all__ = ['get_galaxy_profile']
 allowed_ns = np.array(( 1.8, 2.0, 2.56, 2.71, 3.0, 3.5, 4.0))
 
 def is_target_galaxy(galaxy, options):
+    """
+        @brief Tells whether a galaxy meets the requirements to be a target galaxy or not
+        
+        @param galaxy
+            <SHE_SIM.galaxy>
+        @param options
+            <dict> The options dictionary used for this run
+        
+        @returns
+            <bool> Whether or not this is a target galaxy
+    """
     return galaxy.get_param_value('apparent_mag_vis') <= options['magnitude_limit']
 
 @lru_cache()
 def load_galaxy_model_from_file( n, bulge=True, data_dir=mv.default_data_dir ):
+    """
+        @brief Cached function to load specific galaxy images. Should not be called directly.
+        
+        @param n
+            <float> The Sersic index of the galaxy's bulge. Must be one of the specified values.
+        @param bulge
+            <bool> Whether we want the bulge model or not (if not, get disk model)
+        @param data_dir
+            <string> The directory where galaxy models are stored
+        
+        @returns x
+            array<float> x coordinates of star particles
+        @returns y
+            array<float> y coordinates of star particles
+        @returns z
+            array<float> z coordinates of star particles
+        @returns I
+            array<float> Intensities of star particles
+    """
     
     n_str = "%0.2f" % n
 
@@ -61,13 +92,46 @@ def load_galaxy_model_from_file( n, bulge=True, data_dir=mv.default_data_dir ):
     return x, y, z, I
 
 def load_galaxy_model( n, bulge=True, data_dir=mv.default_data_dir ):
+    """
+        @brief Load a galaxy model with a given sersic index.
+        
+        @param n
+            <float> The Sersic index of the galaxy's bulge. Must be one of the specified values.
+        @param bulge
+            <bool> Whether we want the bulge model or not (if not, get disk model)
+        @param data_dir
+            <string> The directory where galaxy models are stored
+        
+        @returns x
+            array<float> x coordinates of star particles
+        @returns y
+            array<float> y coordinates of star particles
+        @returns z
+            array<float> z coordinates of star particles
+        @returns I
+            array<float> Intensities of star particles
+    """
     diffs = np.abs(allowed_ns - n)
     i_best = np.argmin(diffs)
     
     return load_galaxy_model_from_file( allowed_ns[i_best], bulge, data_dir=data_dir )
 
 def rotate( x, y, theta_deg ):
-    
+    """
+        @brief Rotates a pair of coordinate arrays by a given angle
+        
+        @param x
+            <array<float>> The first array
+        @param y
+            <array<float>> The second array
+        @param theta_deg
+            <float> The rotation angle in degrees
+            
+        @returns new_x
+            <array<float>> The new coordinates in the axis of the first array
+        @returns new_y
+            <array<float>> The new coordinates in the axis of the second array
+    """
     
     theta = theta_deg * np.pi/180
     sin_theta = np.sin(theta)
@@ -79,7 +143,23 @@ def rotate( x, y, theta_deg ):
     return new_x, new_y
 
 def shear( x, y, g, beta_deg ):
-    
+    """
+        @brief Shears a pair of coordinate arrays by a given amount
+        
+        @param x
+            <array<float>> The first array
+        @param y
+            <array<float>> The second array
+        @param g
+            <float> The shear magnitude, using definition g = (1-r)/(1+r), where r is the axis ratio.
+        @param beta_deg
+            <float> The shear angle in degrees
+            
+        @returns new_x
+            <array<float>> The new coordinates in the axis of the first array
+        @returns new_y
+            <array<float>> The new coordinates in the axis of the second array
+    """
     
     beta = beta_deg * np.pi/180
     sin_2beta = np.sin(2*beta)
@@ -91,7 +171,20 @@ def shear( x, y, g, beta_deg ):
     return new_x, new_y
 
 def get_half_light_radius( x, y, I ):
-    """ NOTE: Requires I to be normalized
+    """
+        @brief Gets the half-light radius of a set of coordinate arrays and their intensity.
+        
+        @details This requires that the intensity already be normalized.
+        
+        @param x
+            <array<float>> The first coordinate array
+        @param y
+            <array<float>> The second coordinate array
+        @param I
+            <array<float>> The intensities of each particle
+            
+        @returns 
+            <float> The half-light radius in the units of the coordinate arrays
     """
     
     r = np.sqrt( np.square(x) + np.square(y) )
