@@ -182,7 +182,7 @@ def apply_args(survey, options, args):
                                             generation_levels[arg_lib[generation_level_name]])
 
 
-        settings_name = survey_setting + "_setting"
+        settings_name = param_name + "_setting"
         if settings_name in arg_lib:
             if arg_lib[settings_name] is not None:
 
