@@ -1,12 +1,13 @@
-""" @file output_table.py
+"""
+    @file output_table.py
 
     Created 23 Jul 2015
 
-    Functions related to output of details tables.
+    Functions related to output of details tables describing galaxy images.
 
     ---------------------------------------------------------------------
 
-    Copyright (C) 2015 Bryan R. Gillis
+    Copyright (C) 2015, 2016 Bryan R. Gillis
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -49,56 +50,57 @@ names_and_dtypes = (('ID','i8','K'),
             ('is_target_galaxy','b1','L'))
 
 def get_names():
-    """ Get the column names for the details table.
-    
-        Requires: (nothing)
+    """
+        @brief Get the column names for the details table.
         
-        Return: <list of strings>
+        @returns
+            <list<string>> The column names
     """
     
     return zip(*names_and_dtypes)[0]
 
 def get_dtypes():
-    """ Get the data types for the details table, in the format for an astropy table.
-    
-        Requires: (nothing)
+    """ 
+        @brief Get the data types for the details table, in the format for an astropy table.
         
-        Return: <list of strings>
+        @returns
+            <list<string>> The data types
     """
     
     return zip(*names_and_dtypes)[1]
 
 def get_fits_dtypes():
-    """ Get the data types for the details table, in the format for a fits table
-    
-        Requires: (nothing)
+    """ 
+        @brief Get the data types for the details table, in the format for a fits table
         
-        Return: <list of strings>
+        @returns
+            <list<string>> The data types
     """
     
     return zip(*names_and_dtypes)[2]
 
 def size():
-    """ Get the number of columns for the details table.
-    
-        Requires: (nothing)
+    """ 
+        @brief Get the number of columns for the details table.
         
-        Return: <int>
+        @returns
+            <list<string>> The number of columns of the details table
     """
     
     return len(names_and_dtypes)
 
 def add_row(table, **kwargs):
-    """ Add a row to a table by packing the keyword arguments and passing them as a
-        dict to its 'vals' keyword argument.
+    """ 
+        @brief Add a row to a table by packing the keyword arguments and passing them as a
+            dict to its 'vals' keyword argument.
+            
+        @details Side-effects: Row is appended to end of table.
         
-        Requires: table <astropy.tables.Table> (table to add the row to)
-                  **kwargs <...> (one or more keyword arguments corresponding to columns
-                                  in the table)
-    
-        Returns: (nothing)
-        
-        Side-effects: Row is appended to end of table.
+        @param table
+            <astropy.tables.Table> Table to add the row to
+        @param **kwargs
+            <...> One or more keyword arguments corresponding to columns
+            in the table
     """
     
     
@@ -106,15 +108,15 @@ def add_row(table, **kwargs):
     return
     
 def output_as_fits(table,filename):
-    """ Output an astropy table as a fits binary table.
-    
-        Requires: table <astropy.tables.Table> (table to be output)
-                  filename <string> (Name of file to output this table to)
-                  
-        Returns: (nothing)
+    """ 
+        @brief Output an astropy table as a fits binary table.
         
-        Side-effects: Overwrites the file at 'filename'
+        @details Side-effects: Overwrites the file at 'filename'
     
+        @param table
+            <astropy.tables.Table> Table to be output
+        @param filename
+            <string> Name of file to output this table to
     """
     fits_cols = []
     for name, _, my_format in names_and_dtypes:
@@ -128,18 +130,31 @@ def output_as_fits(table,filename):
     
     return
 
-def output_details_tables(otable, file_name_base, image, options):
+def output_details_tables(table, file_name_base, options):
+    """ 
+        @brief Output an astropy table as an ascii file and/or a fits binary table.
+        
+        @details Side-effects: Overwrites files with new tables
+    
+        @param table
+            <astropy.tables.Table> Table to be output
+        @param file_name_base
+            <string> Root of the filename (which will be expanded with the proper tail for each
+            version of the table output)
+        @param options
+            <dict> The options dictionary for the run.
+    """
     
     if ((options['details_output_format'] == 'ascii') or (options['details_output_format'] == 'both')):
         text_file_name = file_name_base + mv.ascii_details_file_tail
-        otable.write(text_file_name, format='ascii.commented_header')
+        table.write(text_file_name, format='ascii.commented_header')
         # Allow group access to it
         cmd = 'chmod g+rw ' + text_file_name
         subprocess.call(cmd, shell=True)
         
     if ((options['details_output_format'] == 'fits') or (options['details_output_format'] == 'both')):
         fits_file_name = file_name_base + mv.fits_details_file_tail
-        output_as_fits(otable, fits_file_name)
+        output_as_fits(table, fits_file_name)
         # Allow group access to it
         cmd = 'chmod g+rw ' + fits_file_name
         subprocess.call(cmd, shell=True)

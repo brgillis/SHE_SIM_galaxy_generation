@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
-""" @file /disk2/brg/Program_Files/workspace/Generate_GalSim_Images/make_test_galaxy.py
+"""
+    @file make_test_galaxy.py
 
     Created 11 Mar 2016
 
-    @TODO: File docstring
+    A python program used for testing of the time it takes to generate a
+    galaxy image.
 
     ---------------------------------------------------------------------
 

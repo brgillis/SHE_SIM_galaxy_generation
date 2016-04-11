@@ -30,6 +30,7 @@ from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_optio
                                                             allowed_fixed_params,
                                                             allowed_survey_settings)
 from SHE_SIM_galaxy_image_generation.run_from_config import run_from_config_file_and_args
+from SHE_SIM_galaxy_image_generation import magic_values as mv
 
 def defineSpecificProgramOptions():
     """
@@ -77,7 +78,7 @@ def mainMethod(args):
         similar to a main (and it is why it is called mainMethod()).
     """
 
-    logger = log.getLogger("GenGalsimImages")
+    logger = log.getLogger(mv.logger_name)
 
     logger.info('#')
     logger.info('# Entering GenGalsimImages mainMethod()')

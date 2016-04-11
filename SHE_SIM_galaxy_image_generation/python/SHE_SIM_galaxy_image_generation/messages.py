@@ -1,8 +1,9 @@
-""" @file messages.py
+"""
+    @file messages.py
 
     Created 23 Jul 2015
 
-    Various messages to be reported to the user.
+    Various boilerplate messages to be reported to the user.
 
     ---------------------------------------------------------------------
 
@@ -22,9 +23,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+from icebrgpy import logging as log
+from SHE_SIM_galaxy_image_generation import magic_values as mv
+
 def bad_config_format():
-    """ A simple function to output a boilerplate error for a general problem with the
-        configuration file.
+    """
+        @brief A function to output a boilerplate error for a general problem with the
+            configuration file.
     """
     
     raise Exception("ERROR: Improperly formatted configuration file. Please check"
@@ -32,17 +37,26 @@ def bad_config_format():
 
 
 def old_config_version(ver):
-    """A boilerplate alert that the config file version being used is old, and some default values
-       will have to be assumed.
     """
-    print "Using configuration file for version " + ver + " of the script. This is an old version."
-    print "Default values will be used for new parameters added in more recent versions."
+        @brief A boilerplate alert that the config file version being used is old, and some default values
+            will have to be assumed.
+    """
+    
+    logger = log.getLogger(mv.logger_name)
+    
+    logger.info("Using configuration file for version " + ver +
+                " of the script. This is an old version. Default values will be used for " +
+                "new parameters added in more recent versions.")
     return
 
 
 def new_config_version(ver):
-    """A boilerplate note that the config file version being used is up to date.
     """
-    print "Using configuration file for version " + ver + " of the script."
-    print "This is the most recent version - no default values need to be assumed."
+        @brief A boilerplate note that the config file version being used is up to date.
+    """
+    
+    logger = log.getLogger(mv.logger_name)
+    
+    logger.info("Using configuration file for version " + ver + " of the script." +
+                "This is the most recent version - no default values need to be assumed.")
     return

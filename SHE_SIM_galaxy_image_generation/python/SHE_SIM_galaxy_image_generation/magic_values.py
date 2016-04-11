@@ -82,3 +82,5 @@ psf_model_path = "psf_models"
 psf_model_scale = 0.02 # arcsec/pixel
 
 fftw_wisdom_filename = ".fftw_wisdom"
+
+logger_name = "GenGalsimImages"

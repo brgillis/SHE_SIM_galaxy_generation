@@ -633,7 +633,7 @@ def generate_image(image, options):
         otable['x_center_pix'] += x_offset
         otable['y_center_pix'] += y_offset
 
-        output_table.output_details_tables(otable, dither_file_name_base, image, options)
+        output_table.output_details_tables(otable, dither_file_name_base, options)
 
         # Undo dithering adjustment
         otable['x_center_pix'] -= x_offset
@@ -656,7 +656,7 @@ def generate_image(image, options):
         galsim.fits.write(combined_image, combined_file_name)
 
         # Output the details file for it
-        output_table.output_details_tables(combined_otable, combined_file_name_base, image, options)
+        output_table.output_details_tables(combined_otable, combined_file_name_base, options)
 
     # We no longer need this image's children, so clear it to save memory
     image.clear()
