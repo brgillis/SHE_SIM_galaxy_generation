@@ -29,6 +29,7 @@ from __future__ import division
 from os.path import join
 
 from astropy.table import Table
+import galsim
 
 from SHE_SIM_galaxy_image_generation import magic_values as mv
 from SHE_SIM_galaxy_image_generation import output_table
@@ -41,7 +42,6 @@ from SHE_SIM_galaxy_image_generation.galaxy import (get_bulge_galaxy_profile,
                                              is_target_galaxy)
 from SHE_SIM_galaxy_image_generation.magnitude_conversions import get_I
 from SHE_SIM_galaxy_image_generation.psf import get_psf_profile
-import galsim
 from icebrgpy.rebin import rebin
 import multiprocessing as mtp
 import numpy as np
@@ -104,7 +104,7 @@ def print_galaxies(image,
                  otable):
     """
         @brief Prints galaxies onto a new image and stores details on them in the output table.
-        
+
         @param image
             <SHE_SIM.Image> Image-level object which will generate galaxies to print
         @param options
@@ -123,7 +123,7 @@ def print_galaxies(image,
             <float> The scale of pixels in the generated images in arcsec/pixel
         @param otable
             <astropy.Table> The table containing details on each galaxy, to be filled in generation.
-       
+
         @returns galaxies
             <SHE_SIM.galaxy_list> Iterable list of the galaxies which were printed.
     """
@@ -264,16 +264,19 @@ def print_galaxies(image,
             bulge_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
                                                 galaxy.get_param_value('redshift'),
                                                 True,
-                                                False)
+                                                False,
+                                                data_dir=options['data_dir'])
             disk_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
                                                 galaxy.get_param_value('redshift'),
                                                 False,
-                                                False)
+                                                False,
+                                                data_dir=options['data_dir'])
         else:
             bulge_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
                                                 galaxy.get_param_value('redshift'),
                                                 True,
-                                                True)
+                                                True,
+                                                data_dir=options['data_dir'])
             disk_psf_profile = bulge_psf_profile
 
         # Get the position of the galaxy, depending on whether we're in field or stamp mode
@@ -361,7 +364,8 @@ def print_galaxies(image,
                                             g_ell=g_ell,
                                             beta_deg_ell=rotation,
                                             g_shear=g_shear,
-                                            beta_deg_shear=beta_shear)
+                                            beta_deg_shear=beta_shear,
+                                            data_dir=options['data_dir'])
 
             # Convolve the galaxy, psf, and pixel profile to determine the final (well, before noise) pixelized image
             final_bulge = galsim.Convolve([bulge_gal_profile, bulge_psf_profile],
@@ -379,12 +383,10 @@ def print_galaxies(image,
                                             xp_sp_shift=xp_sp_shift,
                                             yp_sp_shift=yp_sp_shift,
                                             image_scale=pixel_scale,
-                                            subsampling_factor=subsampling_factor)
+                                            subsampling_factor=subsampling_factor,
+                                            data_dir=options['data_dir'])
 
-            im1 = pyfftw.byte_align(disk_psf_profile.image.array)
-            im2 = pyfftw.byte_align(disk_gal_image)
-
-            ss_disk_image = fftw_convolve(im1, im2, norm=True)
+            ss_disk_image = convolve(disk_psf_profile.image.array, disk_gal_image)
 
             final_disk_image = rebin(ss_disk_image,
                                     x_shift=int(subsampling_factor * xp_sp_shift + 0.5),
@@ -403,7 +405,8 @@ def print_galaxies(image,
                                             g_ell=2.*g_ell,
                                             beta_deg_ell=rotation,
                                             g_shear=g_shear,
-                                            beta_deg_shear=beta_shear)
+                                            beta_deg_shear=beta_shear,
+                                            data_dir=options['data_dir'])
 
             # Convolve the galaxy, psf, and pixel profile to determine the final (well, before noise) pixelized image
             final_gal = galsim.Convolve([gal_profile, disk_psf_profile],
@@ -518,7 +521,7 @@ def print_galaxies(image,
 def generate_image(image, options):
     """
         @brief Creates a single image of galaxies
-        
+
         @details If successful, generates an image and corresponding details according to
             the configuration stored in the image and options objects.
 

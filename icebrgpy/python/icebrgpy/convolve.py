@@ -27,7 +27,7 @@ import numpy as np
 
 import pyfftw
 
-def fftw_convolve(im1, im2, norm=False):
+def fftw_convolve(im1, im2, norm=True):
 
     im1 = pyfftw.byte_align(im1)
     im2 = pyfftw.byte_align(im2)
