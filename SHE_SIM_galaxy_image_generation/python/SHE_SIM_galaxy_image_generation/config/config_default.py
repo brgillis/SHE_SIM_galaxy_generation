@@ -168,9 +168,9 @@ def load_default_configurations():
     survey = SHE_SIM.Survey()
 
     # Set some defaults for the survey
-    survey.set_param_param('num_images', 'fixed', mv.default_num_images)
-    survey.set_param_param('pixel_scale', 'fixed', mv.default_pixel_scale)
-    survey.set_param_param('subtracted_sky_level', 'fixed', mv.default_sky_level)
-    survey.set_param_param('unsubtracted_sky_level', 'fixed', 0.)
+    survey.set_param_params('num_images', 'fixed', mv.default_num_images)
+    survey.set_param_params('pixel_scale', 'fixed', mv.default_pixel_scale)
+    survey.set_param_params('subtracted_background', 'fixed', mv.default_sky_level)
+    survey.set_param_params('unsubtracted_background', 'fixed', 0.)
 
     return survey, options
