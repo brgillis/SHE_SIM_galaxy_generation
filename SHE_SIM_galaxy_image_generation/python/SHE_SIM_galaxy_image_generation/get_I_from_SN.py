@@ -1,4 +1,5 @@
-""" @file get_flux_I_SN.py
+"""
+    @file get_I_from_SN.py
 
     Created 23 Jul 2015
 
@@ -7,7 +8,7 @@
 
     ---------------------------------------------------------------------
 
-    Copyright (C) 2015 Bryan R. Gillis
+    Copyright (C) 2015, 2016 Bryan R. Gillis
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,12 +35,36 @@ def get_I_from_SN(galaxy_SN             ,
              read_noise            ,
              pixel_scale           ,
              gain                  ):
-    """This function calculates flux from galaxy SN. This depends on the particular definition of SN,
-       and will most likely need to be rewritten for the correct definition.
+    """
+        @brief
+            Estimates galaxy intensity (in ADU) from signal-to-noise ratio.
  
-       The definition used here is a simplified tophat model, with the tophat containing
-       ~50% of the light for a circular galaxy and PSF. This definition is used simply
-       because it's easy to analytically invert.
+        @details
+            The definition used here is a simplified tophat model, with the tophat containing
+           ~50% of the light for a circular galaxy and PSF. This definition is used simply
+           because it's easy to analytically invert.
+           
+        @param galaxy_SN
+            The signal-to-noise ratio of the galaxy.
+        @param galaxy_stddev_arcsec
+            The standard deviation of the (Gaussian) galaxy in units of arcsec.
+        @param psf_stddev_arcsec
+            The standard deviation of the (Gaussian) psf in units of arcsec.
+        @param sky_level_subtracted
+            The sky background level which has been previously subtracted off of the image, in units
+            of ADU/arcsec^2
+        @param sky_level_unsubtracted
+            The sky background level which has not been previously subtracted off of the image, in units
+            of ADU/arcsec^2
+        @param read_noise
+            The read noise of the observation, in units of e-/pixel
+        @param pixel_scale
+            The pixel scale of the image, in units of arcsec/pixel
+        @param gain
+            The gain of the observation, in units of e-/ADU
+        
+        @returns I
+            The galaxy intensity in ADU
     """
 
     # Estimate the half-light radius of the galaxy (using the magic number 0.674490, which represents the

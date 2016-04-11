@@ -28,13 +28,13 @@ import ElementsKernel.Logging as log
 
 from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_options,
                                                             allowed_fixed_params,
-                                                            allowed_survey_settings,
-                                                            str2bool)
+                                                            allowed_survey_settings)
 from SHE_SIM_galaxy_image_generation.run_from_config import run_from_config_file_and_args
 
 def defineSpecificProgramOptions():
     """
-    @brief Defines options for this program, using all possible configurations.
+    @brief
+        Defines options for this program, using all possible configurations.
 
     @return
         An  ArgumentParser.
@@ -48,8 +48,8 @@ def defineSpecificProgramOptions():
 
     # Add in each allowed option, with a null default
     for option in allowed_options:
-        type = allowed_options[option][1]
-        parser.add_argument("--" + option.replace('_', '-'), type=type)
+        option_type = allowed_options[option][1]
+        parser.add_argument("--" + option.replace('_', '-'), type=option_type)
 
     # Add allowed fixed params
     for allowed_fixed_param in allowed_fixed_params:
@@ -69,7 +69,9 @@ def defineSpecificProgramOptions():
 
 def mainMethod(args):
     """
-    @brief The "main" method for this program, to generate galaxy images.
+    @brief
+        The "main" method for this program, to generate galaxy images.
+        
     @details
         This method is the entry point to the program. In this sense, it is
         similar to a main (and it is why it is called mainMethod()).
@@ -86,7 +88,7 @@ def mainMethod(args):
     if(config_file_name == ""):
         logger.info('Using default configurations.')
     else:
-        logger.info('Using configurations from file ' + config_filename + '.')
+        logger.info('Using configurations from file ' + config_file_name + '.')
 
     run_from_config_file_and_args(config_file_name, args)
 

@@ -1,12 +1,13 @@
-""" @file magic_values.py
+"""
+    @file magic_values.py
 
     Created 23 Jul 2015
 
-    Magic values for the Generate_GalSim_images project
+    Magic values for the SHE_SIM_galaxy_image_generation module
 
     ---------------------------------------------------------------------
 
-    Copyright (C) 2015 Bryan R. Gillis
+    Copyright (C) 2015, 2016 Bryan R. Gillis
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
