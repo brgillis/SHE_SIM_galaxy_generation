@@ -35,7 +35,7 @@ from SHE_SIM_galaxy_image_generation.run_from_config import run_from_config_file
 def defineSpecificProgramOptions():
     """
     @brief Defines options for this program, using all possible configurations.
-    
+
     @return
         An  ArgumentParser.
     """
@@ -49,19 +49,19 @@ def defineSpecificProgramOptions():
     # Add in each allowed option, with a null default
     for option in allowed_options:
         type = allowed_options[option][1]
-        parser.add_argument("--" + option, type=type)
+        parser.add_argument("--" + option.replace('_', '-'), type=type)
 
     # Add allowed fixed params
     for allowed_fixed_param in allowed_fixed_params:
-        parser.add_argument("--" + allowed_fixed_param, type=float)
+        parser.add_argument("--" + allowed_fixed_param.replace('_', '-'), type=float)
 
     # Add allowed survey settings, with both level and setting possibilities
     for allowed_survey_setting in allowed_survey_settings:
 
-        generation_level = allowed_survey_setting + "_level"
+        generation_level = allowed_survey_setting.replace('_', '-') + "-level"
         parser.add_argument("--" + generation_level, type=str)
 
-        settings = allowed_survey_setting + "_setting"
+        settings = allowed_survey_setting.replace('_', '-') + "-setting"
         parser.add_argument("--" + settings, type=str)
 
     return parser
@@ -91,5 +91,5 @@ def mainMethod(args):
     run_from_config_file_and_args(config_file_name, args)
 
     logger.info('Exiting GenGalsimImages mainMethod()')
-    
+
     return

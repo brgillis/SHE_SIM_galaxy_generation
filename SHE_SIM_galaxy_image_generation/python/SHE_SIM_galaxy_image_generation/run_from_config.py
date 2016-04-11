@@ -44,8 +44,8 @@
 
 profile = True
 
-import pickle
 import subprocess
+
 
 from SHE_SIM_galaxy_image_generation import magic_values as mv
 from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_options,
@@ -56,6 +56,7 @@ from SHE_SIM_galaxy_image_generation.generate_images import generate_images
 
 try:
     import pyfftw
+    import pickle
     have_pyfftw = True
 except ImportError as _e:
     have_pyfftw = False
@@ -63,6 +64,17 @@ except ImportError as _e:
 
 if profile:
     import cProfile
+
+def clean_quotes(s):
+    if not isinstance(s, basestring): return s
+
+    if s[0] == "'" and s[-1] == "'":
+        s = s[1:-1]
+    if s[0] == '"' and s[-1] == '"':
+        s = s[1:-1]
+
+    return s
+
 
 def run_from_config_file(config_file_name):
 
@@ -163,13 +175,13 @@ def apply_args(survey, options, args):
     for option in allowed_options:
         if option in arg_lib:
             if arg_lib[option] is not None:
-                options[option] = arg_lib[option]
+                options[option] = clean_quotes(arg_lib[option])
 
     # Add allowed fixed params
     for fixed_param in allowed_fixed_params:
         if fixed_param in arg_lib:
             if arg_lib[fixed_param] is not None:
-                survey.set_param_params(fixed_param, 'fixed', arg_lib[fixed_param])
+                survey.set_param_params(fixed_param, 'fixed', clean_quotes(arg_lib[fixed_param]))
 
 
     # Add allowed survey settings, with both level and setting possibilities
@@ -179,14 +191,14 @@ def apply_args(survey, options, args):
         if generation_level_name in arg_lib:
             if arg_lib[generation_level_name] is not None:
                 survey.set_generation_level(param_name,
-                                            generation_levels[arg_lib[generation_level_name]])
+                                            generation_levels[clean_quotes(arg_lib[generation_level_name])])
 
 
         settings_name = param_name + "_setting"
         if settings_name in arg_lib:
             if arg_lib[settings_name] is not None:
 
-                split_params = split(arg_lib[settings_name])
+                split_params = clean_quotes(arg_lib[settings_name]).split()
 
                 flt_args = []
                 for str_arg in split_params[1:]:
