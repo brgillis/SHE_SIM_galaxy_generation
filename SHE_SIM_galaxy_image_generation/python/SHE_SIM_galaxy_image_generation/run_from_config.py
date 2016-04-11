@@ -53,7 +53,12 @@ from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_optio
                                                             allowed_survey_settings,
                                                             generation_levels)
 from SHE_SIM_galaxy_image_generation.generate_images import generate_images
-import pyfftw
+
+try:
+    import pyfftw
+    have_pyfftw = True
+except ImportError as _e:
+    have_pyfftw = False
 
 
 if profile:
@@ -91,11 +96,12 @@ def run_from_survey_and_options(survey, options):
     subprocess.call(cmd, shell=True)
 
     # Set up pyfftw
-    pyfftw.interfaces.cache.enable()
-    try:
-        pyfftw.import_wisdom(pickle.load(open(mv.fftw_wisdom_filename, "rb")))
-    except IOError as _e:
-        pass
+    if have_pyfftw:
+        pyfftw.interfaces.cache.enable()
+        try:
+            pyfftw.import_wisdom(pickle.load(open(mv.fftw_wisdom_filename, "rb")))
+        except IOError as _e:
+            pass
 
     if profile:
         def run_generate_images():
@@ -108,7 +114,8 @@ def run_from_survey_and_options(survey, options):
         generate_images(survey, options)
 
     # Save fftw wisdom
-    pickle.dump(pyfftw.export_wisdom(), open(mv.fftw_wisdom_filename, "wb"))
+    if have_pyfftw:
+        pickle.dump(pyfftw.export_wisdom(), open(mv.fftw_wisdom_filename, "wb"))
 
     return
 
