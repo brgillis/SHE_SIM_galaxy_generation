@@ -27,6 +27,7 @@
 from __future__ import division
 
 from os.path import join
+from multiprocessing import cpu_count, Pool
 
 from astropy.table import Table
 import galsim
@@ -43,10 +44,7 @@ from SHE_SIM_galaxy_image_generation.galaxy import (get_bulge_galaxy_profile,
 from SHE_SIM_galaxy_image_generation.magnitude_conversions import get_I
 from SHE_SIM_galaxy_image_generation.psf import get_psf_profile
 from icebrgpy.rebin import rebin
-import multiprocessing as mtp
 import numpy as np
-from parmap import parmap
-
 
 try:
     import pyfftw
@@ -54,6 +52,12 @@ try:
 except ImportError as _e:
     from scipy.signal import fftconvolve as convolve
 
+class generate_image_with_options_caller(object):
+    def __init__(self, *args, **kwargs):
+        self.args = args
+        self.kwargs = kwargs
+    def __call__(self, x):
+        return generate_image(x,*self.args,**self.kwargs)
 
 def generate_images(survey, options):
     """
@@ -82,14 +86,10 @@ def generate_images(survey, options):
             generate_image(image, options)
     else:
         if(options['num_parallel_threads'] <= 0):
-            options['num_parallel_threads'] += mtp.cpu_count()
-
-        # Split up using parmap
-        def generate_image_with_options(image_index):
-            generate_image(images[image_index], options)
-            return
-
-        parmap(generate_image_with_options, range(len(images)), nprocs=options['num_parallel_threads'])
+            options['num_parallel_threads'] += cpu_count()
+            
+        pool = Pool(processes=cpu_count(),maxtasksperchild=1)
+        pool.map(generate_image_with_options_caller(options),images,chunksize=1)
 
     return
 
