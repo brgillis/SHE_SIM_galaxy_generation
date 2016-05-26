@@ -1,5 +1,4 @@
-"""
-    @file gain.py
+""" @file gain.py
 
     Created 6 Oct 2015
 
@@ -8,7 +7,7 @@
 
     ---------------------------------------------------------------------
 
-    Copyright (C) 2015, 2016 Bryan R. Gillis
+    Copyright (C) 2015 Bryan R. Gillis
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,31 +26,23 @@
 import SHE_SIM_galaxy_image_generation.magic_values as mv
 
 def get_I_from_count(c, gain=mv.default_gain):
-    """
-        @brief Calculates the intensity I from count with the given gain.
+    """ Calculated the intensity I from count with the given gain.
     
-        @param c
-            <float> The electron count
-        @param gain
-            <float> The gain
+        @param c The electron count
+        @param gain The gain
         
-        @returns
-            <float> The intensity
+        @return The intensity
     """
     
     return c/gain
 
 def get_count_from_I(I, gain=mv.default_gain):
-    """
-        @brief Calculates the electron count from intensity I with the given gain.
+    """ Calculated the electron count from intensity I with the given gain.
     
-        @param I
-            <float> The intensity
-        @param gain
-            <float> The gain
+        @param I The intensity
+        @param gain The gain
         
-        @returns
-            <float> The intensity
+        @return The intensity
     """
     
     return I*gain

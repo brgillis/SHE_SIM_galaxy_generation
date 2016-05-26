@@ -26,11 +26,16 @@
 
 from __future__ import division
 
+from multiprocessing import cpu_count, Pool
 from os.path import join
 
 from astropy.table import Table
 import galsim
 
+try:
+    import ElementsKernel.Logging as log
+except ImportError:
+    import logging as log
 from SHE_SIM_galaxy_image_generation import magic_values as mv
 from SHE_SIM_galaxy_image_generation import output_table
 from SHE_SIM_galaxy_image_generation.combine_dithers import combine_dithers
@@ -43,9 +48,7 @@ from SHE_SIM_galaxy_image_generation.galaxy import (get_bulge_galaxy_profile,
 from SHE_SIM_galaxy_image_generation.magnitude_conversions import get_I
 from SHE_SIM_galaxy_image_generation.psf import get_psf_profile
 from icebrgpy.rebin import rebin
-import multiprocessing as mtp
 import numpy as np
-from parmap import parmap
 
 
 try:
@@ -54,6 +57,12 @@ try:
 except ImportError as _e:
     from scipy.signal import fftconvolve as convolve
 
+class generate_image_with_options_caller(object):
+    def __init__(self, *args, **kwargs):
+        self.args = args
+        self.kwargs = kwargs
+    def __call__(self, x):
+        return generate_image(x, *self.args, **self.kwargs)
 
 def generate_images(survey, options):
     """
@@ -76,20 +85,26 @@ def generate_images(survey, options):
     survey.fill_images()
     images = survey.get_images()
 
+    # Multiprocessing doesn't currently work, so print a warning if it's requested
+
+    if options['num_parallel_threads'] != 1:
+        logger = log.getLogger(mv.logger_name)
+        logger.warning("Multi-processing is not currently functional; it requires features that " +
+                       "will be available in Python 3. Until then, if you wish to use multiple " +
+                       "processes, please call this program multiple times with different seed " +
+                       "values. Continuing with a single process...")
+        options['num_parallel_threads'] = 1
+
     # If we just have one thread, we'll just use a simply function call to ease debugging
     if options['num_parallel_threads'] == 1:
         for image in images:
             generate_image(image, options)
     else:
         if(options['num_parallel_threads'] <= 0):
-            options['num_parallel_threads'] += mtp.cpu_count()
+            options['num_parallel_threads'] += cpu_count()
 
-        # Split up using parmap
-        def generate_image_with_options(image_index):
-            generate_image(images[image_index], options)
-            return
-
-        parmap(generate_image_with_options, range(len(images)), nprocs=options['num_parallel_threads'])
+        pool = Pool(processes=cpu_count(), maxtasksperchild=1)
+        pool.map(generate_image_with_options_caller(options), images, chunksize=1)
 
     return
 
@@ -165,7 +180,7 @@ def print_galaxies(image,
 
             field = image.get_field_descendants()[0]
 
-            while ((num_new_target_galaxies < num_extra_target_galaxies) and
+            while ((num_new_target_galaxies < num_extra_target_galaxies) or
                    (num_new_background_galaxies < num_extra_background_galaxies)):
 
                 new_galaxy = field.add_galaxy()
@@ -209,7 +224,7 @@ def print_galaxies(image,
         num_ratio = 1
 
 
-    if options['mode'] == 'stamps':
+    if (options['mode'] == 'stamps') and (not options['details_only']):
 
         # Figure out how to set up the grid, making it as square as possible
         ncols = int(np.ceil(np.sqrt(num_target_galaxies)))
@@ -259,85 +274,96 @@ def print_galaxies(image,
                       gain=options['gain'],
                       exp_time=options['exp_time'])
 
-        # Set up the unsheared profiles for the psf and galaxy
-        if is_target_gal:
-            bulge_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
-                                                galaxy.get_param_value('redshift'),
-                                                True,
-                                                False,
-                                                data_dir=options['data_dir'])
-            disk_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
-                                                galaxy.get_param_value('redshift'),
-                                                False,
-                                                False,
-                                                data_dir=options['data_dir'])
-        else:
-            bulge_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
-                                                galaxy.get_param_value('redshift'),
-                                                True,
-                                                True,
-                                                data_dir=options['data_dir'])
-            disk_psf_profile = bulge_psf_profile
+        if not options['details_only']:
 
-        # Get the position of the galaxy, depending on whether we're in field or stamp mode
+            # Set up the unsheared profiles for the psf and galaxy
+            if is_target_gal:
+                bulge_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
+                                                    galaxy.get_param_value('redshift'),
+                                                    True,
+                                                    False,
+                                                    data_dir=options['data_dir'])
+                disk_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
+                                                    galaxy.get_param_value('redshift'),
+                                                    False,
+                                                    False,
+                                                    data_dir=options['data_dir'])
+            else:
+                bulge_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
+                                                    galaxy.get_param_value('redshift'),
+                                                    True,
+                                                    True,
+                                                    data_dir=options['data_dir'])
+                disk_psf_profile = bulge_psf_profile
 
-        if (options['mode'] == 'stamps') and is_target_gal:
+            # Get the position of the galaxy, depending on whether we're in field or stamp mode
 
-            # Increment position first
-            icol += 1
-            if icol >= ncols:
-                icol = 0
-                irow += 1
-                if irow >= nrows:
-                    raise Exception("More galaxies than expected when printing cutouts.")
+            if (options['mode'] == 'stamps') and is_target_gal:
 
-            xp_init = galaxy.get_param_value("xp")
-            yp_init = galaxy.get_param_value("yp")
+                # Increment position first
+                icol += 1
+                if icol >= ncols:
+                    icol = 0
+                    irow += 1
+                    if irow >= nrows:
+                        raise Exception("More galaxies than expected when printing cutouts.")
 
-            xp_sp_shift = xp_init - int(xp_init)
-            yp_sp_shift = yp_init - int(yp_init)
+                xp_init = galaxy.get_param_value("xp")
+                yp_init = galaxy.get_param_value("yp")
 
-            xp = xp_sp_shift + stamp_size_pix // 2 + icol * stamp_size_pix
-            yp = yp_sp_shift + stamp_size_pix // 2 + irow * stamp_size_pix
+                xp_sp_shift = xp_init - int(xp_init)
+                yp_sp_shift = yp_init - int(yp_init)
 
-        elif options['mode'] == 'stamps':
+                xp = xp_sp_shift + stamp_size_pix // 2 + icol * stamp_size_pix
+                yp = yp_sp_shift + stamp_size_pix // 2 + irow * stamp_size_pix
 
-            # Background galaxy in stamp mode. We'll have to determine a valid position
-            # on a non-empty stamp
+            elif options['mode'] == 'stamps':
 
-            # Pick a random stamp to appear on
-            si = np.random.randint(0, num_target_galaxies)
-            yi = si // ncols
-            xi = si - yi * ncols
+                # Background galaxy in stamp mode. We'll have to determine a valid position
+                # on a non-empty stamp
 
-            # Use the generated xp and yp values as random input here, so we don't affect
-            # the seeding
-            xp_init = galaxy.get_param_value("xp")
-            yp_init = galaxy.get_param_value("yp")
+                # Pick a random stamp to appear on
+                si = np.random.randint(0, num_target_galaxies)
+                yi = si // ncols
+                xi = si - yi * ncols
 
-            # Place bgs in a circular aperture around target galaxies
+                # Use the generated xp and yp values as random input here, so we don't affect
+                # the seeding
+                xp_init = galaxy.get_param_value("xp")
+                yp_init = galaxy.get_param_value("yp")
 
-            # Uniform random angle
-            theta_rad = 2 * np.pi * xp_init / old_x_size
+                # Place bgs in a circular aperture around target galaxies
 
-            # Random distance, using sqrt to weight by area at a given distance
-            rp = bg_aperture_rad_pix * np.sqrt(yp_init / old_y_size)
+                # Uniform random angle
+                theta_rad = 2 * np.pi * xp_init / old_x_size
 
-            xp = stamp_size_pix // 2 + xi * stamp_size_pix + rp * np.cos(theta_rad)
-            yp = stamp_size_pix // 2 + yi * stamp_size_pix + rp * np.sin(theta_rad)
+                # Random distance, using sqrt to weight by area at a given distance
+                rp = bg_aperture_rad_pix * np.sqrt(yp_init / old_y_size)
 
-        else:
+                xp = stamp_size_pix // 2 + xi * stamp_size_pix + rp * np.cos(theta_rad)
+                yp = stamp_size_pix // 2 + yi * stamp_size_pix + rp * np.sin(theta_rad)
 
-            xp = galaxy.get_param_value("xp")
-            yp = galaxy.get_param_value("yp")
+            else:
 
-        xp_i = int(xp)
-        yp_i = int(yp)
+                xp = galaxy.get_param_value("xp")
+                yp = galaxy.get_param_value("yp")
 
-        xp_sp_shift = xp - xp_i
-        yp_sp_shift = yp - yp_i
+            xp_i = int(xp)
+            yp_i = int(yp)
 
-        subsampling_factor = int(pixel_scale / mv.psf_model_scale)
+            xp_sp_shift = xp - xp_i
+            yp_sp_shift = yp - yp_i
+
+            subsampling_factor = int(pixel_scale / mv.psf_model_scale)
+
+        else: # if not options['details_only']:
+            # Store dummy values for pixel position
+            xp = -1
+            yp = -1
+            xc = -1
+            yc = -1
+            xp_sp_shift = 0
+            yp_sp_shift = 0
 
         # Store galaxy data to save calls to the class
 
@@ -356,137 +382,138 @@ def print_galaxies(image,
         bulge_size = galaxy.get_param_value('apparent_size_bulge')
         disk_size = galaxy.get_param_value('apparent_size_disk')
 
-        if is_target_gal:
-
-            bulge_gal_profile = get_bulge_galaxy_profile(sersic_index=n,
-                                            half_light_radius=bulge_size,
-                                            flux=gal_I * bulge_fraction,
-                                            g_ell=g_ell,
-                                            beta_deg_ell=rotation,
-                                            g_shear=g_shear,
-                                            beta_deg_shear=beta_shear,
-                                            data_dir=options['data_dir'])
-
-            # Convolve the galaxy, psf, and pixel profile to determine the final (well, before noise) pixelized image
-            final_bulge = galsim.Convolve([bulge_gal_profile, bulge_psf_profile],
-                                          gsparams=galsim.GSParams(maximum_fft_size=12000))
-
-            disk_gal_image = get_disk_galaxy_image(sersic_index=n,
-                                            half_light_radius=disk_size,
-                                            stamp_size_factor=options['stamp_size_factor'],
-                                            rotation=rotation,
-                                            tilt=tilt,
-                                            spin=spin,
-                                            flux=1.,
-                                            g_shear=g_shear,
-                                            beta_deg_shear=beta_shear,
-                                            xp_sp_shift=xp_sp_shift,
-                                            yp_sp_shift=yp_sp_shift,
-                                            image_scale=pixel_scale,
-                                            subsampling_factor=subsampling_factor,
-                                            data_dir=options['data_dir'])
-
-            ss_disk_image = convolve(disk_psf_profile.image.array, disk_gal_image)
-
-            final_disk_image = rebin(ss_disk_image,
-                                    x_shift=int(subsampling_factor * xp_sp_shift + 0.5),
-                                    y_shift=int(subsampling_factor * yp_sp_shift + 0.5),
-                                    subsampling_factor=subsampling_factor)
-
-            final_disk = galsim.InterpolatedImage(galsim.Image(final_disk_image, scale=pixel_scale),
-                                                               flux=gal_I * (1 - bulge_fraction),
-                                                               x_interpolant='nearest')
-        else:
-            # Just use a single sersic profile for background galaxies
-            # to make them more of a compromise between bulges and disks
-            gal_profile = get_bulge_galaxy_profile(sersic_index=n,
-                                            half_light_radius=bulge_size,
-                                            flux=gal_I,
-                                            g_ell=2.*g_ell,
-                                            beta_deg_ell=rotation,
-                                            g_shear=g_shear,
-                                            beta_deg_shear=beta_shear,
-                                            data_dir=options['data_dir'])
-
-            # Convolve the galaxy, psf, and pixel profile to determine the final (well, before noise) pixelized image
-            final_gal = galsim.Convolve([gal_profile, disk_psf_profile],
-                                          gsparams=galsim.GSParams(maximum_fft_size=12000))
-
-        if not options['mode'] == 'stamps':
+        if not options['details_only']:
             if is_target_gal:
-                stamp_size_pix = 2 * (
-                    np.max((int(options['stamp_size_factor'] * bulge_size / pixel_scale),
-                            int(options['stamp_size_factor'] * disk_size / pixel_scale)))) + \
-                                      int(np.max(np.shape(disk_psf_profile.image.array)) / subsampling_factor)
+
+                bulge_gal_profile = get_bulge_galaxy_profile(sersic_index=n,
+                                                half_light_radius=bulge_size,
+                                                flux=gal_I * bulge_fraction,
+                                                g_ell=g_ell,
+                                                beta_deg_ell=rotation,
+                                                g_shear=g_shear,
+                                                beta_deg_shear=beta_shear,
+                                                data_dir=options['data_dir'])
+
+                # Convolve the galaxy, psf, and pixel profile to determine the final (well, before noise) pixelized image
+                final_bulge = galsim.Convolve([bulge_gal_profile, bulge_psf_profile],
+                                              gsparams=galsim.GSParams(maximum_fft_size=12000))
+
+                disk_gal_image = get_disk_galaxy_image(sersic_index=n,
+                                                half_light_radius=disk_size,
+                                                stamp_size_factor=options['stamp_size_factor'],
+                                                rotation=rotation,
+                                                tilt=tilt,
+                                                spin=spin,
+                                                flux=1.,
+                                                g_shear=g_shear,
+                                                beta_deg_shear=beta_shear,
+                                                xp_sp_shift=xp_sp_shift,
+                                                yp_sp_shift=yp_sp_shift,
+                                                image_scale=pixel_scale,
+                                                subsampling_factor=subsampling_factor,
+                                                data_dir=options['data_dir'])
+
+                ss_disk_image = convolve(disk_psf_profile.image.array, disk_gal_image)
+
+                final_disk_image = rebin(ss_disk_image,
+                                        x_shift=int(subsampling_factor * xp_sp_shift + 0.5),
+                                        y_shift=int(subsampling_factor * yp_sp_shift + 0.5),
+                                        subsampling_factor=subsampling_factor)
+
+                final_disk = galsim.InterpolatedImage(galsim.Image(final_disk_image, scale=pixel_scale),
+                                                                   flux=gal_I * (1 - bulge_fraction),
+                                                                   x_interpolant='nearest')
             else:
-                stamp_size_pix = 4 * (
-                    np.max((int(options['stamp_size_factor'] * bulge_size / pixel_scale),
-                            int(options['stamp_size_factor'] * disk_size / pixel_scale))))
+                # Just use a single sersic profile for background galaxies
+                # to make them more of a compromise between bulges and disks
+                gal_profile = get_bulge_galaxy_profile(sersic_index=n,
+                                                half_light_radius=bulge_size,
+                                                flux=gal_I,
+                                                g_ell=2.*g_ell,
+                                                beta_deg_ell=rotation,
+                                                g_shear=g_shear,
+                                                beta_deg_shear=beta_shear,
+                                                data_dir=options['data_dir'])
 
-            if stamp_size_pix > full_x_size:
-                stamp_size_pix = full_x_size
-            if stamp_size_pix > full_y_size:
-                stamp_size_pix = full_y_size
+                # Convolve the galaxy, psf, and pixel profile to determine the final (well, before noise) pixelized image
+                final_gal = galsim.Convolve([gal_profile, disk_psf_profile],
+                                              gsparams=galsim.GSParams(maximum_fft_size=12000))
 
-        # Determine boundaries
-        xl = xp_i - stamp_size_pix // 2 + 1
-        xh = xl + stamp_size_pix - 1
-        yl = yp_i - stamp_size_pix // 2 + 1
-        yh = yl + stamp_size_pix - 1
+            if not options['mode'] == 'stamps':
+                if is_target_gal:
+                    stamp_size_pix = 2 * (
+                        np.max((int(options['stamp_size_factor'] * bulge_size / pixel_scale),
+                                int(options['stamp_size_factor'] * disk_size / pixel_scale)))) + \
+                                          int(np.max(np.shape(disk_psf_profile.image.array)) / subsampling_factor)
+                else:
+                    stamp_size_pix = 4 * (
+                        np.max((int(options['stamp_size_factor'] * bulge_size / pixel_scale),
+                                int(options['stamp_size_factor'] * disk_size / pixel_scale))))
 
-        x_shift = 0
-        y_shift = 0
+                if stamp_size_pix > full_x_size:
+                    stamp_size_pix = full_x_size
+                if stamp_size_pix > full_y_size:
+                    stamp_size_pix = full_y_size
 
-        if not (is_target_gal and (options['mode'] == 'stamps')):
-            # Check if the stamp crosses an edge and adjust as necessary
-            if (xl < 1):
-                x_shift = 1 - xl
-            elif (xh > full_x_size):
-                x_shift = full_x_size - xh
-            xh += x_shift
-            xl += x_shift
+            # Determine boundaries
+            xl = xp_i - stamp_size_pix // 2 + 1
+            xh = xl + stamp_size_pix - 1
+            yl = yp_i - stamp_size_pix // 2 + 1
+            yh = yl + stamp_size_pix - 1
 
-            if (yl < 1):
-                y_shift = 1 - yl
-            elif (yh > full_y_size):
-                y_shift = full_y_size - yh
-            yh += y_shift
-            yl += y_shift
+            x_shift = 0
+            y_shift = 0
 
-        bounds = galsim.BoundsI(xl, xh, yl, yh)
+            if not (is_target_gal and (options['mode'] == 'stamps')):
+                # Check if the stamp crosses an edge and adjust as necessary
+                if (xl < 1):
+                    x_shift = 1 - xl
+                elif (xh > full_x_size):
+                    x_shift = full_x_size - xh
+                xh += x_shift
+                xl += x_shift
 
-        gal_images = []
-        for di in xrange(num_dithers):
-            gal_images.append(dithers[di][bounds])
+                if (yl < 1):
+                    y_shift = 1 - yl
+                elif (yh > full_y_size):
+                    y_shift = full_y_size - yh
+                yh += y_shift
+                yl += y_shift
 
-        # Get centers, correcting by 1.5 - 1 since Galsim is offset by 1, .5 to move from
-        # corner of pixel to center
-        x_centre_offset = x_shift
-        y_centre_offset = y_shift
-        xc = bounds.center().x + centre_offset + x_centre_offset
-        yc = bounds.center().y + centre_offset + y_centre_offset
+            bounds = galsim.BoundsI(xl, xh, yl, yh)
 
-        # Draw the image
-        for gal_image, (x_offset, y_offset) in zip(gal_images, get_dither_scheme(options['dithering_scheme'])):
+            gal_images = []
+            for di in xrange(num_dithers):
+                gal_images.append(dithers[di][bounds])
 
-            if is_target_gal:
-                final_bulge.drawImage(gal_image, scale=pixel_scale,
-                                      offset=(-x_centre_offset + x_offset + xp_sp_shift,
-                                              - y_centre_offset + y_offset + yp_sp_shift),
-                                      add_to_image=True)
-                final_disk.drawImage(gal_image, scale=pixel_scale,
-                                     offset=(-x_centre_offset + x_offset,
-                                             - y_centre_offset + y_offset),
-                                     add_to_image=True,
-                                     method='no_pixel')
+            # Get centers, correcting by 1.5 - 1 since Galsim is offset by 1, .5 to move from
+            # corner of pixel to center
+            x_centre_offset = x_shift
+            y_centre_offset = y_shift
+            xc = bounds.center().x + centre_offset + x_centre_offset
+            yc = bounds.center().y + centre_offset + y_centre_offset
 
-            else:
-                final_gal.drawImage(gal_image, scale=pixel_scale,
-                                     offset=(-x_centre_offset + x_offset + xp_sp_shift,
-                                             - y_centre_offset + y_offset + xp_sp_shift),
-                                     add_to_image=True)
+            # Draw the image
+            for gal_image, (x_offset, y_offset) in zip(gal_images, get_dither_scheme(options['dithering_scheme'])):
 
-                pass
+                if is_target_gal:
+                    final_bulge.drawImage(gal_image, scale=pixel_scale,
+                                          offset=(-x_centre_offset + x_offset + xp_sp_shift,
+                                                  - y_centre_offset + y_offset + yp_sp_shift),
+                                          add_to_image=True)
+                    final_disk.drawImage(gal_image, scale=pixel_scale,
+                                         offset=(-x_centre_offset + x_offset,
+                                                 - y_centre_offset + y_offset),
+                                         add_to_image=True,
+                                         method='no_pixel')
+
+                else:
+                    final_gal.drawImage(gal_image, scale=pixel_scale,
+                                         offset=(-x_centre_offset + x_offset + xp_sp_shift,
+                                                 - y_centre_offset + y_offset + xp_sp_shift),
+                                         add_to_image=True)
+
+                    pass
 
 
         # Record all data used for this galaxy in the output table
@@ -513,7 +540,7 @@ def print_galaxies(image,
                              gain=options['gain'],
                              is_target_galaxy=is_target_gal)
 
-        if is_target_gal:
+        if is_target_gal and not options['details_only']:
             del ss_disk_image, final_disk, disk_gal_image, disk_psf_profile
 
     return galaxies
