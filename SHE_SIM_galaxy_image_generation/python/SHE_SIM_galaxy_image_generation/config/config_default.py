@@ -158,10 +158,6 @@ def load_default_configurations():
        will be expecting.
     """
 
-    print "No configuration script loaded. The script will proceed using the set of"
-    print "configuration parameters hardcoded into it. These can be viewed and edited in"
-    print "the file SHE_SIM_galaxy_image_generation/magic_values.py."
-
     options = {}
     for option in allowed_options:
         options[option] = allowed_options[option][0]
