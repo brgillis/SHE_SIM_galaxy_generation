@@ -23,10 +23,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-import SHE_SIM
-
 import SHE_SIM_galaxy_image_generation.magic_values as mv
-
+import SHE_SIM
 
 __all__ = ['load_default_configurations']
 
@@ -35,27 +33,27 @@ __all__ = ['load_default_configurations']
 def str2bool(v):
     return v.lower() in ("yes", "true", "t", "1")
 
-allowed_options = { 'compress_images': (0, int),
+allowed_options = { 'data_dir': (mv.default_data_dir, str),
+                    'compress_images': (0, int),
                     'num_target_galaxies': (0, int),
-                    'data_dir': (mv.default_data_dir, str),
                     'details_only': (False, str2bool),
                     'details_output_format': ('fits', str),
                     'dithering_scheme': ('none', str),
-                    'exp_time': (565., float),
-                    'gain': (3.3, float),
                     'image_datatype': (mv.default_image_datatype, str),
                     'magnitude_limit': (mv.default_magnitude_limit, float),
                     'mode': ('field', str),
                     'num_parallel_threads': (-1, int),
                     'output_folder': (mv.default_output_folder, str),
                     'output_file_name_base': ('simulated_image', str),
-                    'read_noise': (5.4, float),
                     'render_background_galaxies': (True, str2bool),
                     'seed': (mv.default_random_seed, int),
                     'shape_noise_cancellation': (False, str2bool),
                     'stamp_size': (250, int),
                     'stamp_size_factor': (4.5, float),
-                    'suppress_noise': (False, str2bool) }
+                    'suppress_noise': (False, str2bool),
+                    'gain': (3.3, float),
+                    'exp_time': (565., float),
+                    'read_noise': (5.4, float) }
 
 allowed_option_values = { 'compress_images': (0, 1, 2),
                           'details_output_format': ('none', 'fits', 'ascii', 'both'),
@@ -72,67 +70,9 @@ allowed_fixed_params = ('num_images',
                         'image_size_xp',
                         'image_size_yp')
 
-allowed_settings = ('level',
+allowed_settings = ( 'level',
                      'params',
-                     'setting')
-
-allowed_survey_settings = (# Survey level
-
-                            'num_images',
-                            'pixel_scale',
-
-                            # Image level
-
-                            'cluster_density',
-                            'exp_time',
-                            'galaxy_density',
-                            'image_area',
-                            'image_size_xp',
-                            'image_size_yp',
-                            'num_clusters',
-                            'num_fields',
-                            'subtracted_background',
-                            'unsubtracted_background',
-
-                            # Cluster level
-
-                            'cluster_mass',
-                            'cluster_redshift',
-                            'cluster_num_satellites',
-                            'cluster_xp',
-                            'cluster_yp',
-
-                            # Field level
-
-                            'num_field_galaxies',
-
-                            # Galaxy level
-
-                            'absolute_mag_vis',
-                            'apparent_mag_vis',
-                            'apparent_size_bulge',
-                            'apparent_size_disk',
-                            'bulge_class',
-                            'bulge_fraction',
-                            'bulge_axis_ratio',
-                            'bulge_ellipticity',
-                            'galaxy_type',
-                            'physical_size_bulge',
-                            'physical_size_disk',
-                            'psf_model',
-                            'redshift',
-                            'rotation',
-                            'rp',
-                            'sersic_index',
-                            'shear_angle',
-                            'shear_magnitude',
-                            'spin',
-                            'stellar_mass',
-                            'theta_sat',
-                            'tilt',
-                            'xp',
-                            'yp',
-                            )
+                     'setting' )
 
 generation_levels = { 'survey': 0,
                       'global': 0,
@@ -158,20 +98,20 @@ def load_default_configurations():
        do so, ensure that all lines are entered in lower-case, which is what the program
        will be expecting.
     """
-
+    
     print "No configuration script loaded. The script will proceed using the set of"
     print "configuration parameters hardcoded into it. These can be viewed and edited in"
     print "the file SHE_SIM_galaxy_image_generation/magic_values.py."
-
+    
     options = {}
     for option in allowed_options:
         options[option] = allowed_options[option][0]
     survey = SHE_SIM.Survey()
-
+    
     # Set some defaults for the survey
-    survey.set_param_params('num_images', 'fixed', mv.default_num_images)
-    survey.set_param_params('pixel_scale', 'fixed', mv.default_pixel_scale)
-    survey.set_param_params('subtracted_background', 'fixed', mv.default_sky_level)
-    survey.set_param_params('unsubtracted_background', 'fixed', 0.)
-
+    survey.set_param_param('num_images','fixed',mv.default_num_images)
+    survey.set_param_param('pixel_scale','fixed',mv.default_pixel_scale)
+    survey.set_param_param('subtracted_sky_level','fixed',mv.default_sky_level)
+    survey.set_param_param('unsubtracted_sky_level','fixed',0.)
+            
     return survey, options

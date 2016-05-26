@@ -1,5 +1,4 @@
-"""
-    @file compress_image.py
+""" @file compress_image.py
 
     Created 23 Jul 2015
 
@@ -7,7 +6,7 @@
 
     ---------------------------------------------------------------------
 
-    Copyright (C) 2015, 2016 Bryan R. Gillis
+    Copyright (C) 2015 Bryan R. Gillis
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,16 +28,12 @@ import SHE_SIM_galaxy_image_generation.magic_values as mv
 
 
 def compress_image(image_name,nx=None,lossy=False):
-    """
-        @brief Compresses an image using fpack.
+    """ Compresses an image using fpack.
     
-        @param image_name
-            <string> Filename of the image to be compressed
+        Requires: image_name <string>
         
-        @param nx
-            <int> Number of pixels per tile, assuming square tiles. Default None
-        @param lossy
-            <bool> Whether or not to allow lossy compression. Default False
+        Optional: nx <int> (number of pixels per tile, assuming square tiles)
+                  lossy <bool> (whether or not to allow lossy compression)
     
     """
     
