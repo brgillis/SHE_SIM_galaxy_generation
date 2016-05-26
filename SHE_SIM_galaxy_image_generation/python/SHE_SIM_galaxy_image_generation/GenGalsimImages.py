@@ -24,13 +24,14 @@
 """
 
 import argparse
-import ElementsKernel.Logging as log
 
+import ElementsKernel.Logging as log
+from SHE_SIM_galaxy_image_generation import magic_values as mv
 from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_options,
                                                             allowed_fixed_params,
                                                             allowed_survey_settings)
 from SHE_SIM_galaxy_image_generation.run_from_config import run_from_config_file_and_args
-from SHE_SIM_galaxy_image_generation import magic_values as mv
+
 
 def defineSpecificProgramOptions():
     """
@@ -72,7 +73,7 @@ def mainMethod(args):
     """
     @brief
         The "main" method for this program, to generate galaxy images.
-        
+
     @details
         This method is the entry point to the program. In this sense, it is
         similar to a main (and it is why it is called mainMethod()).
