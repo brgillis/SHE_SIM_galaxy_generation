@@ -23,6 +23,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+# Version info
+version_label = 'SS_VER'
+version_str = '1.0.1'
+
+galsim_version_label = 'GS_VER'
+
 # Lists of allowed values for certain configuration parameters
 allowed_image_types = ['32f', '64f']
 

@@ -548,6 +548,28 @@ def print_galaxies(image,
 
     return galaxies
 
+
+def add_version_to_header(image):
+    """
+        @brief Adds version info to the header of an image.
+        
+        @param image
+            <galsim.Image> Galsim image object.
+    """
+    
+    # Add a header attribute if needed
+    if not hasattr(image, "header"):
+        image.header = galsim.FitsHeader()
+    
+    # SHE_SIM package version label    
+    image.header[mv.version_label] = mv.version_str
+    
+    # Galsim version label
+    if hasattr(galsim, "__version__"):
+        image.header[mv.galsim_version_label] = galsim.__version__
+    else:
+        image.header[mv.galsim_version_label] = '<1.2'
+
 def generate_image(image, options):
     """
         @brief Creates a single image of galaxies
@@ -650,6 +672,10 @@ def generate_image(image, options):
                                     read_noise=options['read_noise'],
                                     sky_level=sky_level_subtracted_pixel)
             dither.addNoise(noise)
+        
+        # Add a header containing version info
+        add_version_to_header(dither)
+        
         galsim.fits.write(dither, dither_file_name)
 
         # Compress the image if necessary
@@ -680,6 +706,8 @@ def generate_image(image, options):
                                                           dithering_scheme=options['dithering_scheme'],
                                                           output_table=otable,
                                                           copy_otable=False)
+
+        add_version_to_header(combined_image)
 
         # Output the new image
         combined_file_name = combined_file_name_base + '.fits'
