@@ -79,7 +79,10 @@ def generate_images(survey, options):
     """
 
     # Seed the survey
-    survey.set_seed(options['seed'])
+    if options['seed']==0:
+        survey.set_seed() # Seed from the time
+    else:
+        survey.set_seed(options['seed'])
 
     # Create empty image objects for the survey
     survey.fill_images()
