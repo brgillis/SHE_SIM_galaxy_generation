@@ -32,10 +32,7 @@ from os.path import join
 from astropy.table import Table
 import galsim
 
-try:
-    import ElementsKernel.Logging as log
-except ImportError:
-    import logging as log
+from icebrgpy.logging import getLogger
 from SHE_SIM_galaxy_image_generation import magic_values as mv
 from SHE_SIM_galaxy_image_generation import output_table
 from SHE_SIM_galaxy_image_generation.combine_dithers import combine_dithers
@@ -91,7 +88,7 @@ def generate_images(survey, options):
     # Multiprocessing doesn't currently work, so print a warning if it's requested
 
     if options['num_parallel_threads'] != 1:
-        logger = log.getLogger(mv.logger_name)
+        logger = getLogger(mv.logger_name)
         logger.warning("Multi-processing is not currently functional; it requires features that " +
                        "will be available in Python 3. Until then, if you wish to use multiple " +
                        "processes, please call this program multiple times with different seed " +
