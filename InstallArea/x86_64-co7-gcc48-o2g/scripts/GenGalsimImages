@@ -1,9 +1,0 @@
-#!/usr/bin/env python
-# Automatically generated file: do not modify!
-
-from ThisProject import THIS_PROJECT_VERSION_STRING, THIS_PROJECT_NAME
-
-from ElementsKernel.Program import Program
-
-p = Program('SHE_SIM_galaxy_image_generation.GenGalsimImages', THIS_PROJECT_VERSION_STRING, THIS_PROJECT_NAME)
-exit(p.runProgram())
