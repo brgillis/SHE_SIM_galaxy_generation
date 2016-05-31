@@ -119,7 +119,7 @@ def run_from_survey_and_options(survey, options):
         logger.info(name + " generation level: " + gen_level)
         
         param_params = survey.get_param(name).get_params()
-        pp_mode = param_params.get_mode_name()
+        pp_mode = param_params.name()
         logger.info(name + " generation mode: " + pp_mode)
         pp_params = param_params.get_parameters_string()
         logger.info(name + " generation parameters: " + pp_params)
