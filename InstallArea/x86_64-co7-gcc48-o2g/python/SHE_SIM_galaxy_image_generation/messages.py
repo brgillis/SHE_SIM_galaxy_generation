@@ -23,7 +23,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-from icebrgpy import logging as log
+from icebrgpy.logging import getLogger
 from SHE_SIM_galaxy_image_generation import magic_values as mv
 
 def bad_config_format():
@@ -42,7 +42,7 @@ def old_config_version(ver):
             will have to be assumed.
     """
     
-    logger = log.getLogger(mv.logger_name)
+    logger = getLogger(mv.logger_name)
     
     logger.info("Using configuration file for version " + ver +
                 " of the script. This is an old version. Default values will be used for " +
@@ -55,7 +55,7 @@ def new_config_version(ver):
         @brief A boilerplate note that the config file version being used is up to date.
     """
     
-    logger = log.getLogger(mv.logger_name)
+    logger = getLogger(mv.logger_name)
     
     logger.info("Using configuration file for version " + ver + " of the script." +
                 "This is the most recent version - no default values need to be assumed.")

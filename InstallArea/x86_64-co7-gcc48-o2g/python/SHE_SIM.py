@@ -333,6 +333,153 @@ class ParamHierarchyLevel(_object):
 ParamHierarchyLevel_swigregister = _SHE_SIM.ParamHierarchyLevel_swigregister
 ParamHierarchyLevel_swigregister(ParamHierarchyLevel)
 
+class ParamGenerator(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ParamGenerator, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, ParamGenerator, name)
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _SHE_SIM.delete_ParamGenerator
+    __del__ = lambda self: None
+
+    def name(self):
+        return _SHE_SIM.ParamGenerator_name(self)
+
+    def get_p_owner(self, *args):
+        return _SHE_SIM.ParamGenerator_get_p_owner(self, *args)
+
+    def get_owner(self, *args):
+        return _SHE_SIM.ParamGenerator_get_owner(self, *args)
+
+    def set_p_owner(self, p_owner):
+        return _SHE_SIM.ParamGenerator_set_p_owner(self, p_owner)
+
+    def set_owner(self, owner):
+        return _SHE_SIM.ParamGenerator_set_owner(self, owner)
+
+    def get_p_rng(self, *args):
+        return _SHE_SIM.ParamGenerator_get_p_rng(self, *args)
+
+    def get_rng(self, *args):
+        return _SHE_SIM.ParamGenerator_get_rng(self, *args)
+
+    def get_params(self):
+        return _SHE_SIM.ParamGenerator_get_params(self)
+
+    def get_p_params(self):
+        return _SHE_SIM.ParamGenerator_get_p_params(self)
+
+    def set_p_params(self, p):
+        return _SHE_SIM.ParamGenerator_set_p_params(self, p)
+
+    def get_generation_level(self):
+        return _SHE_SIM.ParamGenerator_get_generation_level(self)
+
+    def get_p_generation_level(self):
+        return _SHE_SIM.ParamGenerator_get_p_generation_level(self)
+
+    def set_generation_level(self, level):
+        return _SHE_SIM.ParamGenerator_set_generation_level(self, level)
+
+    def set_p_generation_level(self, p_level):
+        return _SHE_SIM.ParamGenerator_set_p_generation_level(self, p_level)
+
+    def get(self):
+        return _SHE_SIM.ParamGenerator_get(self)
+
+    def get_new(self):
+        return _SHE_SIM.ParamGenerator_get_new(self)
+
+    def request_value(self, requester_name):
+        return _SHE_SIM.ParamGenerator_request_value(self, requester_name)
+
+    def request_new_value(self, requester_name):
+        return _SHE_SIM.ParamGenerator_request_new_value(self, requester_name)
+
+    def request(self, requester_name):
+        return _SHE_SIM.ParamGenerator_request(self, requester_name)
+
+    def request_new(self, requester_name):
+        return _SHE_SIM.ParamGenerator_request_new(self, requester_name)
+
+    def level_generated_at(self):
+        return _SHE_SIM.ParamGenerator_level_generated_at(self)
+
+    def clone(self):
+        return _SHE_SIM.ParamGenerator_clone(self)
+ParamGenerator_swigregister = _SHE_SIM.ParamGenerator_swigregister
+ParamGenerator_swigregister(ParamGenerator)
+
+class ParamParam(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ParamParam, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, ParamParam, name)
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    UNSPECIFIED = _SHE_SIM.ParamParam_UNSPECIFIED
+    INDEPENDENT = _SHE_SIM.ParamParam_INDEPENDENT
+    DEPENDENT = _SHE_SIM.ParamParam_DEPENDENT
+    ALT_DEPENDENT = _SHE_SIM.ParamParam_ALT_DEPENDENT
+    OTHER = _SHE_SIM.ParamParam_OTHER
+    __swig_destroy__ = _SHE_SIM.delete_ParamParam
+    __del__ = lambda self: None
+
+    def is_equal(self, other):
+        return _SHE_SIM.ParamParam_is_equal(self, other)
+
+    def not_equal(self, other):
+        return _SHE_SIM.ParamParam_not_equal(self, other)
+
+    def get_mode(self):
+        return _SHE_SIM.ParamParam_get_mode(self)
+
+    def get_mode_name(self):
+        return _SHE_SIM.ParamParam_get_mode_name(self)
+
+    def name(self):
+        return _SHE_SIM.ParamParam_name(self)
+
+    def get_parameters(self):
+        return _SHE_SIM.ParamParam_get_parameters(self)
+
+    def get_parameters_string(self):
+        return _SHE_SIM.ParamParam_get_parameters_string(self)
+
+    def get_independently(self, *args):
+        return _SHE_SIM.ParamParam_get_independently(self, *args)
+
+    def clone(self):
+        return _SHE_SIM.ParamParam_clone(self)
+
+    def recreate(self, params):
+        return _SHE_SIM.ParamParam_recreate(self, params)
+ParamParam_swigregister = _SHE_SIM.ParamParam_swigregister
+ParamParam_swigregister(ParamParam)
+
+class bad_mode_error(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, bad_mode_error, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, bad_mode_error, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _SHE_SIM.new_bad_mode_error(*args)
+        try:
+            self.this.append(this)
+        except:
+            self.this = this
+    __swig_destroy__ = _SHE_SIM.delete_bad_mode_error
+    __del__ = lambda self: None
+bad_mode_error_swigregister = _SHE_SIM.bad_mode_error_swigregister
+bad_mode_error_swigregister(bad_mode_error)
+
 class Cluster(ParamHierarchyLevel):
     __swig_setmethods__ = {}
     for _s in [ParamHierarchyLevel]:

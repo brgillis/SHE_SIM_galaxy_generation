@@ -150,6 +150,15 @@ generation_levels = { 'survey': 0,
                       'pair': 6 ,
                       'galaxy': 7 }
 
+generation_levels_inverse = {0: 'Survey',
+                             1: 'Image Group',
+                             2: 'Image',
+                             3: 'Cluster/Field Group',
+                             4: 'Cluster/Field',
+                             5: 'Galaxy Group',
+                             6: 'Galaxy Pair',
+                             7: 'Galaxy'}
+
 
 def load_default_configurations():
     """This function loads a default set of configuration parameters. If you wish to run

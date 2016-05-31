@@ -2949,55 +2949,59 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_SHE_SIM__ParamHierarchyLevel swig_types[9]
 #define SWIGTYPE_p_SHE_SIM__ParamParam swig_types[10]
 #define SWIGTYPE_p_SHE_SIM__Survey swig_types[11]
-#define SWIGTYPE_p_allocator_type swig_types[12]
-#define SWIGTYPE_p_char swig_types[13]
-#define SWIGTYPE_p_child_ptr_t swig_types[14]
-#define SWIGTYPE_p_child_t swig_types[15]
-#define SWIGTYPE_p_children_t swig_types[16]
-#define SWIGTYPE_p_const_reference swig_types[17]
-#define SWIGTYPE_p_difference_type swig_types[18]
-#define SWIGTYPE_p_double swig_types[19]
-#define SWIGTYPE_p_int swig_types[20]
-#define SWIGTYPE_p_long swig_types[21]
-#define SWIGTYPE_p_p_PyObject swig_types[22]
-#define SWIGTYPE_p_parent_t swig_types[23]
-#define SWIGTYPE_p_reference swig_types[24]
-#define SWIGTYPE_p_short swig_types[25]
-#define SWIGTYPE_p_size_type swig_types[26]
-#define SWIGTYPE_p_std__allocatorT_SHE_SIM__ClusterGroup_p_t swig_types[27]
-#define SWIGTYPE_p_std__allocatorT_SHE_SIM__Cluster_p_t swig_types[28]
-#define SWIGTYPE_p_std__allocatorT_SHE_SIM__FieldGroup_p_t swig_types[29]
-#define SWIGTYPE_p_std__allocatorT_SHE_SIM__Field_p_t swig_types[30]
-#define SWIGTYPE_p_std__allocatorT_SHE_SIM__GalaxyGroup_p_t swig_types[31]
-#define SWIGTYPE_p_std__allocatorT_SHE_SIM__Galaxy_p_t swig_types[32]
-#define SWIGTYPE_p_std__allocatorT_SHE_SIM__ImageGroup_p_t swig_types[33]
-#define SWIGTYPE_p_std__allocatorT_SHE_SIM__Image_p_t swig_types[34]
-#define SWIGTYPE_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_p_t swig_types[35]
-#define SWIGTYPE_p_std__invalid_argument swig_types[36]
-#define SWIGTYPE_p_std__ranlux48 swig_types[37]
-#define SWIGTYPE_p_std__ranlux48__result_type swig_types[38]
-#define SWIGTYPE_p_std__string swig_types[39]
-#define SWIGTYPE_p_std__unique_ptrT_SHE_SIM__ParamGenerator_t swig_types[40]
-#define SWIGTYPE_p_std__unique_ptrT_SHE_SIM__ParamParam_t swig_types[41]
-#define SWIGTYPE_p_std__unique_ptrT_short_t swig_types[42]
-#define SWIGTYPE_p_std__unordered_mapT_std__string_std__unique_ptrT_SHE_SIM__ParamGenerator_t_t swig_types[43]
-#define SWIGTYPE_p_std__unordered_mapT_std__string_std__unique_ptrT_SHE_SIM__ParamParam_t_t swig_types[44]
-#define SWIGTYPE_p_std__unordered_mapT_std__string_std__unique_ptrT_short_t_t swig_types[45]
-#define SWIGTYPE_p_std__vectorT_SHE_SIM__ClusterGroup_p_std__allocatorT_SHE_SIM__ClusterGroup_p_t_t swig_types[46]
-#define SWIGTYPE_p_std__vectorT_SHE_SIM__Cluster_p_std__allocatorT_SHE_SIM__Cluster_p_t_t swig_types[47]
-#define SWIGTYPE_p_std__vectorT_SHE_SIM__FieldGroup_p_std__allocatorT_SHE_SIM__FieldGroup_p_t_t swig_types[48]
-#define SWIGTYPE_p_std__vectorT_SHE_SIM__Field_p_std__allocatorT_SHE_SIM__Field_p_t_t swig_types[49]
-#define SWIGTYPE_p_std__vectorT_SHE_SIM__GalaxyGroup_p_std__allocatorT_SHE_SIM__GalaxyGroup_p_t_t swig_types[50]
-#define SWIGTYPE_p_std__vectorT_SHE_SIM__Galaxy_p_std__allocatorT_SHE_SIM__Galaxy_p_t_t swig_types[51]
-#define SWIGTYPE_p_std__vectorT_SHE_SIM__ImageGroup_p_std__allocatorT_SHE_SIM__ImageGroup_p_t_t swig_types[52]
-#define SWIGTYPE_p_std__vectorT_SHE_SIM__Image_p_std__allocatorT_SHE_SIM__Image_p_t_t swig_types[53]
-#define SWIGTYPE_p_std__vectorT_SHE_SIM__ParamHierarchyLevel_const_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_const_p_t_t swig_types[54]
-#define SWIGTYPE_p_std__vectorT_SHE_SIM__ParamHierarchyLevel_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_p_t_t swig_types[55]
-#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[56]
-#define SWIGTYPE_p_std__vectorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_std__allocatorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_t_t swig_types[57]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[58]
-static swig_type_info *swig_types[60];
-static swig_module_info swig_module = {swig_types, 59, 0, 0, 0, 0};
+#define SWIGTYPE_p_SHE_SIM__bad_mode_error swig_types[12]
+#define SWIGTYPE_p_allocator_type swig_types[13]
+#define SWIGTYPE_p_char swig_types[14]
+#define SWIGTYPE_p_child_ptr_t swig_types[15]
+#define SWIGTYPE_p_child_t swig_types[16]
+#define SWIGTYPE_p_children_t swig_types[17]
+#define SWIGTYPE_p_const_reference swig_types[18]
+#define SWIGTYPE_p_difference_type swig_types[19]
+#define SWIGTYPE_p_double swig_types[20]
+#define SWIGTYPE_p_int swig_types[21]
+#define SWIGTYPE_p_long swig_types[22]
+#define SWIGTYPE_p_owner_t swig_types[23]
+#define SWIGTYPE_p_p_PyObject swig_types[24]
+#define SWIGTYPE_p_parent_t swig_types[25]
+#define SWIGTYPE_p_reference swig_types[26]
+#define SWIGTYPE_p_short swig_types[27]
+#define SWIGTYPE_p_size_type swig_types[28]
+#define SWIGTYPE_p_std__allocatorT_SHE_SIM__ClusterGroup_p_t swig_types[29]
+#define SWIGTYPE_p_std__allocatorT_SHE_SIM__Cluster_p_t swig_types[30]
+#define SWIGTYPE_p_std__allocatorT_SHE_SIM__FieldGroup_p_t swig_types[31]
+#define SWIGTYPE_p_std__allocatorT_SHE_SIM__Field_p_t swig_types[32]
+#define SWIGTYPE_p_std__allocatorT_SHE_SIM__GalaxyGroup_p_t swig_types[33]
+#define SWIGTYPE_p_std__allocatorT_SHE_SIM__Galaxy_p_t swig_types[34]
+#define SWIGTYPE_p_std__allocatorT_SHE_SIM__ImageGroup_p_t swig_types[35]
+#define SWIGTYPE_p_std__allocatorT_SHE_SIM__Image_p_t swig_types[36]
+#define SWIGTYPE_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_p_t swig_types[37]
+#define SWIGTYPE_p_std__invalid_argument swig_types[38]
+#define SWIGTYPE_p_std__ranlux48 swig_types[39]
+#define SWIGTYPE_p_std__ranlux48__result_type swig_types[40]
+#define SWIGTYPE_p_std__runtime_error swig_types[41]
+#define SWIGTYPE_p_std__string swig_types[42]
+#define SWIGTYPE_p_std__unique_ptrT_SHE_SIM__ParamGenerator_t swig_types[43]
+#define SWIGTYPE_p_std__unique_ptrT_SHE_SIM__ParamParam_t swig_types[44]
+#define SWIGTYPE_p_std__unique_ptrT_short_t swig_types[45]
+#define SWIGTYPE_p_std__unordered_mapT_std__string_std__unique_ptrT_SHE_SIM__ParamGenerator_t_t swig_types[46]
+#define SWIGTYPE_p_std__unordered_mapT_std__string_std__unique_ptrT_SHE_SIM__ParamParam_t_t swig_types[47]
+#define SWIGTYPE_p_std__unordered_mapT_std__string_std__unique_ptrT_short_t_t swig_types[48]
+#define SWIGTYPE_p_std__vectorT_SHE_SIM__ClusterGroup_p_std__allocatorT_SHE_SIM__ClusterGroup_p_t_t swig_types[49]
+#define SWIGTYPE_p_std__vectorT_SHE_SIM__Cluster_p_std__allocatorT_SHE_SIM__Cluster_p_t_t swig_types[50]
+#define SWIGTYPE_p_std__vectorT_SHE_SIM__FieldGroup_p_std__allocatorT_SHE_SIM__FieldGroup_p_t_t swig_types[51]
+#define SWIGTYPE_p_std__vectorT_SHE_SIM__Field_p_std__allocatorT_SHE_SIM__Field_p_t_t swig_types[52]
+#define SWIGTYPE_p_std__vectorT_SHE_SIM__GalaxyGroup_p_std__allocatorT_SHE_SIM__GalaxyGroup_p_t_t swig_types[53]
+#define SWIGTYPE_p_std__vectorT_SHE_SIM__Galaxy_p_std__allocatorT_SHE_SIM__Galaxy_p_t_t swig_types[54]
+#define SWIGTYPE_p_std__vectorT_SHE_SIM__ImageGroup_p_std__allocatorT_SHE_SIM__ImageGroup_p_t_t swig_types[55]
+#define SWIGTYPE_p_std__vectorT_SHE_SIM__Image_p_std__allocatorT_SHE_SIM__Image_p_t_t swig_types[56]
+#define SWIGTYPE_p_std__vectorT_SHE_SIM__ParamHierarchyLevel_const_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_const_p_t_t swig_types[57]
+#define SWIGTYPE_p_std__vectorT_SHE_SIM__ParamHierarchyLevel_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_p_t_t swig_types[58]
+#define SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t swig_types[59]
+#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[60]
+#define SWIGTYPE_p_std__vectorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_std__allocatorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_t_t swig_types[61]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[62]
+static swig_type_info *swig_types[64];
+static swig_module_info swig_module = {swig_types, 63, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3479,6 +3483,8 @@ SWIG_AsVal_ptrdiff_t (PyObject * obj, ptrdiff_t *val)
 	/* Include the headers in the wrapper code */
 	#include "SHE_SIM/common.hpp"
 	#include "SHE_SIM/ParamHierarchyLevel.hpp"
+	#include "SHE_SIM/ParamGenerator.hpp"
+	#include "SHE_SIM/ParamParam.hpp"
 	#include "SHE_SIM/levels/Cluster.hpp"
 	#include "SHE_SIM/levels/ClusterGroup.hpp"
 	#include "SHE_SIM/levels/Field.hpp"
@@ -9346,6 +9352,1369 @@ SWIGINTERN PyObject *ParamHierarchyLevel_swigregister(PyObject *SWIGUNUSEDPARM(s
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_SHE_SIM__ParamHierarchyLevel, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_delete_ParamGenerator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_ParamGenerator",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ParamGenerator" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_name(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::name_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_name",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_name" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = ((SHE_SIM::ParamGenerator const *)arg1)->name();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_p_owner__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::ParamGenerator::owner_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get_p_owner",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get_p_owner" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::ParamGenerator::owner_t *)(arg1)->get_p_owner();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SHE_SIM__ParamHierarchyLevel, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_p_owner__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::ParamGenerator::owner_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get_p_owner",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get_p_owner" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::ParamGenerator::owner_t *)((SHE_SIM::ParamGenerator const *)arg1)->get_p_owner();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SHE_SIM__ParamHierarchyLevel, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_p_owner(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[2];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_SHE_SIM__ParamGenerator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_ParamGenerator_get_p_owner__SWIG_0(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_SHE_SIM__ParamGenerator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_ParamGenerator_get_p_owner__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'ParamGenerator_get_p_owner'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    SHE_SIM::ParamGenerator::get_p_owner()\n"
+    "    SHE_SIM::ParamGenerator::get_p_owner() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_owner__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::ParamGenerator::owner_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get_owner",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get_owner" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::ParamGenerator::owner_t *) &(arg1)->get_owner();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SHE_SIM__ParamHierarchyLevel, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_owner__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::ParamGenerator::owner_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get_owner",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get_owner" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::ParamGenerator::owner_t *) &((SHE_SIM::ParamGenerator const *)arg1)->get_owner();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SHE_SIM__ParamHierarchyLevel, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_owner(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[2];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_SHE_SIM__ParamGenerator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_ParamGenerator_get_owner__SWIG_0(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_SHE_SIM__ParamGenerator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_ParamGenerator_get_owner__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'ParamGenerator_get_owner'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    SHE_SIM::ParamGenerator::get_owner()\n"
+    "    SHE_SIM::ParamGenerator::get_owner() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_set_p_owner(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  SHE_SIM::ParamGenerator::owner_t **arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  SHE_SIM::ParamGenerator::owner_t *temp2 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParamGenerator_set_p_owner",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_set_p_owner" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_SHE_SIM__ParamHierarchyLevel, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParamGenerator_set_p_owner" "', argument " "2"" of type '" "SHE_SIM::ParamGenerator::owner_t *""'"); 
+  }
+  temp2 = reinterpret_cast< SHE_SIM::ParamGenerator::owner_t * >(argp2);
+  arg2 = reinterpret_cast< SHE_SIM::ParamGenerator::owner_t ** >(&temp2);
+  (arg1)->set_p_owner((SHE_SIM::ParamGenerator::owner_t *const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_set_owner(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  SHE_SIM::ParamGenerator::owner_t *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParamGenerator_set_owner",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_set_owner" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_SHE_SIM__ParamHierarchyLevel,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParamGenerator_set_owner" "', argument " "2"" of type '" "SHE_SIM::ParamGenerator::owner_t &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParamGenerator_set_owner" "', argument " "2"" of type '" "SHE_SIM::ParamGenerator::owner_t &""'"); 
+  }
+  arg2 = reinterpret_cast< SHE_SIM::ParamGenerator::owner_t * >(argp2);
+  (arg1)->set_owner(*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_p_rng__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::gen_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get_p_rng",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get_p_rng" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::gen_t *)(arg1)->get_p_rng();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__ranlux48, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_p_rng__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::gen_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get_p_rng",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get_p_rng" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::gen_t *)((SHE_SIM::ParamGenerator const *)arg1)->get_p_rng();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__ranlux48, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_p_rng(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[2];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_SHE_SIM__ParamGenerator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_ParamGenerator_get_p_rng__SWIG_0(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_SHE_SIM__ParamGenerator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_ParamGenerator_get_p_rng__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'ParamGenerator_get_p_rng'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    SHE_SIM::ParamGenerator::get_p_rng()\n"
+    "    SHE_SIM::ParamGenerator::get_p_rng() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_rng__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::gen_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get_rng",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get_rng" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::gen_t *) &(arg1)->get_rng();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__ranlux48, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_rng__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::gen_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get_rng",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get_rng" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::gen_t *) &((SHE_SIM::ParamGenerator const *)arg1)->get_rng();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__ranlux48, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_rng(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[2];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_SHE_SIM__ParamGenerator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_ParamGenerator_get_rng__SWIG_0(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_SHE_SIM__ParamGenerator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_ParamGenerator_get_rng__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'ParamGenerator_get_rng'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    SHE_SIM::ParamGenerator::get_rng()\n"
+    "    SHE_SIM::ParamGenerator::get_rng() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_params(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::ParamParam *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get_params",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get_params" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::ParamParam *) &((SHE_SIM::ParamGenerator const *)arg1)->get_params();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_p_params(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::ParamParam **result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get_p_params",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get_p_params" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::ParamParam **) &((SHE_SIM::ParamGenerator const *)arg1)->get_p_params();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(*result), SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_set_p_params(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  SHE_SIM::ParamParam **arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  SHE_SIM::ParamParam *temp2 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParamGenerator_set_p_params",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_set_p_params" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParamGenerator_set_p_params" "', argument " "2"" of type '" "SHE_SIM::ParamParam *""'"); 
+  }
+  temp2 = reinterpret_cast< SHE_SIM::ParamParam * >(argp2);
+  arg2 = reinterpret_cast< SHE_SIM::ParamParam ** >(&temp2);
+  (arg1)->set_p_params((SHE_SIM::ParamParam const *const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_generation_level(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::level_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get_generation_level",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get_generation_level" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::level_t *) &((SHE_SIM::ParamGenerator const *)arg1)->get_generation_level();
+  resultobj = SWIG_From_short(static_cast< short >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_p_generation_level(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::level_t **result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get_p_generation_level",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get_p_generation_level" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::level_t **) &((SHE_SIM::ParamGenerator const *)arg1)->get_p_generation_level();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(*result), SWIGTYPE_p_short, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_set_generation_level(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  SHE_SIM::level_t *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SHE_SIM::level_t temp2 ;
+  short val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParamGenerator_set_generation_level",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_set_generation_level" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  ecode2 = SWIG_AsVal_short(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParamGenerator_set_generation_level" "', argument " "2"" of type '" "SHE_SIM::level_t""'");
+  } 
+  temp2 = static_cast< SHE_SIM::level_t >(val2);
+  arg2 = &temp2;
+  (arg1)->set_generation_level((SHE_SIM::level_t const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_set_p_generation_level(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  SHE_SIM::level_t **arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  SHE_SIM::level_t *temp2 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParamGenerator_set_p_generation_level",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_set_p_generation_level" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_short, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParamGenerator_set_p_generation_level" "', argument " "2"" of type '" "SHE_SIM::level_t *""'"); 
+  }
+  temp2 = reinterpret_cast< SHE_SIM::level_t * >(argp2);
+  arg2 = reinterpret_cast< SHE_SIM::level_t ** >(&temp2);
+  (arg1)->set_p_generation_level((SHE_SIM::level_t const *const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::flt_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::flt_t *) &(arg1)->get();
+  resultobj = SWIG_From_double(static_cast< double >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_get_new(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::flt_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_get_new",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_get_new" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::flt_t *) &(arg1)->get_new();
+  resultobj = SWIG_From_double(static_cast< double >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_request_value(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  SHE_SIM::name_t *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  SHE_SIM::flt_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParamGenerator_request_value",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_request_value" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParamGenerator_request_value" "', argument " "2"" of type '" "SHE_SIM::name_t const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParamGenerator_request_value" "', argument " "2"" of type '" "SHE_SIM::name_t const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (SHE_SIM::flt_t *) &(arg1)->request_value((SHE_SIM::name_t const &)*arg2);
+  resultobj = SWIG_From_double(static_cast< double >(*result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_request_new_value(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  SHE_SIM::name_t *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  SHE_SIM::flt_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParamGenerator_request_new_value",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_request_new_value" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParamGenerator_request_new_value" "', argument " "2"" of type '" "SHE_SIM::name_t const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParamGenerator_request_new_value" "', argument " "2"" of type '" "SHE_SIM::name_t const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (SHE_SIM::flt_t *) &(arg1)->request_new_value((SHE_SIM::name_t const &)*arg2);
+  resultobj = SWIG_From_double(static_cast< double >(*result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_request(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  SHE_SIM::name_t *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  SHE_SIM::ParamGenerator *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParamGenerator_request",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_request" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParamGenerator_request" "', argument " "2"" of type '" "SHE_SIM::name_t const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParamGenerator_request" "', argument " "2"" of type '" "SHE_SIM::name_t const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (SHE_SIM::ParamGenerator *)(arg1)->request((SHE_SIM::name_t const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_request_new(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  SHE_SIM::name_t *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  SHE_SIM::ParamGenerator *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParamGenerator_request_new",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_request_new" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParamGenerator_request_new" "', argument " "2"" of type '" "SHE_SIM::name_t const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParamGenerator_request_new" "', argument " "2"" of type '" "SHE_SIM::name_t const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (SHE_SIM::ParamGenerator *)(arg1)->request_new((SHE_SIM::name_t const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_level_generated_at(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::level_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_level_generated_at",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_level_generated_at" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::level_t *) &((SHE_SIM::ParamGenerator const *)arg1)->level_generated_at();
+  resultobj = SWIG_From_short(static_cast< short >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamGenerator_clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamGenerator *arg1 = (SHE_SIM::ParamGenerator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::ParamGenerator *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamGenerator_clone",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamGenerator_clone" "', argument " "1"" of type '" "SHE_SIM::ParamGenerator const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamGenerator * >(argp1);
+  result = (SHE_SIM::ParamGenerator *)((SHE_SIM::ParamGenerator const *)arg1)->clone();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SHE_SIM__ParamGenerator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ParamGenerator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_SHE_SIM__ParamGenerator, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_delete_ParamParam(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamParam *arg1 = (SHE_SIM::ParamParam *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_ParamParam",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamParam, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ParamParam" "', argument " "1"" of type '" "SHE_SIM::ParamParam *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamParam * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamParam_is_equal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamParam *arg1 = (SHE_SIM::ParamParam *) 0 ;
+  SHE_SIM::ParamParam **arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  SHE_SIM::ParamParam *temp2 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParamParam_is_equal",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamParam_is_equal" "', argument " "1"" of type '" "SHE_SIM::ParamParam const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamParam * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParamParam_is_equal" "', argument " "2"" of type '" "SHE_SIM::ParamParam *""'"); 
+  }
+  temp2 = reinterpret_cast< SHE_SIM::ParamParam * >(argp2);
+  arg2 = reinterpret_cast< SHE_SIM::ParamParam ** >(&temp2);
+  result = (bool)((SHE_SIM::ParamParam const *)arg1)->is_equal((SHE_SIM::ParamParam const *const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamParam_not_equal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamParam *arg1 = (SHE_SIM::ParamParam *) 0 ;
+  SHE_SIM::ParamParam **arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  SHE_SIM::ParamParam *temp2 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParamParam_not_equal",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamParam_not_equal" "', argument " "1"" of type '" "SHE_SIM::ParamParam const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamParam * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParamParam_not_equal" "', argument " "2"" of type '" "SHE_SIM::ParamParam *""'"); 
+  }
+  temp2 = reinterpret_cast< SHE_SIM::ParamParam * >(argp2);
+  arg2 = reinterpret_cast< SHE_SIM::ParamParam ** >(&temp2);
+  result = (bool)((SHE_SIM::ParamParam const *)arg1)->not_equal((SHE_SIM::ParamParam const *const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamParam_get_mode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamParam *arg1 = (SHE_SIM::ParamParam *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::ParamParam::Mode *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamParam_get_mode",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamParam_get_mode" "', argument " "1"" of type '" "SHE_SIM::ParamParam const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamParam * >(argp1);
+  result = (SHE_SIM::ParamParam::Mode *) &((SHE_SIM::ParamParam const *)arg1)->get_mode();
+  resultobj = SWIG_From_int(static_cast< int >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamParam_get_mode_name(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamParam *arg1 = (SHE_SIM::ParamParam *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::name_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamParam_get_mode_name",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamParam_get_mode_name" "', argument " "1"" of type '" "SHE_SIM::ParamParam const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamParam * >(argp1);
+  result = ((SHE_SIM::ParamParam const *)arg1)->get_mode_name();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamParam_name(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamParam *arg1 = (SHE_SIM::ParamParam *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::name_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamParam_name",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamParam_name" "', argument " "1"" of type '" "SHE_SIM::ParamParam const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamParam * >(argp1);
+  result = ((SHE_SIM::ParamParam const *)arg1)->name();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamParam_get_parameters(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamParam *arg1 = (SHE_SIM::ParamParam *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SwigValueWrapper< std::vector< double,std::allocator< double > > > result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamParam_get_parameters",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamParam_get_parameters" "', argument " "1"" of type '" "SHE_SIM::ParamParam const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamParam * >(argp1);
+  result = ((SHE_SIM::ParamParam const *)arg1)->get_parameters();
+  resultobj = SWIG_NewPointerObj((new std::vector< SHE_SIM::flt_t,std::allocator< SHE_SIM::flt_t > >(static_cast< const std::vector< SHE_SIM::flt_t,std::allocator< SHE_SIM::flt_t > >& >(result))), SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamParam_get_parameters_string(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamParam *arg1 = (SHE_SIM::ParamParam *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::str_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamParam_get_parameters_string",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamParam_get_parameters_string" "', argument " "1"" of type '" "SHE_SIM::ParamParam const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamParam * >(argp1);
+  result = ((SHE_SIM::ParamParam const *)arg1)->get_parameters_string();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamParam_get_independently__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamParam *arg1 = (SHE_SIM::ParamParam *) 0 ;
+  SHE_SIM::gen_t *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  SHE_SIM::flt_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParamParam_get_independently",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamParam_get_independently" "', argument " "1"" of type '" "SHE_SIM::ParamParam const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamParam * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ranlux48,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParamParam_get_independently" "', argument " "2"" of type '" "SHE_SIM::gen_t &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParamParam_get_independently" "', argument " "2"" of type '" "SHE_SIM::gen_t &""'"); 
+  }
+  arg2 = reinterpret_cast< SHE_SIM::gen_t * >(argp2);
+  result = (SHE_SIM::flt_t)((SHE_SIM::ParamParam const *)arg1)->get_independently(*arg2);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamParam_get_independently__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamParam *arg1 = (SHE_SIM::ParamParam *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::flt_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamParam_get_independently",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamParam_get_independently" "', argument " "1"" of type '" "SHE_SIM::ParamParam const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamParam * >(argp1);
+  result = (SHE_SIM::flt_t)((SHE_SIM::ParamParam const *)arg1)->get_independently();
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamParam_get_independently(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_SHE_SIM__ParamParam, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_ParamParam_get_independently__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_SHE_SIM__ParamParam, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__ranlux48, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_ParamParam_get_independently__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'ParamParam_get_independently'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    SHE_SIM::ParamParam::get_independently(SHE_SIM::gen_t &) const\n"
+    "    SHE_SIM::ParamParam::get_independently() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamParam_clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamParam *arg1 = (SHE_SIM::ParamParam *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::ParamParam *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParamParam_clone",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamParam_clone" "', argument " "1"" of type '" "SHE_SIM::ParamParam const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamParam * >(argp1);
+  result = (SHE_SIM::ParamParam *)((SHE_SIM::ParamParam const *)arg1)->clone();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParamParam_recreate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamParam *arg1 = (SHE_SIM::ParamParam *) 0 ;
+  std::vector< SHE_SIM::flt_t,std::allocator< SHE_SIM::flt_t > > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  SHE_SIM::ParamParam *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParamParam_recreate",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParamParam_recreate" "', argument " "1"" of type '" "SHE_SIM::ParamParam const *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::ParamParam * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__vectorT_double_std__allocatorT_double_t_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParamParam_recreate" "', argument " "2"" of type '" "std::vector< SHE_SIM::flt_t,std::allocator< SHE_SIM::flt_t > > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParamParam_recreate" "', argument " "2"" of type '" "std::vector< SHE_SIM::flt_t,std::allocator< SHE_SIM::flt_t > > const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< SHE_SIM::flt_t,std::allocator< SHE_SIM::flt_t > > * >(argp2);
+  result = (SHE_SIM::ParamParam *)((SHE_SIM::ParamParam const *)arg1)->recreate((std::vector< SHE_SIM::flt_t,std::allocator< SHE_SIM::flt_t > > const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SHE_SIM__ParamParam, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ParamParam_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_SHE_SIM__ParamParam, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_bad_mode_error__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::bad_mode_error *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_bad_mode_error")) SWIG_fail;
+  result = (SHE_SIM::bad_mode_error *)new SHE_SIM::bad_mode_error();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SHE_SIM__bad_mode_error, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_bad_mode_error__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::name_t *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::bad_mode_error *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_bad_mode_error",&obj0)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_bad_mode_error" "', argument " "1"" of type '" "SHE_SIM::name_t const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_bad_mode_error" "', argument " "1"" of type '" "SHE_SIM::name_t const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = (SHE_SIM::bad_mode_error *)new SHE_SIM::bad_mode_error((SHE_SIM::name_t const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SHE_SIM__bad_mode_error, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_bad_mode_error__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::ParamParam::Mode *arg1 = 0 ;
+  int val1 ;
+  int ecode1 ;
+  SHE_SIM::ParamParam::Mode temp1 ;
+  PyObject * obj0 = 0 ;
+  SHE_SIM::bad_mode_error *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_bad_mode_error",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int (obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_bad_mode_error" "', argument " "1"" of type '" "SHE_SIM::ParamParam::Mode const &""'");
+  } else {
+    temp1 = static_cast< SHE_SIM::ParamParam::Mode >(val1);
+    arg1 = &temp1;
+  }
+  result = (SHE_SIM::bad_mode_error *)new SHE_SIM::bad_mode_error((SHE_SIM::ParamParam::Mode const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SHE_SIM__bad_mode_error, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_bad_mode_error(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[2];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_bad_mode_error__SWIG_0(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_bad_mode_error__SWIG_2(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_bad_mode_error__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_bad_mode_error'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    SHE_SIM::bad_mode_error::bad_mode_error()\n"
+    "    SHE_SIM::bad_mode_error::bad_mode_error(SHE_SIM::name_t const &)\n"
+    "    SHE_SIM::bad_mode_error::bad_mode_error(SHE_SIM::ParamParam::Mode const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_bad_mode_error(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SHE_SIM::bad_mode_error *arg1 = (SHE_SIM::bad_mode_error *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_bad_mode_error",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SHE_SIM__bad_mode_error, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_bad_mode_error" "', argument " "1"" of type '" "SHE_SIM::bad_mode_error *""'"); 
+  }
+  arg1 = reinterpret_cast< SHE_SIM::bad_mode_error * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *bad_mode_error_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_SHE_SIM__bad_mode_error, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -29412,6 +30781,45 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ParamHierarchyLevel_clone", _wrap_ParamHierarchyLevel_clone, METH_VARARGS, NULL},
 	 { (char *)"ParamHierarchyLevel_set_param_params", _wrap_ParamHierarchyLevel_set_param_params, METH_VARARGS, NULL},
 	 { (char *)"ParamHierarchyLevel_swigregister", ParamHierarchyLevel_swigregister, METH_VARARGS, NULL},
+	 { (char *)"delete_ParamGenerator", _wrap_delete_ParamGenerator, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_name", _wrap_ParamGenerator_name, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_get_p_owner", _wrap_ParamGenerator_get_p_owner, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_get_owner", _wrap_ParamGenerator_get_owner, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_set_p_owner", _wrap_ParamGenerator_set_p_owner, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_set_owner", _wrap_ParamGenerator_set_owner, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_get_p_rng", _wrap_ParamGenerator_get_p_rng, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_get_rng", _wrap_ParamGenerator_get_rng, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_get_params", _wrap_ParamGenerator_get_params, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_get_p_params", _wrap_ParamGenerator_get_p_params, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_set_p_params", _wrap_ParamGenerator_set_p_params, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_get_generation_level", _wrap_ParamGenerator_get_generation_level, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_get_p_generation_level", _wrap_ParamGenerator_get_p_generation_level, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_set_generation_level", _wrap_ParamGenerator_set_generation_level, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_set_p_generation_level", _wrap_ParamGenerator_set_p_generation_level, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_get", _wrap_ParamGenerator_get, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_get_new", _wrap_ParamGenerator_get_new, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_request_value", _wrap_ParamGenerator_request_value, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_request_new_value", _wrap_ParamGenerator_request_new_value, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_request", _wrap_ParamGenerator_request, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_request_new", _wrap_ParamGenerator_request_new, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_level_generated_at", _wrap_ParamGenerator_level_generated_at, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_clone", _wrap_ParamGenerator_clone, METH_VARARGS, NULL},
+	 { (char *)"ParamGenerator_swigregister", ParamGenerator_swigregister, METH_VARARGS, NULL},
+	 { (char *)"delete_ParamParam", _wrap_delete_ParamParam, METH_VARARGS, NULL},
+	 { (char *)"ParamParam_is_equal", _wrap_ParamParam_is_equal, METH_VARARGS, NULL},
+	 { (char *)"ParamParam_not_equal", _wrap_ParamParam_not_equal, METH_VARARGS, NULL},
+	 { (char *)"ParamParam_get_mode", _wrap_ParamParam_get_mode, METH_VARARGS, NULL},
+	 { (char *)"ParamParam_get_mode_name", _wrap_ParamParam_get_mode_name, METH_VARARGS, NULL},
+	 { (char *)"ParamParam_name", _wrap_ParamParam_name, METH_VARARGS, NULL},
+	 { (char *)"ParamParam_get_parameters", _wrap_ParamParam_get_parameters, METH_VARARGS, NULL},
+	 { (char *)"ParamParam_get_parameters_string", _wrap_ParamParam_get_parameters_string, METH_VARARGS, NULL},
+	 { (char *)"ParamParam_get_independently", _wrap_ParamParam_get_independently, METH_VARARGS, NULL},
+	 { (char *)"ParamParam_clone", _wrap_ParamParam_clone, METH_VARARGS, NULL},
+	 { (char *)"ParamParam_recreate", _wrap_ParamParam_recreate, METH_VARARGS, NULL},
+	 { (char *)"ParamParam_swigregister", ParamParam_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_bad_mode_error", _wrap_new_bad_mode_error, METH_VARARGS, NULL},
+	 { (char *)"delete_bad_mode_error", _wrap_delete_bad_mode_error, METH_VARARGS, NULL},
+	 { (char *)"bad_mode_error_swigregister", bad_mode_error_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_Cluster", _wrap_new_Cluster, METH_VARARGS, NULL},
 	 { (char *)"delete_Cluster", _wrap_delete_Cluster, METH_VARARGS, NULL},
 	 { (char *)"Cluster_get_hierarchy_level", _wrap_Cluster_get_hierarchy_level, METH_VARARGS, NULL},
@@ -29840,6 +31248,9 @@ static PyMethodDef SwigMethods[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static void *_p_SHE_SIM__bad_mode_errorTo_p_std__runtime_error(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((std::runtime_error *)  ((SHE_SIM::bad_mode_error *) x));
+}
 static void *_p_SHE_SIM__SurveyTo_p_SHE_SIM__ParamHierarchyLevel(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((SHE_SIM::ParamHierarchyLevel *)  ((SHE_SIM::Survey *) x));
 }
@@ -29876,9 +31287,10 @@ static swig_type_info _swigt__p_SHE_SIM__GalaxyGroup = {"_p_SHE_SIM__GalaxyGroup
 static swig_type_info _swigt__p_SHE_SIM__Image = {"_p_SHE_SIM__Image", "SHE_SIM::Image *|std::vector< SHE_SIM::Image * >::value_type", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SHE_SIM__ImageGroup = {"_p_SHE_SIM__ImageGroup", "std::vector< SHE_SIM::ImageGroup * >::value_type|SHE_SIM::ImageGroup *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SHE_SIM__ParamGenerator = {"_p_SHE_SIM__ParamGenerator", "SHE_SIM::ParamGenerator *|SHE_SIM::param_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_SHE_SIM__ParamHierarchyLevel = {"_p_SHE_SIM__ParamHierarchyLevel", "SHE_SIM::ParamHierarchyLevel::parent_t *|SHE_SIM::ParamHierarchyLevel *|SHE_SIM::ParamHierarchyLevel::child_t *|std::vector< SHE_SIM::ParamHierarchyLevel * >::value_type", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_SHE_SIM__ParamHierarchyLevel = {"_p_SHE_SIM__ParamHierarchyLevel", "SHE_SIM::ParamHierarchyLevel::parent_t *|SHE_SIM::ParamHierarchyLevel *|SHE_SIM::ParamHierarchyLevel::child_t *|SHE_SIM::ParamGenerator::owner_t *|std::vector< SHE_SIM::ParamHierarchyLevel * >::value_type", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SHE_SIM__ParamParam = {"_p_SHE_SIM__ParamParam", "SHE_SIM::param_param_t *|SHE_SIM::ParamParam *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SHE_SIM__Survey = {"_p_SHE_SIM__Survey", "SHE_SIM::Survey *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_SHE_SIM__bad_mode_error = {"_p_SHE_SIM__bad_mode_error", "SHE_SIM::bad_mode_error *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_child_ptr_t = {"_p_child_ptr_t", "child_ptr_t *", 0, 0, (void*)0, 0};
@@ -29889,6 +31301,7 @@ static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "differ
 static swig_type_info _swigt__p_double = {"_p_double", "double *|SHE_SIM::flt_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|SHE_SIM::int_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_long = {"_p_long", "SHE_SIM::long_int_t *|long *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_owner_t = {"_p_owner_t", "owner_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_parent_t = {"_p_parent_t", "parent_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_reference = {"_p_reference", "reference *", 0, 0, (void*)0, 0};
@@ -29906,6 +31319,7 @@ static swig_type_info _swigt__p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_p_t
 static swig_type_info _swigt__p_std__invalid_argument = {"_p_std__invalid_argument", "std::invalid_argument *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ranlux48 = {"_p_std__ranlux48", "SHE_SIM::gen_t *|std::ranlux48 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ranlux48__result_type = {"_p_std__ranlux48__result_type", "std::ranlux48::result_type *|SHE_SIM::seed_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__runtime_error = {"_p_std__runtime_error", "std::runtime_error *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "SHE_SIM::name_t *|std::string *|SHE_SIM::str_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__unique_ptrT_SHE_SIM__ParamGenerator_t = {"_p_std__unique_ptrT_SHE_SIM__ParamGenerator_t", "SHE_SIM::param_ptr_t *|std::unique_ptr< SHE_SIM::ParamGenerator > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__unique_ptrT_SHE_SIM__ParamParam_t = {"_p_std__unique_ptrT_SHE_SIM__ParamParam_t", "SHE_SIM::param_param_ptr_t *|std::unique_ptr< SHE_SIM::ParamParam > *", 0, 0, (void*)0, 0};
@@ -29923,6 +31337,7 @@ static swig_type_info _swigt__p_std__vectorT_SHE_SIM__ImageGroup_p_std__allocato
 static swig_type_info _swigt__p_std__vectorT_SHE_SIM__Image_p_std__allocatorT_SHE_SIM__Image_p_t_t = {"_p_std__vectorT_SHE_SIM__Image_p_std__allocatorT_SHE_SIM__Image_p_t_t", "std::vector< SHE_SIM::Image * > *|std::vector< SHE_SIM::Image *,std::allocator< SHE_SIM::Image * > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_SHE_SIM__ParamHierarchyLevel_const_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_const_p_t_t = {"_p_std__vectorT_SHE_SIM__ParamHierarchyLevel_const_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_const_p_t_t", "std::vector< SHE_SIM::ParamHierarchyLevel::child_t const *,std::allocator< SHE_SIM::ParamHierarchyLevel::child_t const * > > *|std::vector< SHE_SIM::ParamHierarchyLevel const *,std::allocator< SHE_SIM::ParamHierarchyLevel const * > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_SHE_SIM__ParamHierarchyLevel_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_p_t_t = {"_p_std__vectorT_SHE_SIM__ParamHierarchyLevel_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_p_t_t", "std::vector< SHE_SIM::ParamHierarchyLevel::child_t *,std::allocator< SHE_SIM::ParamHierarchyLevel::child_t * > > *|std::vector< SHE_SIM::ParamHierarchyLevel *,std::allocator< SHE_SIM::ParamHierarchyLevel * > > *|std::vector< SHE_SIM::ParamHierarchyLevel * > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_double_std__allocatorT_double_t_t = {"_p_std__vectorT_double_std__allocatorT_double_t_t", "std::vector< double,std::allocator< double > > *|std::vector< SHE_SIM::flt_t,std::allocator< SHE_SIM::flt_t > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_int_std__allocatorT_int_t_t = {"_p_std__vectorT_int_std__allocatorT_int_t_t", "std::vector< int,std::allocator< int > > *|std::vector< SHE_SIM::int_t,std::allocator< SHE_SIM::int_t > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_std__allocatorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_t_t = {"_p_std__vectorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_std__allocatorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_t_t", "std::vector< std::unique_ptr< SHE_SIM::ParamHierarchyLevel >,std::allocator< std::unique_ptr< SHE_SIM::ParamHierarchyLevel > > > *|SHE_SIM::ParamHierarchyLevel::children_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)0, 0};
@@ -29940,6 +31355,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_SHE_SIM__ParamHierarchyLevel,
   &_swigt__p_SHE_SIM__ParamParam,
   &_swigt__p_SHE_SIM__Survey,
+  &_swigt__p_SHE_SIM__bad_mode_error,
   &_swigt__p_allocator_type,
   &_swigt__p_char,
   &_swigt__p_child_ptr_t,
@@ -29950,6 +31366,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_double,
   &_swigt__p_int,
   &_swigt__p_long,
+  &_swigt__p_owner_t,
   &_swigt__p_p_PyObject,
   &_swigt__p_parent_t,
   &_swigt__p_reference,
@@ -29967,6 +31384,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__invalid_argument,
   &_swigt__p_std__ranlux48,
   &_swigt__p_std__ranlux48__result_type,
+  &_swigt__p_std__runtime_error,
   &_swigt__p_std__string,
   &_swigt__p_std__unique_ptrT_SHE_SIM__ParamGenerator_t,
   &_swigt__p_std__unique_ptrT_SHE_SIM__ParamParam_t,
@@ -29984,6 +31402,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorT_SHE_SIM__Image_p_std__allocatorT_SHE_SIM__Image_p_t_t,
   &_swigt__p_std__vectorT_SHE_SIM__ParamHierarchyLevel_const_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_const_p_t_t,
   &_swigt__p_std__vectorT_SHE_SIM__ParamHierarchyLevel_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_p_t_t,
+  &_swigt__p_std__vectorT_double_std__allocatorT_double_t_t,
   &_swigt__p_std__vectorT_int_std__allocatorT_int_t_t,
   &_swigt__p_std__vectorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_std__allocatorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_t_t,
   &_swigt__p_swig__SwigPyIterator,
@@ -30001,6 +31420,7 @@ static swig_cast_info _swigc__p_SHE_SIM__ParamGenerator[] = {  {&_swigt__p_SHE_S
 static swig_cast_info _swigc__p_SHE_SIM__ParamHierarchyLevel[] = {  {&_swigt__p_SHE_SIM__ParamHierarchyLevel, 0, 0, 0},  {&_swigt__p_SHE_SIM__Image, _p_SHE_SIM__ImageTo_p_SHE_SIM__ParamHierarchyLevel, 0, 0},  {&_swigt__p_SHE_SIM__Survey, _p_SHE_SIM__SurveyTo_p_SHE_SIM__ParamHierarchyLevel, 0, 0},  {&_swigt__p_SHE_SIM__Field, _p_SHE_SIM__FieldTo_p_SHE_SIM__ParamHierarchyLevel, 0, 0},  {&_swigt__p_SHE_SIM__Galaxy, _p_SHE_SIM__GalaxyTo_p_SHE_SIM__ParamHierarchyLevel, 0, 0},  {&_swigt__p_SHE_SIM__ClusterGroup, _p_SHE_SIM__ClusterGroupTo_p_SHE_SIM__ParamHierarchyLevel, 0, 0},  {&_swigt__p_SHE_SIM__FieldGroup, _p_SHE_SIM__FieldGroupTo_p_SHE_SIM__ParamHierarchyLevel, 0, 0},  {&_swigt__p_SHE_SIM__GalaxyGroup, _p_SHE_SIM__GalaxyGroupTo_p_SHE_SIM__ParamHierarchyLevel, 0, 0},  {&_swigt__p_SHE_SIM__Cluster, _p_SHE_SIM__ClusterTo_p_SHE_SIM__ParamHierarchyLevel, 0, 0},  {&_swigt__p_SHE_SIM__ImageGroup, _p_SHE_SIM__ImageGroupTo_p_SHE_SIM__ParamHierarchyLevel, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SHE_SIM__ParamParam[] = {  {&_swigt__p_SHE_SIM__ParamParam, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SHE_SIM__Survey[] = {  {&_swigt__p_SHE_SIM__Survey, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_SHE_SIM__bad_mode_error[] = {  {&_swigt__p_SHE_SIM__bad_mode_error, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_child_ptr_t[] = {  {&_swigt__p_child_ptr_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -30011,6 +31431,7 @@ static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_ty
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_long[] = {  {&_swigt__p_long, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_owner_t[] = {  {&_swigt__p_owner_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_parent_t[] = {  {&_swigt__p_parent_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_reference[] = {  {&_swigt__p_reference, 0, 0, 0},{0, 0, 0, 0}};
@@ -30028,6 +31449,7 @@ static swig_cast_info _swigc__p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_p_t
 static swig_cast_info _swigc__p_std__invalid_argument[] = {  {&_swigt__p_std__invalid_argument, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__ranlux48[] = {  {&_swigt__p_std__ranlux48, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__ranlux48__result_type[] = {  {&_swigt__p_std__ranlux48__result_type, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__runtime_error[] = {  {&_swigt__p_std__runtime_error, 0, 0, 0},  {&_swigt__p_SHE_SIM__bad_mode_error, _p_SHE_SIM__bad_mode_errorTo_p_std__runtime_error, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__unique_ptrT_SHE_SIM__ParamGenerator_t[] = {  {&_swigt__p_std__unique_ptrT_SHE_SIM__ParamGenerator_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__unique_ptrT_SHE_SIM__ParamParam_t[] = {  {&_swigt__p_std__unique_ptrT_SHE_SIM__ParamParam_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -30045,6 +31467,7 @@ static swig_cast_info _swigc__p_std__vectorT_SHE_SIM__ImageGroup_p_std__allocato
 static swig_cast_info _swigc__p_std__vectorT_SHE_SIM__Image_p_std__allocatorT_SHE_SIM__Image_p_t_t[] = {  {&_swigt__p_std__vectorT_SHE_SIM__Image_p_std__allocatorT_SHE_SIM__Image_p_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_SHE_SIM__ParamHierarchyLevel_const_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_const_p_t_t[] = {  {&_swigt__p_std__vectorT_SHE_SIM__ParamHierarchyLevel_const_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_const_p_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_SHE_SIM__ParamHierarchyLevel_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_p_t_t[] = {  {&_swigt__p_std__vectorT_SHE_SIM__ParamHierarchyLevel_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_p_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_double_std__allocatorT_double_t_t[] = {  {&_swigt__p_std__vectorT_double_std__allocatorT_double_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_int_std__allocatorT_int_t_t[] = {  {&_swigt__p_std__vectorT_int_std__allocatorT_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_std__allocatorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_t_t[] = {  {&_swigt__p_std__vectorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_std__allocatorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__SwigPyIterator, 0, 0, 0},{0, 0, 0, 0}};
@@ -30062,6 +31485,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_SHE_SIM__ParamHierarchyLevel,
   _swigc__p_SHE_SIM__ParamParam,
   _swigc__p_SHE_SIM__Survey,
+  _swigc__p_SHE_SIM__bad_mode_error,
   _swigc__p_allocator_type,
   _swigc__p_char,
   _swigc__p_child_ptr_t,
@@ -30072,6 +31496,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_double,
   _swigc__p_int,
   _swigc__p_long,
+  _swigc__p_owner_t,
   _swigc__p_p_PyObject,
   _swigc__p_parent_t,
   _swigc__p_reference,
@@ -30089,6 +31514,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__invalid_argument,
   _swigc__p_std__ranlux48,
   _swigc__p_std__ranlux48__result_type,
+  _swigc__p_std__runtime_error,
   _swigc__p_std__string,
   _swigc__p_std__unique_ptrT_SHE_SIM__ParamGenerator_t,
   _swigc__p_std__unique_ptrT_SHE_SIM__ParamParam_t,
@@ -30106,6 +31532,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorT_SHE_SIM__Image_p_std__allocatorT_SHE_SIM__Image_p_t_t,
   _swigc__p_std__vectorT_SHE_SIM__ParamHierarchyLevel_const_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_const_p_t_t,
   _swigc__p_std__vectorT_SHE_SIM__ParamHierarchyLevel_p_std__allocatorT_SHE_SIM__ParamHierarchyLevel_p_t_t,
+  _swigc__p_std__vectorT_double_std__allocatorT_double_t_t,
   _swigc__p_std__vectorT_int_std__allocatorT_int_t_t,
   _swigc__p_std__vectorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_std__allocatorT_std__unique_ptrT_SHE_SIM__ParamHierarchyLevel_t_t_t,
   _swigc__p_swig__SwigPyIterator,
@@ -30792,6 +32219,11 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
+  SWIG_Python_SetConstant(d, "ParamParam_UNSPECIFIED",SWIG_From_int(static_cast< int >(SHE_SIM::ParamParam::UNSPECIFIED)));
+  SWIG_Python_SetConstant(d, "ParamParam_INDEPENDENT",SWIG_From_int(static_cast< int >(SHE_SIM::ParamParam::INDEPENDENT)));
+  SWIG_Python_SetConstant(d, "ParamParam_DEPENDENT",SWIG_From_int(static_cast< int >(SHE_SIM::ParamParam::DEPENDENT)));
+  SWIG_Python_SetConstant(d, "ParamParam_ALT_DEPENDENT",SWIG_From_int(static_cast< int >(SHE_SIM::ParamParam::ALT_DEPENDENT)));
+  SWIG_Python_SetConstant(d, "ParamParam_OTHER",SWIG_From_int(static_cast< int >(SHE_SIM::ParamParam::OTHER)));
   PyDict_SetItemString(md,(char*)"cvar", SWIG_globals());
   SWIG_addvarlink(SWIG_globals(),(char*)"Omega_m",Swig_var_Omega_m_get, Swig_var_Omega_m_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"Omega_r",Swig_var_Omega_r_get, Swig_var_Omega_r_set);

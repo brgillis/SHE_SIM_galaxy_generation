@@ -1,4 +1,4 @@
-IceBRG_physics.IceBRG_physics_test 6 0.34256
-SHE_SIM.SHE_SIM_tests 6 0.11367
-SHE_SIM_galaxy_image_generation.PyTest 3 0.287866
+IceBRG_physics.IceBRG_physics_test 7 0.301173
+SHE_SIM.SHE_SIM_tests 7 0.0999852
+SHE_SIM_galaxy_image_generation.PyTest 4 0.206656
 ---
