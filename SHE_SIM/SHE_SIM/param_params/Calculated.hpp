@@ -62,6 +62,16 @@ public:
 	// Get the name of this
 	virtual name_t name() const override { return "calculated"; };
 
+	virtual std::vector<flt_t> get_parameters() const override
+	{
+		return std::vector<flt_t>();
+	}
+
+	virtual str_t get_parameters_string() const override
+	{
+		return str_t("<None>");
+	}
+
 	// Get the value
 	virtual flt_t get_independently( gen_t & = IceBRG::rng ) const override
 	{

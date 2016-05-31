@@ -27,6 +27,7 @@
 #define SHE_SIM_GAL_PARAMS_PARAM_PARAMS_INDEXPQUADRATIC_HPP_
 
 #include <initializer_list>
+#include <sstream>
 
 #include "SHE_SIM/common.hpp"
 #include "SHE_SIM/ParamParam.hpp"
@@ -73,6 +74,23 @@ public:
 
 	// Get the name of this
 	virtual name_t name() const override { return "exp_quadratic"; };
+
+	virtual std::vector<flt_t> get_parameters() const override
+	{
+		return std::vector<flt_t>({_N_scale,_hinge_mag,_beta_0,_d_beta,_mag_min,_mag_max});
+	}
+
+	virtual str_t get_parameters_string() const override
+	{
+		std::stringstream ss("");
+		ss << "N_scale: " << _N_scale << ", "
+				<< "Hinge Magnitude: " << _hinge_mag  << ", "
+				<< "beta_0: " << _beta_0  << ", "
+				<< "d_beta: " << _d_beta  << ", "
+				<< "Magnitude Min: " << _mag_min  << ", "
+				<< "Magnitude Max: " << _mag_max;
+		return ss.str();
+	}
 
 	// PDF generation function
 	flt_t get_pdf(flt_t const & mag) const

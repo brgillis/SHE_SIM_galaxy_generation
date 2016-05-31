@@ -105,17 +105,26 @@ def run_from_survey_and_options(survey, options):
     
     # Print all options we're using to the logger
     logger.info("# Generating images with the following options: #")
+    logger.info("")
     for name in options:
         logger.info(name + ": " + str(options(name)))
+        logger.info("")
         
     # Print survey settings and levels too
     logger.info("# And using the following settings for the physical model: #")
+    logger.info("")
     for name in allowed_survey_settings:
         
         gen_level = generation_levels_inverse(int(survey.get_generation_level(name)))
         logger.info(name + " generation level: " + gen_level)
         
-        # param = survey.get_param(name)
+        param_params = survey.get_param(name).get_params()
+        pp_mode = param_params.get_mode_name()
+        logger.info(name + " generation mode: " + pp_mode)
+        pp_params = param_params.get_parameters_string()
+        logger.info(name + " generation parameters: " + pp_params)
+        
+        logger.info("")
 
     # Ensure that the output folder exists
     cmd = 'mkdir -p ' + options['output_folder']
