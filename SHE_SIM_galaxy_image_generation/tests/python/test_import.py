@@ -3,7 +3,7 @@
     linked correctly.
 """
 
-import pytest
+import unittest
 
 
 class TestCase(unittest.TestCase):

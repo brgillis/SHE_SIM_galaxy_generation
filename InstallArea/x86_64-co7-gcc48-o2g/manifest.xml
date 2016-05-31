@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <project name="SheSim" version="1.0" />
+  <used_projects>
+    <project name="Elements" version="3.10" />
+  </used_projects>
+</manifest>

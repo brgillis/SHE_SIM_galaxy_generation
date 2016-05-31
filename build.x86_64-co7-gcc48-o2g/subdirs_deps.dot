@@ -1,0 +1,20 @@
+digraph subdirs_deps {
+"IceBRG_main" -> "ElementsKernel";
+"IceBRG_physics" -> "ElementsKernel";
+"IceBRG_physics" -> "IceBRG_main";
+"IceBRG_lensing" -> "ElementsKernel";
+"IceBRG_lensing" -> "IceBRG_main";
+"IceBRG_lensing" -> "IceBRG_physics";
+"SHE_SIM" -> "ElementsKernel";
+"SHE_SIM" -> "IceBRG_main";
+"SHE_SIM" -> "IceBRG_physics";
+"SHE_SIM" -> "IceBRG_lensing";
+"cIceBRGpy" -> "ElementsKernel";
+"cIceBRGpy" -> "IceBRG_main";
+"cIceBRGpy" -> "IceBRG_physics";
+"cIceBRGpy" -> "IceBRG_lensing";
+"SHE_SIM_galaxy_image_generation" -> "ElementsKernel";
+"SHE_SIM_galaxy_image_generation" -> "cIceBRGpy";
+"SHE_SIM_galaxy_image_generation" -> "icebrgpy";
+"SHE_SIM_galaxy_image_generation" -> "SHE_SIM";
+}

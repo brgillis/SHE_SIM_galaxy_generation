@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<env:config xmlns:env="EnvSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="EnvSchema EnvSchema.xsd ">
+  <env:default variable="SGS_releases"></env:default>
+  <env:default variable="SGS_external"></env:default>
+  <env:search_path>/opt/euclid/Elements/3.10/InstallArea/x86_64-co7-gcc48-o2g</env:search_path>
+  <env:include>ElementsEnvironment.xml</env:include>
+  <env:prepend variable="PATH">/usr/lib64/ccache</env:prepend>
+  <env:prepend variable="PATH">/home/user/git/she_sim_galaxy_generation/InstallArea/x86_64-co7-gcc48-o2g/scripts</env:prepend>
+  <env:prepend variable="PATH">/home/user/git/she_sim_galaxy_generation/InstallArea/x86_64-co7-gcc48-o2g/bin</env:prepend>
+  <env:prepend variable="LD_LIBRARY_PATH">/home/user/git/she_sim_galaxy_generation/InstallArea/x86_64-co7-gcc48-o2g/lib</env:prepend>
+  <env:prepend variable="PYTHONPATH">/home/user/git/she_sim_galaxy_generation/InstallArea/x86_64-co7-gcc48-o2g/python</env:prepend>
+  <env:prepend variable="PYTHONPATH">/home/user/git/she_sim_galaxy_generation/InstallArea/x86_64-co7-gcc48-o2g/python/lib-dynload</env:prepend>
+  <env:prepend variable="ELEMENTS_CONF_PATH">/home/user/git/she_sim_galaxy_generation/InstallArea/x86_64-co7-gcc48-o2g/conf</env:prepend>
+  <env:prepend variable="ELEMENTS_AUX_PATH">/home/user/git/she_sim_galaxy_generation/InstallArea/x86_64-co7-gcc48-o2g/auxdir</env:prepend>
+  <env:set variable="SHESIM_PROJECT_ROOT">/home/user/git/she_sim_galaxy_generation</env:set>
+  <env:set variable="ICEBRG_MAINROOT">${SHESIM_PROJECT_ROOT}/IceBRG_main</env:set>
+  <env:set variable="ICEBRG_PHYSICSROOT">${SHESIM_PROJECT_ROOT}/IceBRG_physics</env:set>
+  <env:set variable="ICEBRG_LENSINGROOT">${SHESIM_PROJECT_ROOT}/IceBRG_lensing</env:set>
+  <env:set variable="SHE_SIMROOT">${SHESIM_PROJECT_ROOT}/SHE_SIM</env:set>
+  <env:set variable="CICEBRGPYROOT">${SHESIM_PROJECT_ROOT}/cIceBRGpy</env:set>
+  <env:prepend variable="PYTHONPATH">${SHESIM_PROJECT_ROOT}/cIceBRGpy/python</env:prepend>
+  <env:set variable="ICEBRGPYROOT">${SHESIM_PROJECT_ROOT}/icebrgpy</env:set>
+  <env:prepend variable="PYTHONPATH">${SHESIM_PROJECT_ROOT}/icebrgpy/python</env:prepend>
+  <env:set variable="SHE_SIM_GALAXY_IMAGE_GENERATIONROOT">${SHESIM_PROJECT_ROOT}/SHE_SIM_galaxy_image_generation</env:set>
+  <env:prepend variable="PYTHONPATH">${SHESIM_PROJECT_ROOT}/SHE_SIM_galaxy_image_generation/python</env:prepend>
+  <env:prepend variable="ELEMENTS_CONF_PATH">${SHESIM_PROJECT_ROOT}/SHE_SIM_galaxy_image_generation/conf</env:prepend>
+  <env:prepend variable="ELEMENTS_AUX_PATH">${SHESIM_PROJECT_ROOT}/SHE_SIM_galaxy_image_generation/auxdir</env:prepend>
+  <env:prepend variable="PATH">/home/user/git/she_sim_galaxy_generation/build.x86_64-co7-gcc48-o2g/bin</env:prepend>
+  <env:prepend variable="PATH">/home/user/git/she_sim_galaxy_generation/build.x86_64-co7-gcc48-o2g/scripts</env:prepend>
+  <env:prepend variable="LD_LIBRARY_PATH">/home/user/git/she_sim_galaxy_generation/build.x86_64-co7-gcc48-o2g/lib</env:prepend>
+  <env:prepend variable="PYTHONPATH">/home/user/git/she_sim_galaxy_generation/build.x86_64-co7-gcc48-o2g/lib</env:prepend>
+  <env:prepend variable="PYTHONPATH">/home/user/git/she_sim_galaxy_generation/build.x86_64-co7-gcc48-o2g/python</env:prepend>
+  <env:prepend variable="ELEMENTS_AUX_PATH">/home/user/git/she_sim_galaxy_generation/build.x86_64-co7-gcc48-o2g/auxdir</env:prepend>
+</env:config>
