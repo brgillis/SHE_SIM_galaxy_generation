@@ -1,2 +1,0 @@
-#!/bin/sh
-exec  /usr/bin/python /opt/euclid/Elements/3.10/InstallArea/x86_64-co7-gcc48-o2g/cmake/scripts/env.py --xml /home/user/git/she_sim_galaxy_generation/build.x86_64-co7-gcc48-o2g/SheSimBuildEnvironment.xml "$@"
