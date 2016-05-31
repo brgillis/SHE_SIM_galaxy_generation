@@ -118,7 +118,6 @@ allowed_survey_settings = (# Survey level
                             'galaxy_type',
                             'physical_size_bulge',
                             'physical_size_disk',
-                            'psf_model',
                             'redshift',
                             'rotation',
                             'rp',

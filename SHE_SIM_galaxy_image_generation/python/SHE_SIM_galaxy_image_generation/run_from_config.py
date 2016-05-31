@@ -115,8 +115,6 @@ def run_from_survey_and_options(survey, options):
     logger.info("")
     for name in allowed_survey_settings:
 
-	logger.info(name + ":")
-        
         gen_level = generation_levels_inverse[int(survey.get_generation_level(name))]
         logger.info(name + " generation level: " + gen_level)
         
