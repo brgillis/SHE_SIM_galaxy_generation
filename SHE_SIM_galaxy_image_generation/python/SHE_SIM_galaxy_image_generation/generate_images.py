@@ -143,6 +143,9 @@ def print_galaxies(image,
             <SHE_SIM.galaxy_list> Iterable list of the galaxies which were printed.
     """
 
+    logger = getLogger(mv.logger_name)
+    logger.info("Entering 'print_galaxies' function.")
+
     galaxies = image.get_galaxy_descendants()
 
     background_galaxies = []
@@ -223,7 +226,6 @@ def print_galaxies(image,
     else:
         num_ratio = 1
 
-
     if (options['mode'] == 'stamps') and (not options['details_only']):
 
         # Figure out how to set up the grid, making it as square as possible
@@ -258,6 +260,15 @@ def print_galaxies(image,
                                          stamp_image_npix_y,
                                          dtype=dithers[di].dtype,
                                          scale=dithers[di].scale)
+            
+    if options['render_background_galaxies']:
+        logger.info("Printing " + str(num_target_galaxies) + " target galaxies and " + 
+                    str(num_background_galaxies) + " background galaxies.")
+    else:
+        logger.info("Printing " + str(num_target_galaxies) + " target galaxies.")
+        
+    num_target_galaxies_printed = 0
+    num_background_galaxies_printed = 0
 
     # Loop over galaxies now
 
@@ -268,6 +279,17 @@ def print_galaxies(image,
         # If it isn't a target and we aren't rendering background galaxies, skip it
         if (not is_target_gal) and (not options['render_background_galaxies']):
             continue
+        
+        if is_target_gal:
+            if num_target_galaxies_printed % 10 == 0:
+                logger.info("Printed " + str(num_target_galaxies_printed) + "/" +
+                            str(num_target_galaxies) + " target galaxies.")
+            num_target_galaxies_printed += 1
+        else:
+            if num_background_galaxies_printed % 50 == 0:
+                logger.info("Printed " + str(num_background_galaxies_printed) + "/" +
+                            str(num_background_galaxies) + " background galaxies.")
+            num_background_galaxies_printed += 1
 
         gal_I = get_I(galaxy.get_param_value('apparent_mag_vis'),
                       'mag_vis',
@@ -542,6 +564,8 @@ def print_galaxies(image,
 
         if is_target_gal and not options['details_only']:
             del ss_disk_image, final_disk, disk_gal_image, disk_psf_profile
+            
+    logger.info("Finished printing galaxies.")
 
     return galaxies
 
@@ -579,6 +603,10 @@ def generate_image(image, options):
         @param options
             <dict> The options dictionary for this run.
     """
+    
+    logger = getLogger(mv.logger_name)
+    
+    logger.info("# Printing image " + str(image.get_local_id()) + " #")
 
     # Magic numbers
 
@@ -646,6 +674,7 @@ def generate_image(image, options):
     # For each dither
     for di, (x_offset, y_offset) in zip(range(num_dithers), get_dither_scheme(options['dithering_scheme'])):
 
+        logger.info("Printing dither " + str(di) + ".")
 
         # If we're using cutouts, make the cutout image now
         if options['mode'] == 'cutouts':
@@ -691,9 +720,13 @@ def generate_image(image, options):
         # Undo dithering adjustment
         otable['x_center_pix'] -= x_offset
         otable['y_center_pix'] -= y_offset
+        
+        logger.info("Finished printing dither " + str(di) + ".")
 
     # If we have more than one dither, output the combined image
     if(num_dithers > 1):
+
+        logger.info("Printing combined image.")
 
         # Get the base name for this combined image
         combined_file_name_base = file_name_base + str(i) + "_combined"
@@ -712,6 +745,10 @@ def generate_image(image, options):
 
         # Output the details file for it
         output_table.output_details_tables(combined_otable, combined_file_name_base, options)
+        
+        logger.info("Finished printing combined image.")
+
+    logger.info("Finished printing image " + str(image.get_local_id()) + ".")
 
     # We no longer need this image's children, so clear it to save memory
     image.clear()
