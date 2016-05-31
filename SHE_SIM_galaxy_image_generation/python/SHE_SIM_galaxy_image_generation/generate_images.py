@@ -606,7 +606,7 @@ def generate_image(image, options):
     
     logger = getLogger(mv.logger_name)
     
-    logger.info("# Printing image " + str(image.get_local_id()) + " #")
+    logger.info("# Printing image " + str(image.get_local_ID()) + " #")
 
     # Magic numbers
 
@@ -748,7 +748,7 @@ def generate_image(image, options):
         
         logger.info("Finished printing combined image.")
 
-    logger.info("Finished printing image " + str(image.get_local_id()) + ".")
+    logger.info("Finished printing image " + str(image.get_local_ID()) + ".")
 
     # We no longer need this image's children, so clear it to save memory
     image.clear()
