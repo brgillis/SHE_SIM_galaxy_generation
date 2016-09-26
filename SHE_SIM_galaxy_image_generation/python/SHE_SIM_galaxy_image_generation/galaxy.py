@@ -157,18 +157,19 @@ def get_bulge_galaxy_profile(sersic_index,
     return gal_profile
 
 def get_disk_galaxy_profile(half_light_radius,
-                          stamp_size_factor=4.5,
                           rotation=0.,
                           tilt=0.,
                           flux=1.,
                           g_shear=0.,
                           beta_deg_shear=0.,):
 
-    scale_radius = get_exponential_scale_radius(half_light_radius)
+    # Use galsim's hardcoded half-light-radius factor to get scale radius
+    # (where hlr is hlr for face-on profile specifically)
+    scale_radius = half_light_radius / galsim.Exponential._hlr_factor
 
     base_prof = galsim.InclinedExponential(inclination=tilt * galsim.degrees,
-                                                scale_radius=scale_radius,
-                                                flux=flux)
+                                           scale_radius=scale_radius,
+                                           flux=flux)
 
     rotated_prof = base_prof.rotate(rotation * galsim.degrees)
 
