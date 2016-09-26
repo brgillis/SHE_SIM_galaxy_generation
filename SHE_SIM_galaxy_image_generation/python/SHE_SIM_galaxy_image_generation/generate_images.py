@@ -582,7 +582,11 @@ def print_galaxies(image,
                              is_target_galaxy=is_target_gal)
 
         if is_target_gal and not options['details_only']:
-            del ss_disk_image, final_disk, disk_gal_image, disk_psf_profile
+            del final_disk, disk_psf_profile
+            try:
+                del ss_disk_image, disk_gal_image
+            except UnboundLocalError as _e:
+                pass
 
     logger.info("Finished printing galaxies.")
 
