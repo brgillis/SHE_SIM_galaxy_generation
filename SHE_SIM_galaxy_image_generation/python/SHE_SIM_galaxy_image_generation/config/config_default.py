@@ -118,7 +118,6 @@ allowed_survey_settings = (# Survey level
                             'galaxy_type',
                             'physical_size_bulge',
                             'physical_size_disk',
-                            'psf_model',
                             'redshift',
                             'rotation',
                             'rp',
@@ -149,6 +148,15 @@ generation_levels = { 'survey': 0,
                       'galaxy_pair': 6 ,
                       'pair': 6 ,
                       'galaxy': 7 }
+
+generation_levels_inverse = {0: 'Survey',
+                             1: 'Image Group',
+                             2: 'Image',
+                             3: 'Cluster/Field Group',
+                             4: 'Cluster/Field',
+                             5: 'Galaxy Group',
+                             6: 'Galaxy Pair',
+                             7: 'Galaxy'}
 
 
 def load_default_configurations():

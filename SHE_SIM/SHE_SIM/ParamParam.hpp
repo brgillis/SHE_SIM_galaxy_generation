@@ -102,9 +102,13 @@ public:
 		return _get_name_from_mode(_mode);
 	}
 
-	virtual flt_t get_independently( gen_t & gen=IceBRG::rng ) const = 0;
-
 	virtual name_t name() const = 0;
+
+	virtual std::vector<flt_t> get_parameters() const = 0;
+
+	virtual str_t get_parameters_string() const = 0;
+
+	virtual flt_t get_independently( gen_t & gen=IceBRG::rng ) const = 0;
 
 	virtual ParamParam * clone() const = 0;
 

@@ -32,10 +32,7 @@ from os.path import join
 from astropy.table import Table
 import galsim
 
-try:
-    import ElementsKernel.Logging as log
-except ImportError:
-    import logging as log
+from icebrgpy.logging import getLogger
 from SHE_SIM_galaxy_image_generation import magic_values as mv
 from SHE_SIM_galaxy_image_generation import output_table
 from SHE_SIM_galaxy_image_generation.combine_dithers import combine_dithers
@@ -79,7 +76,10 @@ def generate_images(survey, options):
     """
 
     # Seed the survey
-    survey.set_seed(options['seed'])
+    if options['seed']==0:
+        survey.set_seed() # Seed from the time
+    else:
+        survey.set_seed(options['seed'])
 
     # Create empty image objects for the survey
     survey.fill_images()
@@ -88,7 +88,7 @@ def generate_images(survey, options):
     # Multiprocessing doesn't currently work, so print a warning if it's requested
 
     if options['num_parallel_threads'] != 1:
-        logger = log.getLogger(mv.logger_name)
+        logger = getLogger(mv.logger_name)
         logger.warning("Multi-processing is not currently functional; it requires features that " +
                        "will be available in Python 3. Until then, if you wish to use multiple " +
                        "processes, please call this program multiple times with different seed " +
@@ -142,6 +142,9 @@ def print_galaxies(image,
         @returns galaxies
             <SHE_SIM.galaxy_list> Iterable list of the galaxies which were printed.
     """
+
+    logger = getLogger(mv.logger_name)
+    logger.info("Entering 'print_galaxies' function.")
 
     galaxies = image.get_galaxy_descendants()
 
@@ -223,7 +226,6 @@ def print_galaxies(image,
     else:
         num_ratio = 1
 
-
     if (options['mode'] == 'stamps') and (not options['details_only']):
 
         # Figure out how to set up the grid, making it as square as possible
@@ -258,6 +260,15 @@ def print_galaxies(image,
                                          stamp_image_npix_y,
                                          dtype=dithers[di].dtype,
                                          scale=dithers[di].scale)
+            
+    if options['render_background_galaxies']:
+        logger.info("Printing " + str(num_target_galaxies) + " target galaxies and " + 
+                    str(num_background_galaxies) + " background galaxies.")
+    else:
+        logger.info("Printing " + str(num_target_galaxies) + " target galaxies.")
+        
+    num_target_galaxies_printed = 0
+    num_background_galaxies_printed = 0
 
     # Loop over galaxies now
 
@@ -268,6 +279,17 @@ def print_galaxies(image,
         # If it isn't a target and we aren't rendering background galaxies, skip it
         if (not is_target_gal) and (not options['render_background_galaxies']):
             continue
+        
+        if is_target_gal:
+            if num_target_galaxies_printed % 10 == 0:
+                logger.info("Printed " + str(num_target_galaxies_printed) + "/" +
+                            str(num_target_galaxies) + " target galaxies.")
+            num_target_galaxies_printed += 1
+        else:
+            if num_background_galaxies_printed % 50 == 0:
+                logger.info("Printed " + str(num_background_galaxies_printed) + "/" +
+                            str(num_background_galaxies) + " background galaxies.")
+            num_background_galaxies_printed += 1
 
         gal_I = get_I(galaxy.get_param_value('apparent_mag_vis'),
                       'mag_vis',
@@ -542,8 +564,32 @@ def print_galaxies(image,
 
         if is_target_gal and not options['details_only']:
             del ss_disk_image, final_disk, disk_gal_image, disk_psf_profile
+            
+    logger.info("Finished printing galaxies.")
 
     return galaxies
+
+
+def add_version_to_header(image):
+    """
+        @brief Adds version info to the header of an image.
+        
+        @param image
+            <galsim.Image> Galsim image object.
+    """
+    
+    # Add a header attribute if needed
+    if not hasattr(image, "header"):
+        image.header = galsim.FitsHeader()
+    
+    # SHE_SIM package version label    
+    image.header[mv.version_label] = mv.version_str
+    
+    # Galsim version label
+    if hasattr(galsim, "__version__"):
+        image.header[mv.galsim_version_label] = galsim.__version__
+    else:
+        image.header[mv.galsim_version_label] = '<1.2'
 
 def generate_image(image, options):
     """
@@ -557,6 +603,10 @@ def generate_image(image, options):
         @param options
             <dict> The options dictionary for this run.
     """
+    
+    logger = getLogger(mv.logger_name)
+    
+    logger.info("# Printing image " + str(image.get_local_ID()) + " #")
 
     # Magic numbers
 
@@ -624,6 +674,7 @@ def generate_image(image, options):
     # For each dither
     for di, (x_offset, y_offset) in zip(range(num_dithers), get_dither_scheme(options['dithering_scheme'])):
 
+        logger.info("Printing dither " + str(di) + ".")
 
         # If we're using cutouts, make the cutout image now
         if options['mode'] == 'cutouts':
@@ -647,6 +698,10 @@ def generate_image(image, options):
                                     read_noise=options['read_noise'],
                                     sky_level=sky_level_subtracted_pixel)
             dither.addNoise(noise)
+        
+        # Add a header containing version info
+        add_version_to_header(dither)
+        
         galsim.fits.write(dither, dither_file_name)
 
         # Compress the image if necessary
@@ -665,9 +720,13 @@ def generate_image(image, options):
         # Undo dithering adjustment
         otable['x_center_pix'] -= x_offset
         otable['y_center_pix'] -= y_offset
+        
+        logger.info("Finished printing dither " + str(di) + ".")
 
     # If we have more than one dither, output the combined image
     if(num_dithers > 1):
+
+        logger.info("Printing combined image.")
 
         # Get the base name for this combined image
         combined_file_name_base = file_name_base + str(i) + "_combined"
@@ -678,12 +737,18 @@ def generate_image(image, options):
                                                           output_table=otable,
                                                           copy_otable=False)
 
+        add_version_to_header(combined_image)
+
         # Output the new image
         combined_file_name = combined_file_name_base + '.fits'
         galsim.fits.write(combined_image, combined_file_name)
 
         # Output the details file for it
         output_table.output_details_tables(combined_otable, combined_file_name_base, options)
+        
+        logger.info("Finished printing combined image.")
+
+    logger.info("Finished printing image " + str(image.get_local_ID()) + ".")
 
     # We no longer need this image's children, so clear it to save memory
     image.clear()

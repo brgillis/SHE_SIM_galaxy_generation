@@ -123,6 +123,8 @@ def output_as_fits(table,filename):
     # Set up the binary extension HDU with the correct data and filenames
     my_bin_hdu = fits.BinTableHDU.from_columns( fits_cols )
     
+    my_bin_hdu.header[mv.version_label] = mv.version_str
+    
     # Output it to the desired filename
     my_bin_hdu.writeto(filename, clobber=True)
     

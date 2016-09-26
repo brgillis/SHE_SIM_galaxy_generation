@@ -27,6 +27,7 @@
 #define SHE_SIM_GAL_PARAMS_PARAM_PARAMS_DEPFIELDREDSHIFT_HPP_
 
 #include <initializer_list>
+#include <sstream>
 
 #include "SHE_SIM/common.hpp"
 #include "SHE_SIM/dependency_functions/galaxy_redshift.hpp"
@@ -70,6 +71,20 @@ public:
 
 	// Get the name of this
 	virtual name_t name() const override { return "field_redshift"; };
+
+	virtual std::vector<flt_t> get_parameters() const override
+	{
+		return std::vector<flt_t>({_enhancement,_z_min,_z_max});
+	}
+
+	virtual str_t get_parameters_string() const override
+	{
+		std::stringstream ss("");
+		ss << "Enhancement: " << _enhancement << ", "
+				<< "z_min: " << _z_min  << ", "
+				<< "z_max: " << _z_max;
+		return ss.str();
+	}
 
 	// Get the value
 	virtual flt_t get_dependently( ParamParam const * cluster_z_param_param,

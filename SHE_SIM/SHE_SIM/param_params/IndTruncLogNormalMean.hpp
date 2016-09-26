@@ -27,6 +27,7 @@
 #define SHE_SIM_GAL_PARAMS_PARAM_PARAMS_INDTRUNCLOGNORMALMEAN_HPP_
 
 #include <initializer_list>
+#include <sstream>
 
 #include "SHE_SIM/common.hpp"
 #include "SHE_SIM/ParamParam.hpp"
@@ -69,6 +70,21 @@ public:
 
 	// Get the name of this
 	virtual name_t name() const override { return "trunc_lognormal_mean"; };
+
+	virtual std::vector<flt_t> get_parameters() const override
+	{
+		return std::vector<flt_t>({_l10_mean,_l10_stddev,_l10_min,_l10_max});
+	}
+
+	virtual str_t get_parameters_string() const override
+	{
+		std::stringstream ss("");
+		ss << "log_10(Mean): " << _l10_mean << ", "
+				<< "sigma (log_10): " << _l10_stddev << ", "
+				<< "log_10(Max): " << _l10_min << ", "
+				<< "log_10(Min): " << _l10_max;
+		return ss.str();
+	}
 
 	// Get the value
 	virtual flt_t get_independently( gen_t & gen = IceBRG::rng ) const override

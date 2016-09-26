@@ -47,7 +47,7 @@ inline void handle_error(str_t const & str)
 			std::cerr << "WARNING: " << str << "\n";
 			break;
 		case error_behavior_type::LOG:
-			ICEBRG_LOG_TRIVIAL(error) << str << "\n";
+			ICEBRG_LOG_TRIVIAL(error) << str;
 			break;
 		case error_behavior_type::NOTHING:
 			break;
@@ -67,7 +67,7 @@ inline void handle_notification(str_t const & str)
 			std::cout << str << "\n";
 			break;
 		case error_behavior_type::LOG:
-			ICEBRG_LOG_TRIVIAL(info) << str << "\n";
+			ICEBRG_LOG_TRIVIAL(info) << str;
 			break;
 		case error_behavior_type::NOTHING:
 			break;
@@ -87,7 +87,7 @@ inline void handle_error_message(str_t const & str)
 			std::cerr << "WARNING: " << str << "\n";
 			break;
 		case error_behavior_type::LOG:
-			ICEBRG_WARN_TRIVIAL() << str << "\n";
+			ICEBRG_WARN_TRIVIAL() << str;
 			break;
 		case error_behavior_type::NOTHING:
 			break;

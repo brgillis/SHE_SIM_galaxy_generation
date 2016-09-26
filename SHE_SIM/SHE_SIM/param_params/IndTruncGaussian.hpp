@@ -27,6 +27,7 @@
 #define SHE_SIM_GAL_PARAMS_PARAM_PARAMS_INDTRUNCGAUSSIAN_HPP_
 
 #include <initializer_list>
+#include <sstream>
 
 #include "SHE_SIM/common.hpp"
 #include "SHE_SIM/ParamParam.hpp"
@@ -69,6 +70,21 @@ public:
 
 	// Get the name of this
 	virtual name_t name() const override { return "truncated_gaussian"; };
+
+	virtual std::vector<flt_t> get_parameters() const override
+	{
+		return std::vector<flt_t>({_mean,_stddev,_min,_max});
+	}
+
+	virtual str_t get_parameters_string() const override
+	{
+		std::stringstream ss("");
+		ss << "Mean: " << _mean << ", "
+				<< "sigma: " << _stddev << ", "
+				<< "Max: " << _min << ", "
+				<< "Min: " << _max;
+		return ss.str();
+	}
 
 	// Get the value
 	virtual flt_t get_independently( gen_t & gen = IceBRG::rng ) const override

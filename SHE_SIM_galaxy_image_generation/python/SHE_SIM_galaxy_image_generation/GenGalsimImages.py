@@ -25,7 +25,7 @@
 
 import argparse
 
-import ElementsKernel.Logging as log
+from icebrgpy.logging import getLogger
 from SHE_SIM_galaxy_image_generation import magic_values as mv
 from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_options,
                                                             allowed_fixed_params,
@@ -79,7 +79,7 @@ def mainMethod(args):
         similar to a main (and it is why it is called mainMethod()).
     """
 
-    logger = log.getLogger(mv.logger_name)
+    logger = getLogger(mv.logger_name)
 
     logger.info('#')
     logger.info('# Entering GenGalsimImages mainMethod()')
