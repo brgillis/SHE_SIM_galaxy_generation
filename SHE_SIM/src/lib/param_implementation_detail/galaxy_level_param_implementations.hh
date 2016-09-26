@@ -209,7 +209,7 @@ IMPLEMENT_PARAM(theta_sat, dv::galaxy_level, IndUniform(dv::theta_sat_min, dv::t
 	,
 		_cached_value = _p_params->get_independently(get_rng());
 	)
-IMPLEMENT_PARAM(tilt, dv::galaxy_level, IndUniform(dv::tilt_min, dv::tilt_max)
+IMPLEMENT_PARAM(tilt, dv::galaxy_level, IndArcCos(dv::tilt_cos_min, dv::tilt_cos_max)
 	,
 		if(is_satellite_galaxy(REQUEST(galaxy_type)))
 			_cached_value = generate_tilt( REQUEST(xp), REQUEST(yp), REQUEST(cluster_xp), REQUEST(cluster_yp),

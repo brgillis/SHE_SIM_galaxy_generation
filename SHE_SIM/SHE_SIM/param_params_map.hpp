@@ -74,6 +74,7 @@ inline param_params_t make_full_param_params_map()
 	insert_param_param<Calculated>(res);
 	insert_param_param<DepFieldRedshift>(res);
 	insert_param_param<DepUniform>(res);
+  insert_param_param<IndArcCos>(res);
 	insert_param_param<IndExpQuadratic>(res);
 	insert_param_param<IndFixed>(res);
 	insert_param_param<IndContRayleigh>(res);
