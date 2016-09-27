@@ -27,22 +27,22 @@ import SHE_SIM_galaxy_image_generation.magic_values as mv
 
 def get_I_from_count(c, gain=mv.default_gain):
     """ Calculated the intensity I from count with the given gain.
-    
+
         @param c The electron count
         @param gain The gain
-        
+
         @return The intensity
     """
-    
-    return c/gain
+
+    return c / gain
 
 def get_count_from_I(I, gain=mv.default_gain):
     """ Calculated the electron count from intensity I with the given gain.
-    
+
         @param I The intensity
         @param gain The gain
-        
+
         @return The intensity
     """
-    
-    return I*gain
+
+    return I * gain

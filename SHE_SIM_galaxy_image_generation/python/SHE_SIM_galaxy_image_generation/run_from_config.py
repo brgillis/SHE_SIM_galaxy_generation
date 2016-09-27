@@ -46,7 +46,6 @@ profile = True
 
 import subprocess
 
-from icebrgpy.logging import getLogger
 from SHE_SIM_galaxy_image_generation import magic_values as mv
 from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_options,
                                                             allowed_fixed_params,
@@ -54,6 +53,8 @@ from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_optio
                                                             generation_levels,
                                                             generation_levels_inverse)
 from SHE_SIM_galaxy_image_generation.generate_images import generate_images
+from icebrgpy.logging import getLogger
+
 
 try:
     import pyfftw
@@ -100,16 +101,16 @@ def run_from_survey_and_options(survey, options):
     # Check if the folder path was given with a slash at the end. If so, trim it
     if(options['output_folder'][-1] == '/'):
         options['output_folder'] = options['output_folder'][0:-1]
-        
+
     logger = getLogger(mv.logger_name)
-    
+
     # Print all options we're using to the logger
     logger.info("# Generating images with the following options: #")
     logger.info("")
     for name in options:
         logger.info(name + ": " + str(options[name]))
         logger.info("")
-        
+
     # Print survey settings and levels too
     logger.info("# And using the following settings for the physical model: #")
     logger.info("")
@@ -117,13 +118,13 @@ def run_from_survey_and_options(survey, options):
 
         gen_level = generation_levels_inverse[int(survey.get_generation_level(name))]
         logger.info(name + " generation level: " + gen_level)
-        
+
         param_params = survey.get_param(name).get_params()
         pp_mode = param_params.name()
         logger.info(name + " generation mode: " + pp_mode)
         pp_params = param_params.get_parameters_string()
         logger.info(name + " generation parameters: " + pp_params)
-        
+
         logger.info("")
 
     # Ensure that the output folder exists

@@ -27,27 +27,27 @@ import subprocess
 import SHE_SIM_galaxy_image_generation.magic_values as mv
 
 
-def compress_image(image_name,nx=None,lossy=False):
+def compress_image(image_name, nx=None, lossy=False):
     """ Compresses an image using fpack.
-    
+
         Requires: image_name <string>
-        
+
         Optional: nx <int> (number of pixels per tile, assuming square tiles)
                   lossy <bool> (whether or not to allow lossy compression)
-    
+
     """
-    
+
     cmd = mv.rm_command + image_name + ".fz"
-    subprocess.call(cmd,shell=True)
-    
+    subprocess.call(cmd, shell=True)
+
     if(lossy):
         cmd = mv.fpack_lossy_command + image_name
-    else:        
-        if(nx==None):
+    else:
+        if(nx == None):
             cmd = mv.fpack_lossless_command + image_name
         else:
-            cmd = mv.fpack_lossless_command + "-t " + str(nx[0])+","+str(nx[1]) + " " + image_name
-        
-    subprocess.call(cmd,shell=True)
+            cmd = mv.fpack_lossless_command + "-t " + str(nx[0]) + "," + str(nx[1]) + " " + image_name
+
+    subprocess.call(cmd, shell=True)
     cmd = mv.rm_command + image_name
-    subprocess.call(cmd,shell=True)
+    subprocess.call(cmd, shell=True)
