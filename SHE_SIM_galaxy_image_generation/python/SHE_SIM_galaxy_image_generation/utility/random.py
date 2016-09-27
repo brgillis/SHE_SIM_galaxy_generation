@@ -90,8 +90,8 @@ def exp_quad_pdf(mag, N_scale=9.69722, hinge_mag=23., beta_0=0.789647, d_beta=-0
 def softened_Rayleigh_pdf(g, sigma, shear_soften, shear_max, soften_param):
     p = (g / sigma ** 2) * np.exp(-g ** 2 / (2 * sigma ** 2))
 
-    if(g > shear_soften):
-        if(g > shear_max):
+    if g > shear_soften:
+        if g > shear_max:
             return 0.
         else:
             p *= np.cos(np.pi * (g - shear_soften) / soften_param)

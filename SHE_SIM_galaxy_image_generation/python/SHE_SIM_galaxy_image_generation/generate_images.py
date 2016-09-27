@@ -100,7 +100,7 @@ def generate_images(survey, options):
         for image in images:
             generate_image(image, options)
     else:
-        if(options['num_parallel_threads'] <= 0):
+        if options['num_parallel_threads'] <= 0:
             options['num_parallel_threads'] += cpu_count()
 
         pool = Pool(processes=cpu_count(), maxtasksperchild=1)
@@ -157,7 +157,7 @@ def print_galaxies(image,
         galaxy.generate_parameters()
 
         # Sort out target galaxies
-        if(is_target_galaxy(galaxy, options)):
+        if is_target_galaxy(galaxy, options):
             target_galaxies.append(galaxy)
         else:
             background_galaxies.append(galaxy)
@@ -197,12 +197,12 @@ def print_galaxies(image,
                     # Check what type it is, and if we can add another galaxy of that type
 
                     if is_target_galaxy(new_galaxy, options):
-                        if(num_new_target_galaxies < num_extra_target_galaxies):
+                        if num_new_target_galaxies < num_extra_target_galaxies:
                             target_galaxies.append(new_galaxy)
                             num_new_target_galaxies += 1
                             bad_type = False
                     else:
-                        if(num_new_background_galaxies < num_extra_background_galaxies):
+                        if num_new_background_galaxies < num_extra_background_galaxies:
                             background_galaxies.append(new_galaxy)
                             num_new_background_galaxies += 1
                             bad_type = False
@@ -249,7 +249,8 @@ def print_galaxies(image,
             # Check this is valid
             if 2 * bg_aperture_rad_pix > stamp_size_pix:
                 raise Exception("Stamp size is too small to properly render background galaxies. " +
-                                "Increase the stamp size to at least " + str(int(2 * bg_aperture_rad_pix + 1)) + " pixels.")
+                                "Increase the stamp size to at least " +
+                                str(int(2 * bg_aperture_rad_pix + 1)) + " pixels.")
 
         icol = -1
         irow = 0
@@ -416,7 +417,8 @@ def print_galaxies(image,
                                                 beta_deg_shear=beta_shear,
                                                 data_dir=options['data_dir'])
 
-                # Convolve the galaxy, psf, and pixel profile to determine the final (well, before noise) pixelized image
+                # Convolve the galaxy, psf, and pixel profile to determine the final (well,
+                # before noise) pixelized image
                 final_bulge = galsim.Convolve([bulge_gal_profile, bulge_psf_profile],
                                               gsparams=galsim.GSParams(maximum_fft_size=12000))
 
@@ -476,7 +478,8 @@ def print_galaxies(image,
                                                 beta_deg_shear=beta_shear,
                                                 data_dir=options['data_dir'])
 
-                # Convolve the galaxy, psf, and pixel profile to determine the final (well, before noise) pixelized image
+                # Convolve the galaxy, psf, and pixel profile to determine the final
+                # (well, before noise) pixelized image
                 final_gal = galsim.Convolve([gal_profile, disk_psf_profile],
                                               gsparams=galsim.GSParams(maximum_fft_size=12000))
 
@@ -507,16 +510,16 @@ def print_galaxies(image,
 
             if not (is_target_gal and (options['mode'] == 'stamps')):
                 # Check if the stamp crosses an edge and adjust as necessary
-                if (xl < 1):
+                if xl < 1:
                     x_shift = 1 - xl
-                elif (xh > full_x_size):
+                elif xh > full_x_size:
                     x_shift = full_x_size - xh
                 xh += x_shift
                 xl += x_shift
 
-                if (yl < 1):
+                if yl < 1:
                     y_shift = 1 - yl
-                elif (yh > full_y_size):
+                elif yh > full_y_size:
                     y_shift = full_y_size - yh
                 yh += y_shift
                 yl += y_shift
@@ -553,8 +556,6 @@ def print_galaxies(image,
                                          offset=(-x_centre_offset + x_offset + xp_sp_shift,
                                                  - y_centre_offset + y_offset + xp_sp_shift),
                                          add_to_image=True)
-
-                    pass
 
 
         # Record all data used for this galaxy in the output table
@@ -650,9 +651,9 @@ def generate_image(image, options):
     full_y_size = int(image.get_param_value("image_size_yp"))
     pixel_scale = image.get_param_value("pixel_scale")
     for _ in xrange(num_dithers):
-        if(options['image_datatype'] == '32f'):
+        if options['image_datatype'] == '32f':
             dithers.append(galsim.ImageF(full_x_size , full_y_size, scale=pixel_scale))
-        elif(options['image_datatype'] == '64f'):
+        elif options['image_datatype'] == '64f':
             dithers.append(galsim.ImageD(full_x_size , full_y_size, scale=pixel_scale))
         else:
             raise Exception("Bad image type slipped through somehow.")
@@ -662,7 +663,7 @@ def generate_image(image, options):
 
     # If shape noise cancellation is being applied, we'll use the angle for galaxy shape we generated
     # as the initial angle. Also, set up parameters for the cancellation
-    if(options['shape_noise_cancellation']):
+    if options['shape_noise_cancellation']:
         galaxy_groups = image.get_galaxy_group_descendants()
 
         # For each group, set the rotations as uniformly distributed
@@ -707,7 +708,7 @@ def generate_image(image, options):
         dither = dithers[di]
 
         # Output the image
-        if(num_dithers > 1):
+        if num_dithers > 1:
             dither_file_name_base = file_name_base + str(image_ID) + '_dither_' + str(di)
         else:
             dither_file_name_base = file_name_base + str(image_ID)
@@ -728,7 +729,7 @@ def generate_image(image, options):
         galsim.fits.write(dither, dither_file_name)
 
         # Compress the image if necessary
-        if(options['compress_images'] >= 1):
+        if options['compress_images'] >= 1:
             compress_image(dither_file_name, lossy=(options['compress_images'] >= 2))
 
 
@@ -747,7 +748,7 @@ def generate_image(image, options):
         logger.info("Finished printing dither " + str(di) + ".")
 
     # If we have more than one dither, output the combined image
-    if(num_dithers > 1):
+    if num_dithers > 1:
 
         logger.info("Printing combined image.")
 

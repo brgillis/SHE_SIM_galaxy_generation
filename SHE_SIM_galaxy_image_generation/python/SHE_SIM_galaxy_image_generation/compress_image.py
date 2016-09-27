@@ -40,10 +40,10 @@ def compress_image(image_name, nx=None, lossy=False):
     cmd = mv.rm_command + image_name + ".fz"
     subprocess.call(cmd, shell=True)
 
-    if(lossy):
+    if lossy:
         cmd = mv.fpack_lossy_command + image_name
     else:
-        if(nx == None):
+        if nx is None:
             cmd = mv.fpack_lossless_command + image_name
         else:
             cmd = mv.fpack_lossless_command + "-t " + str(nx[0]) + "," + str(nx[1]) + " " + image_name

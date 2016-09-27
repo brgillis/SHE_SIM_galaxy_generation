@@ -154,12 +154,12 @@ def read_config_file(config_filename):
         # Read in the file, except for comment lines
         config_lines = []
         for config_line in config_file:
-            if((config_line[0] != '#') and (len(config_line.strip()) > 0)):
+            if (config_line[0] != '#') and (len(config_line.strip()) > 0):
                 config_lines.append(config_line.strip())
 
     version = str(config_lines[0].split()[-1])
 
-    if(version != '2.0'):
+    if version != '2.0':
         raise Exception("Invalid or deprecated config version: " + version)
 
     return load_config_2_0(config_lines[1:])

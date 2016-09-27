@@ -43,7 +43,7 @@ def load_galaxy_model_from_file(n, bulge=True, data_dir=mv.default_data_dir):
 
     n_str = "%0.2f" % n
 
-    if(bulge):
+    if bulge:
         model_filename = mv.bulge_model_head + n_str + mv.galaxy_model_tail
     else:
         model_filename = mv.disk_model_head + n_str + mv.galaxy_model_tail
@@ -52,7 +52,7 @@ def load_galaxy_model_from_file(n, bulge=True, data_dir=mv.default_data_dir):
 
     x = model[:, 0]
     y = model[:, 1]
-    if(bulge):
+    if bulge:
         z = None
         I = model[:, 2]
     else:
@@ -103,7 +103,7 @@ def get_half_light_radius(x, y, I):
     cur_I = 0
 
     test_r = r_step
-    while(cur_I < goal_I):
+    while cur_I < goal_I:
         cur_I = I[r < test_r].sum()
         test_r += r_step
 

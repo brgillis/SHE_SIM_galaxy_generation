@@ -33,7 +33,7 @@ def get_dither_scheme(scheme_name):
         @return tuple<tuple<float,float>,...> x,y shifts for each dither in the scheme
     """
 
-    if(scheme_name == '2x2'):
+    if scheme_name == '2x2':
         return ((0.0, 0.0),
                 (0.5, 0.0),
                 (0.0, 0.5),

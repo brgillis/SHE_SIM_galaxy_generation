@@ -57,11 +57,11 @@ def combine_dithers(dithers,
         combined_otable = output_table
 
     # Check which dithering scheme we're using
-    if(dithering_scheme == '2x2'):
+    if dithering_scheme == '2x2':
 
         # Check we have the right number of dithers
         num_dithers = 4
-        assert(len(dithers) == num_dithers)
+        assert len(dithers) == num_dithers
 
         # For this scheme, the offsets are (in x,y):
         # 0: (0.0,0.0) (Lower-left)
@@ -123,7 +123,7 @@ def combine_dithers(dithers,
         combined_image = galsim.Image(combined_data)
 
         # Now that we have the image, let's modify the output table
-        if(combined_otable is not None):
+        if combined_otable is not None:
             combined_otable['x_center_pix'] *= 2
             combined_otable['x_center_pix'] -= 0.5
             combined_otable['y_center_pix'] *= 2
