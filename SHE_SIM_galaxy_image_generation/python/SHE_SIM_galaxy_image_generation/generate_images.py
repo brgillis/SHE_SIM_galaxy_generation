@@ -435,7 +435,7 @@ def print_galaxies(image,
                                               gsparams=galsim.GSParams(maximum_fft_size=12000))
 
                 except AttributeError as e:
-                    if not "InclinedExponential" in e.what():
+                    if not "InclinedExponential" in str(e):
                         raise
 
                     logger.warning("GalSim's InclinedExponential profile is not available. Be " +
