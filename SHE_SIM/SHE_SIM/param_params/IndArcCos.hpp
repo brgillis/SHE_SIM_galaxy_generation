@@ -83,7 +83,7 @@ public:
 	// Get the value
 	virtual flt_t get_independently( gen_t & gen = IceBRG::rng ) const override
 	{
-		return std::acos(IceBRG::drand(_min_cos,_max_cos,gen));
+		return 180./M_PI*std::acos(IceBRG::drand(_min_cos,_max_cos,gen));
 	}
 
 	virtual ParamParam * clone() const override
