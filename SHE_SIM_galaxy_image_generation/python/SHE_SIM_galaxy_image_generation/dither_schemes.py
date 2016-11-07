@@ -26,17 +26,17 @@
 def get_dither_scheme(scheme_name):
     """
         @brief Gets the pixel shifts for a given dither scheme.
-    
+
         @param scheme_name
             <string> The name of the dithering scheme
-        
+
         @return tuple<tuple<float,float>,...> x,y shifts for each dither in the scheme
     """
-    
-    if(scheme_name=='2x2'):
-        return ((0.0,0.0),
-                (0.5,0.0),
-                (0.0,0.5),
-                (0.5,0.5))
+
+    if scheme_name == '2x2':
+        return ((0.0, 0.0),
+                (0.5, 0.0),
+                (0.0, 0.5),
+                (0.5, 0.5))
     else:
-        return ((0.0,0.0),)
+        return ((0.0, 0.0),)

@@ -25,6 +25,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+import sys
+
 from SHE_SIM_galaxy_image_generation.run_from_config import run_from_config_file
 from SHE_SIM_galaxy_image_generation.utility import timing
 

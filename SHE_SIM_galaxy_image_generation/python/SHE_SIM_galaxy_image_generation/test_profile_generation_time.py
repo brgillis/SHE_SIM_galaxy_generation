@@ -26,8 +26,9 @@
 
 import sys
 
-from SHE_SIM_galaxy_image_generation.utility import timing
 import galsim
+
+from SHE_SIM_galaxy_image_generation.utility import timing
 import numpy as np
 
 

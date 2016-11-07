@@ -25,12 +25,12 @@
 
 import argparse
 
-from icebrgpy.logging import getLogger
 from SHE_SIM_galaxy_image_generation import magic_values as mv
 from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_options,
                                                             allowed_fixed_params,
                                                             allowed_survey_settings)
 from SHE_SIM_galaxy_image_generation.run_from_config import run_from_config_file_and_args
+from icebrgpy.logging import getLogger
 
 
 def defineSpecificProgramOptions():

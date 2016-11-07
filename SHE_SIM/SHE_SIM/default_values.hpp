@@ -143,8 +143,8 @@ constexpr const flt_t spin_max = 360.; // degrees
 constexpr const flt_t theta_sat_min = 0.;
 constexpr const flt_t theta_sat_max = 360.;
 
-constexpr const flt_t tilt_min = 0.;
-constexpr const flt_t tilt_max = 90.;
+constexpr const flt_t tilt_cos_min = 0.;
+constexpr const flt_t tilt_cos_max = 1.;
 
 constexpr const flt_t xp_min = 0.;
 constexpr const flt_t xp_max = image_size_xp;

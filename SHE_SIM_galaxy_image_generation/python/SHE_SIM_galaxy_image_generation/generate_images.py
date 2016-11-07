@@ -32,7 +32,6 @@ from os.path import join
 from astropy.table import Table
 import galsim
 
-from icebrgpy.logging import getLogger
 from SHE_SIM_galaxy_image_generation import magic_values as mv
 from SHE_SIM_galaxy_image_generation import output_table
 from SHE_SIM_galaxy_image_generation.combine_dithers import combine_dithers
@@ -41,9 +40,10 @@ from SHE_SIM_galaxy_image_generation.cutouts import make_cutout_image
 from SHE_SIM_galaxy_image_generation.dither_schemes import get_dither_scheme
 from SHE_SIM_galaxy_image_generation.galaxy import (get_bulge_galaxy_profile,
                                              get_disk_galaxy_image,
-                                             is_target_galaxy)
+                                             is_target_galaxy, get_disk_galaxy_profile)
 from SHE_SIM_galaxy_image_generation.magnitude_conversions import get_I
 from SHE_SIM_galaxy_image_generation.psf import get_psf_profile
+from icebrgpy.logging import getLogger
 from icebrgpy.rebin import rebin
 import numpy as np
 
@@ -76,7 +76,7 @@ def generate_images(survey, options):
     """
 
     # Seed the survey
-    if options['seed']==0:
+    if options['seed'] == 0:
         survey.set_seed() # Seed from the time
     else:
         survey.set_seed(options['seed'])
@@ -100,7 +100,7 @@ def generate_images(survey, options):
         for image in images:
             generate_image(image, options)
     else:
-        if(options['num_parallel_threads'] <= 0):
+        if options['num_parallel_threads'] <= 0:
             options['num_parallel_threads'] += cpu_count()
 
         pool = Pool(processes=cpu_count(), maxtasksperchild=1)
@@ -157,7 +157,7 @@ def print_galaxies(image,
         galaxy.generate_parameters()
 
         # Sort out target galaxies
-        if(is_target_galaxy(galaxy, options)):
+        if is_target_galaxy(galaxy, options):
             target_galaxies.append(galaxy)
         else:
             background_galaxies.append(galaxy)
@@ -197,12 +197,12 @@ def print_galaxies(image,
                     # Check what type it is, and if we can add another galaxy of that type
 
                     if is_target_galaxy(new_galaxy, options):
-                        if(num_new_target_galaxies < num_extra_target_galaxies):
+                        if num_new_target_galaxies < num_extra_target_galaxies:
                             target_galaxies.append(new_galaxy)
                             num_new_target_galaxies += 1
                             bad_type = False
                     else:
-                        if(num_new_background_galaxies < num_extra_background_galaxies):
+                        if num_new_background_galaxies < num_extra_background_galaxies:
                             background_galaxies.append(new_galaxy)
                             num_new_background_galaxies += 1
                             bad_type = False
@@ -249,7 +249,8 @@ def print_galaxies(image,
             # Check this is valid
             if 2 * bg_aperture_rad_pix > stamp_size_pix:
                 raise Exception("Stamp size is too small to properly render background galaxies. " +
-                                "Increase the stamp size to at least " + str(int(2 * bg_aperture_rad_pix + 1)) + " pixels.")
+                                "Increase the stamp size to at least " +
+                                str(int(2 * bg_aperture_rad_pix + 1)) + " pixels.")
 
         icol = -1
         irow = 0
@@ -260,13 +261,13 @@ def print_galaxies(image,
                                          stamp_image_npix_y,
                                          dtype=dithers[di].dtype,
                                          scale=dithers[di].scale)
-            
+
     if options['render_background_galaxies']:
-        logger.info("Printing " + str(num_target_galaxies) + " target galaxies and " + 
+        logger.info("Printing " + str(num_target_galaxies) + " target galaxies and " +
                     str(num_background_galaxies) + " background galaxies.")
     else:
         logger.info("Printing " + str(num_target_galaxies) + " target galaxies.")
-        
+
     num_target_galaxies_printed = 0
     num_background_galaxies_printed = 0
 
@@ -279,7 +280,7 @@ def print_galaxies(image,
         # If it isn't a target and we aren't rendering background galaxies, skip it
         if (not is_target_gal) and (not options['render_background_galaxies']):
             continue
-        
+
         if is_target_gal:
             if num_target_galaxies_printed % 10 == 0:
                 logger.info("Printed " + str(num_target_galaxies_printed) + "/" +
@@ -416,35 +417,55 @@ def print_galaxies(image,
                                                 beta_deg_shear=beta_shear,
                                                 data_dir=options['data_dir'])
 
-                # Convolve the galaxy, psf, and pixel profile to determine the final (well, before noise) pixelized image
+                # Convolve the galaxy, psf, and pixel profile to determine the final (well,
+                # before noise) pixelized image
                 final_bulge = galsim.Convolve([bulge_gal_profile, bulge_psf_profile],
                                               gsparams=galsim.GSParams(maximum_fft_size=12000))
 
-                disk_gal_image = get_disk_galaxy_image(sersic_index=n,
-                                                half_light_radius=disk_size,
-                                                stamp_size_factor=options['stamp_size_factor'],
-                                                rotation=rotation,
-                                                tilt=tilt,
-                                                spin=spin,
-                                                flux=1.,
-                                                g_shear=g_shear,
-                                                beta_deg_shear=beta_shear,
-                                                xp_sp_shift=xp_sp_shift,
-                                                yp_sp_shift=yp_sp_shift,
-                                                image_scale=pixel_scale,
-                                                subsampling_factor=subsampling_factor,
-                                                data_dir=options['data_dir'])
+                # Try to get a disk galaxy profile if the galsim version supports it
+                try:
+                    disk_gal_profile = get_disk_galaxy_profile(half_light_radius=disk_size,
+                                                               rotation=rotation,
+                                                               tilt=tilt,
+                                                               flux=gal_I * (1 - bulge_fraction),
+                                                               g_shear=g_shear,
+                                                               beta_deg_shear=beta_shear,)
 
-                ss_disk_image = convolve(disk_psf_profile.image.array, disk_gal_image)
+                    final_disk = galsim.Convolve([disk_gal_profile, disk_psf_profile],
+                                              gsparams=galsim.GSParams(maximum_fft_size=12000))
 
-                final_disk_image = rebin(ss_disk_image,
-                                        x_shift=int(subsampling_factor * xp_sp_shift + 0.5),
-                                        y_shift=int(subsampling_factor * yp_sp_shift + 0.5),
-                                        subsampling_factor=subsampling_factor)
+                except AttributeError as e:
+                    if not "InclinedExponential" in str(e):
+                        raise
 
-                final_disk = galsim.InterpolatedImage(galsim.Image(final_disk_image, scale=pixel_scale),
-                                                                   flux=gal_I * (1 - bulge_fraction),
-                                                                   x_interpolant='nearest')
+                    logger.warning("GalSim's InclinedExponential profile is not available. Be " +
+                                   "sure to check out branch #782 to use it. Using fallback for now.")
+
+                    disk_gal_image = get_disk_galaxy_image(sersic_index=n,
+                                                    half_light_radius=disk_size,
+                                                    stamp_size_factor=options['stamp_size_factor'],
+                                                    rotation=rotation,
+                                                    tilt=tilt,
+                                                    spin=spin,
+                                                    flux=1.,
+                                                    g_shear=g_shear,
+                                                    beta_deg_shear=beta_shear,
+                                                    xp_sp_shift=xp_sp_shift,
+                                                    yp_sp_shift=yp_sp_shift,
+                                                    image_scale=pixel_scale,
+                                                    subsampling_factor=subsampling_factor,
+                                                    data_dir=options['data_dir'])
+
+                    ss_disk_image = convolve(disk_psf_profile.image.array, disk_gal_image)
+
+                    final_disk_image = rebin(ss_disk_image,
+                                            x_shift=int(subsampling_factor * xp_sp_shift + 0.5),
+                                            y_shift=int(subsampling_factor * yp_sp_shift + 0.5),
+                                            subsampling_factor=subsampling_factor)
+
+                    final_disk = galsim.InterpolatedImage(galsim.Image(final_disk_image, scale=pixel_scale),
+                                                                       flux=gal_I * (1 - bulge_fraction),
+                                                                       x_interpolant='nearest')
             else:
                 # Just use a single sersic profile for background galaxies
                 # to make them more of a compromise between bulges and disks
@@ -457,7 +478,8 @@ def print_galaxies(image,
                                                 beta_deg_shear=beta_shear,
                                                 data_dir=options['data_dir'])
 
-                # Convolve the galaxy, psf, and pixel profile to determine the final (well, before noise) pixelized image
+                # Convolve the galaxy, psf, and pixel profile to determine the final
+                # (well, before noise) pixelized image
                 final_gal = galsim.Convolve([gal_profile, disk_psf_profile],
                                               gsparams=galsim.GSParams(maximum_fft_size=12000))
 
@@ -488,16 +510,16 @@ def print_galaxies(image,
 
             if not (is_target_gal and (options['mode'] == 'stamps')):
                 # Check if the stamp crosses an edge and adjust as necessary
-                if (xl < 1):
+                if xl < 1:
                     x_shift = 1 - xl
-                elif (xh > full_x_size):
+                elif xh > full_x_size:
                     x_shift = full_x_size - xh
                 xh += x_shift
                 xl += x_shift
 
-                if (yl < 1):
+                if yl < 1:
                     y_shift = 1 - yl
-                elif (yh > full_y_size):
+                elif yh > full_y_size:
                     y_shift = full_y_size - yh
                 yh += y_shift
                 yl += y_shift
@@ -535,8 +557,6 @@ def print_galaxies(image,
                                                  - y_centre_offset + y_offset + xp_sp_shift),
                                          add_to_image=True)
 
-                    pass
-
 
         # Record all data used for this galaxy in the output table
         if is_target_gal or (options['mode'] == 'field'):
@@ -563,8 +583,12 @@ def print_galaxies(image,
                              is_target_galaxy=is_target_gal)
 
         if is_target_gal and not options['details_only']:
-            del ss_disk_image, final_disk, disk_gal_image, disk_psf_profile
-            
+            del final_disk, disk_psf_profile
+            try:
+                del ss_disk_image, disk_gal_image
+            except UnboundLocalError as _e:
+                pass
+
     logger.info("Finished printing galaxies.")
 
     return galaxies
@@ -573,18 +597,18 @@ def print_galaxies(image,
 def add_version_to_header(image):
     """
         @brief Adds version info to the header of an image.
-        
+
         @param image
             <galsim.Image> Galsim image object.
     """
-    
+
     # Add a header attribute if needed
     if not hasattr(image, "header"):
         image.header = galsim.FitsHeader()
-    
-    # SHE_SIM package version label    
+
+    # SHE_SIM package version label
     image.header[mv.version_label] = mv.version_str
-    
+
     # Galsim version label
     if hasattr(galsim, "__version__"):
         image.header[mv.galsim_version_label] = galsim.__version__
@@ -603,9 +627,9 @@ def generate_image(image, options):
         @param options
             <dict> The options dictionary for this run.
     """
-    
+
     logger = getLogger(mv.logger_name)
-    
+
     logger.info("# Printing image " + str(image.get_local_ID()) + " #")
 
     # Magic numbers
@@ -627,9 +651,9 @@ def generate_image(image, options):
     full_y_size = int(image.get_param_value("image_size_yp"))
     pixel_scale = image.get_param_value("pixel_scale")
     for _ in xrange(num_dithers):
-        if(options['image_datatype'] == '32f'):
+        if options['image_datatype'] == '32f':
             dithers.append(galsim.ImageF(full_x_size , full_y_size, scale=pixel_scale))
-        elif(options['image_datatype'] == '64f'):
+        elif options['image_datatype'] == '64f':
             dithers.append(galsim.ImageD(full_x_size , full_y_size, scale=pixel_scale))
         else:
             raise Exception("Bad image type slipped through somehow.")
@@ -639,7 +663,7 @@ def generate_image(image, options):
 
     # If shape noise cancellation is being applied, we'll use the angle for galaxy shape we generated
     # as the initial angle. Also, set up parameters for the cancellation
-    if(options['shape_noise_cancellation']):
+    if options['shape_noise_cancellation']:
         galaxy_groups = image.get_galaxy_group_descendants()
 
         # For each group, set the rotations as uniformly distributed
@@ -684,7 +708,7 @@ def generate_image(image, options):
         dither = dithers[di]
 
         # Output the image
-        if(num_dithers > 1):
+        if num_dithers > 1:
             dither_file_name_base = file_name_base + str(image_ID) + '_dither_' + str(di)
         else:
             dither_file_name_base = file_name_base + str(image_ID)
@@ -698,14 +722,14 @@ def generate_image(image, options):
                                     read_noise=options['read_noise'],
                                     sky_level=sky_level_subtracted_pixel)
             dither.addNoise(noise)
-        
+
         # Add a header containing version info
         add_version_to_header(dither)
-        
+
         galsim.fits.write(dither, dither_file_name)
 
         # Compress the image if necessary
-        if(options['compress_images'] >= 1):
+        if options['compress_images'] >= 1:
             compress_image(dither_file_name, lossy=(options['compress_images'] >= 2))
 
 
@@ -720,11 +744,11 @@ def generate_image(image, options):
         # Undo dithering adjustment
         otable['x_center_pix'] -= x_offset
         otable['y_center_pix'] -= y_offset
-        
+
         logger.info("Finished printing dither " + str(di) + ".")
 
     # If we have more than one dither, output the combined image
-    if(num_dithers > 1):
+    if num_dithers > 1:
 
         logger.info("Printing combined image.")
 
@@ -745,7 +769,7 @@ def generate_image(image, options):
 
         # Output the details file for it
         output_table.output_details_tables(combined_otable, combined_file_name_base, options)
-        
+
         logger.info("Finished printing combined image.")
 
     logger.info("Finished printing image " + str(image.get_local_ID()) + ".")

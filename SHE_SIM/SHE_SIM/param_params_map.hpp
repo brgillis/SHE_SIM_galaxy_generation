@@ -35,6 +35,7 @@
 #include "SHE_SIM/param_params/Calculated.hpp"
 #include "SHE_SIM/param_params/DepFieldRedshift.hpp"
 #include "SHE_SIM/param_params/DepUniform.hpp"
+#include "SHE_SIM/param_params/IndArcCos.hpp"
 #include "SHE_SIM/param_params/IndContRayleigh.hpp"
 #include "SHE_SIM/param_params/IndExpQuadratic.hpp"
 #include "SHE_SIM/param_params/IndFixed.hpp"
@@ -74,6 +75,7 @@ inline param_params_t make_full_param_params_map()
 	insert_param_param<Calculated>(res);
 	insert_param_param<DepFieldRedshift>(res);
 	insert_param_param<DepUniform>(res);
+  insert_param_param<IndArcCos>(res);
 	insert_param_param<IndExpQuadratic>(res);
 	insert_param_param<IndFixed>(res);
 	insert_param_param<IndContRayleigh>(res);
