@@ -48,9 +48,11 @@ from icebrgpy.logging import getLogger
 from icebrgpy.rebin import rebin
 import numpy as np
     
-default_gsparams = galsim.GSParams(folding_threshold=5e-2,
-                                   maxk_threshold=1e-2,
-                                   kvalue_accuracy=1e-4)
+default_gsparams = galsim.GSParams(folding_threshold=5e-3,
+                                   maxk_threshold=1e-3,
+                                   kvalue_accuracy=1e-5,
+                                   stepk_minimum_hlr=5,
+                                   )
 
 try:
     import pyfftw
@@ -435,7 +437,8 @@ def print_galaxies(image,
                                                                g_shear=g_shear,
                                                                beta_deg_shear=beta_shear,)
 
-                    final_disk = galsim.Convolve([disk_gal_profile, disk_psf_profile],
+                    final_disk = galsim.Convolve([disk_gal_profile, disk_psf_profile,
+                                                  galsim.Pixel(scale=pixel_scale)],
                                               gsparams=default_gsparams)
 
                 else:
