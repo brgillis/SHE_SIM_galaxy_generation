@@ -40,7 +40,8 @@ from SHE_SIM_galaxy_image_generation.cutouts import make_cutout_image
 from SHE_SIM_galaxy_image_generation.dither_schemes import get_dither_scheme
 from SHE_SIM_galaxy_image_generation.galaxy import (get_bulge_galaxy_profile,
                                              get_disk_galaxy_image,
-                                             is_target_galaxy, get_disk_galaxy_profile)
+                                             is_target_galaxy, get_disk_galaxy_profile,
+                                             have_inclined_expoential)
 from SHE_SIM_galaxy_image_generation.magnitude_conversions import get_I
 from SHE_SIM_galaxy_image_generation.psf import get_psf_profile
 from icebrgpy.logging import getLogger
@@ -423,7 +424,7 @@ def print_galaxies(image,
                                               gsparams=galsim.GSParams(maximum_fft_size=12000))
 
                 # Try to get a disk galaxy profile if the galsim version supports it
-                try:
+                if have_inclined_expoential:
                     disk_gal_profile = get_disk_galaxy_profile(half_light_radius=disk_size,
                                                                rotation=rotation,
                                                                tilt=tilt,
@@ -434,13 +435,7 @@ def print_galaxies(image,
                     final_disk = galsim.Convolve([disk_gal_profile, disk_psf_profile],
                                               gsparams=galsim.GSParams(maximum_fft_size=12000))
 
-                except AttributeError as e:
-                    if not "InclinedExponential" in str(e):
-                        raise
-
-                    logger.warning("GalSim's InclinedExponential profile is not available. Be " +
-                                   "sure to check out branch #782 to use it. Using fallback for now.")
-
+                else:
                     disk_gal_image = get_disk_galaxy_image(sersic_index=n,
                                                     half_light_radius=disk_size,
                                                     stamp_size_factor=options['stamp_size_factor'],

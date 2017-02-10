@@ -57,6 +57,7 @@ default_sky_level = 32570.
 default_exp_time = 565. # seconds
 default_psf_size = 0.085
 
+default_truncation_radius_factor = 4.5
 
 default_data_dir = "./data"
 

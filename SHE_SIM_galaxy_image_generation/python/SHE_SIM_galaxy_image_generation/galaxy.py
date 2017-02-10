@@ -28,10 +28,26 @@ import galsim
 
 import SHE_SIM_galaxy_image_generation.magic_values as mv
 from icebrgpy.function_cache import lru_cache
+from icebrgpy.logging import getLogger
 import numpy as np
 
-
 __all__ = ['get_galaxy_profile']
+
+try:
+    from galsim import InclinedSersic
+    have_inclined_sersic = True
+except ImportError:
+    have_inclined_sersic = False
+    getLogger(mv.logger_name).warning("GalSim's InclinedSersic profile is not available. Fallback will be used; " +
+                   "Note that this will result in different profiles being generated.")
+
+try:
+    from galsim import InclinedExponential
+    have_inclined_exponential = True
+except ImportError:
+    have_inclined_expoential = False
+    getLogger(mv.logger_name).warning("GalSim's InclinedSersic profile is not available. Fallback will be used; " +
+                   "Note that this will result in different profiles being generated.")
 
 allowed_ns = np.array((1.8, 2.0, 2.56, 2.71, 3.0, 3.5, 4.0))
 
@@ -167,9 +183,19 @@ def get_disk_galaxy_profile(half_light_radius,
     # (where hlr is hlr for face-on profile specifically)
     scale_radius = half_light_radius / galsim.Exponential._hlr_factor
 
-    base_prof = galsim.InclinedExponential(inclination=tilt * galsim.degrees,
-                                           scale_radius=scale_radius,
-                                           flux=flux)
+    if have_inclined_sersic:
+        base_prof = InclinedSersic(n=1.,
+                                               inclination=tilt * galsim.degrees,
+                                               scale_radius=scale_radius,
+                                               trunc=mv.default_truncation_radius_factor*scale_radius,
+                                               flux=flux)
+    elif have_inclined_expoential:
+        base_prof = InclinedExponential(inclination=tilt * galsim.degrees,
+                                               scale_radius=scale_radius,
+                                               flux=flux)
+    else:
+        raise Exception("get_disk_galaxy_profile requires a version of galsim with the " +
+                        "InclinedExponential or InclinedSersic profile.")
 
     rotated_prof = base_prof.rotate(rotation * galsim.degrees)
 
