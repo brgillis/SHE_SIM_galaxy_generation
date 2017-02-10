@@ -45,7 +45,7 @@ try:
     from galsim import InclinedExponential
     have_inclined_exponential = True
 except ImportError:
-    have_inclined_expoential = False
+    have_inclined_exponential = False
     getLogger(mv.logger_name).warning("GalSim's InclinedSersic profile is not available. Fallback will be used; " +
                    "Note that this will result in different profiles being generated.")
 
