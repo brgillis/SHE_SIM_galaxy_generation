@@ -185,14 +185,14 @@ def get_disk_galaxy_profile(half_light_radius,
 
     if have_inclined_sersic:
         base_prof = InclinedSersic(n=1.,
-                                               inclination=tilt * galsim.degrees,
-                                               scale_radius=scale_radius,
-                                               trunc=mv.default_truncation_radius_factor*scale_radius,
-                                               flux=flux)
+                                   inclination=tilt * galsim.degrees,
+                                   half_light_radius=half_light_radius,
+                                   trunc=mv.default_truncation_radius_factor*scale_radius,
+                                   flux=flux)
     elif have_inclined_expoential:
         base_prof = InclinedExponential(inclination=tilt * galsim.degrees,
-                                               scale_radius=scale_radius,
-                                               flux=flux)
+                                        scale_radius=scale_radius,
+                                        flux=flux)
     else:
         raise Exception("get_disk_galaxy_profile requires a version of galsim with the " +
                         "InclinedExponential or InclinedSersic profile.")
