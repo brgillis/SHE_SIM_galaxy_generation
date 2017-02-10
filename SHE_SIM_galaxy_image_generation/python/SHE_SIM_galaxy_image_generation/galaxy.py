@@ -189,7 +189,7 @@ def get_disk_galaxy_profile(half_light_radius,
                                    half_light_radius=half_light_radius,
                                    trunc=mv.default_truncation_radius_factor*scale_radius,
                                    flux=flux)
-    elif have_inclined_expoential:
+    elif have_inclined_exponential:
         base_prof = InclinedExponential(inclination=tilt * galsim.degrees,
                                         scale_radius=scale_radius,
                                         flux=flux)
