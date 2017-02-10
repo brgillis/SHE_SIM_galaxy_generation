@@ -41,7 +41,7 @@ from SHE_SIM_galaxy_image_generation.dither_schemes import get_dither_scheme
 from SHE_SIM_galaxy_image_generation.galaxy import (get_bulge_galaxy_profile,
                                              get_disk_galaxy_image,
                                              is_target_galaxy, get_disk_galaxy_profile,
-                                             have_inclined_expoential)
+                                             have_inclined_exponential)
 from SHE_SIM_galaxy_image_generation.magnitude_conversions import get_I
 from SHE_SIM_galaxy_image_generation.psf import get_psf_profile
 from icebrgpy.logging import getLogger
@@ -424,7 +424,7 @@ def print_galaxies(image,
                                               gsparams=galsim.GSParams(maximum_fft_size=12000))
 
                 # Try to get a disk galaxy profile if the galsim version supports it
-                if have_inclined_expoential:
+                if have_inclined_exponential:
                     disk_gal_profile = get_disk_galaxy_profile(half_light_radius=disk_size,
                                                                rotation=rotation,
                                                                tilt=tilt,
