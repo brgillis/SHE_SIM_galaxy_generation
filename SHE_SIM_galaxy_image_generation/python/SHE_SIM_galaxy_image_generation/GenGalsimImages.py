@@ -32,7 +32,6 @@ from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_optio
 from SHE_SIM_galaxy_image_generation.run_from_config import run_from_config_file_and_args
 from icebrgpy.logging import getLogger
 
-
 def defineSpecificProgramOptions():
     """
     @brief
@@ -47,6 +46,8 @@ def defineSpecificProgramOptions():
     parser.add_argument('--config-file-name', type=str, default="",
                         help='Filename of the configuration file to use for values not specified ' +
                         'in the options here.')
+    parser.add_argument('--profile',action='store_true',
+                        help='Store profiling data for execution.')
 
     # Add in each allowed option, with a null default
     for option in allowed_options:
@@ -91,9 +92,16 @@ def mainMethod(args):
         logger.info('Using default configurations.')
     else:
         logger.info('Using configurations from file ' + config_file_name + '.')
-
-    run_from_config_file_and_args(config_file_name, args)
+        
+    if args.profile:
+        import cProfile
+        cProfile.runctx("run_from_config_file_and_args(config_file_name, args)",{},
+                        {"run_from_config_file_and_args":run_from_config_file_and_args,
+                         "config_file_name":config_file_name,"args":args},filename="gen_galsim_images.prof")
+    else:
+        run_from_config_file_and_args(config_file_name, args)
 
     logger.info('Exiting GenGalsimImages mainMethod()')
 
     return
+
