@@ -47,7 +47,10 @@ from SHE_SIM_galaxy_image_generation.psf import get_psf_profile
 from icebrgpy.logging import getLogger
 from icebrgpy.rebin import rebin
 import numpy as np
-
+    
+default_gsparams = galsim.GSParams(folding_threshold=5e-2,
+                                   maxk_threshold=1e-2,
+                                   kvalue_accuracy=1e-4)
 
 try:
     import pyfftw
@@ -421,7 +424,7 @@ def print_galaxies(image,
                 # Convolve the galaxy, psf, and pixel profile to determine the final (well,
                 # before noise) pixelized image
                 final_bulge = galsim.Convolve([bulge_gal_profile, bulge_psf_profile],
-                                              gsparams=galsim.GSParams(maximum_fft_size=12000))
+                                              gsparams=default_gsparams)
 
                 # Try to get a disk galaxy profile if the galsim version supports it
                 if have_inclined_exponential:
@@ -433,7 +436,7 @@ def print_galaxies(image,
                                                                beta_deg_shear=beta_shear,)
 
                     final_disk = galsim.Convolve([disk_gal_profile, disk_psf_profile],
-                                              gsparams=galsim.GSParams(maximum_fft_size=12000))
+                                              gsparams=default_gsparams)
 
                 else:
                     disk_gal_image = get_disk_galaxy_image(sersic_index=n,
@@ -476,7 +479,7 @@ def print_galaxies(image,
                 # Convolve the galaxy, psf, and pixel profile to determine the final
                 # (well, before noise) pixelized image
                 final_gal = galsim.Convolve([gal_profile, disk_psf_profile],
-                                              gsparams=galsim.GSParams(maximum_fft_size=12000))
+                                              gsparams=default_gsparams)
 
             if not options['mode'] == 'stamps':
                 if is_target_gal:
