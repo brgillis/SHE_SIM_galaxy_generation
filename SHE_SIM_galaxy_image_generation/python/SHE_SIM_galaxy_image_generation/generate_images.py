@@ -370,8 +370,8 @@ def print_galaxies_and_psfs(image,
                     yp = yp_sp_shift + stamp_size_pix // 2 + irow * stamp_size_pix
                 
                 # Get psf position regardless    
-                psf_xp = stamp_size_pix // 2 + icol * stamp_size_pix
-                psf_yp = stamp_size_pix // 2 + irow * stamp_size_pix
+                psf_xp = psf_stamp_size_pix // 2 + icol * psf_stamp_size_pix
+                psf_yp = psf_stamp_size_pix // 2 + irow * psf_stamp_size_pix
                 
 
             elif options['mode'] == 'stamps':
@@ -499,25 +499,23 @@ def print_galaxies_and_psfs(image,
                 # Now draw the PSFs for this galaxy onto those images
                 
                 # Determine boundaries on the PSF image
-                xl = xp_i - psf_stamp_size_pix // 2 + 1
+                xl = psf_xp - psf_stamp_size_pix // 2 + 1
                 xh = xl + psf_stamp_size_pix - 1
-                yl = yp_i - psf_stamp_size_pix // 2 + 1
+                yl = psf_yp - psf_stamp_size_pix // 2 + 1
                 yh = yl + psf_stamp_size_pix - 1
         
                 psf_bounds = galsim.BoundsI(xl, xh, yl, yh)
         
                 # Get centers, correcting by 1.5 - 1 since Galsim is offset by 1, .5 to move from
                 # corner of pixel to center
-                xc = psf_bounds.center().x + centre_offset
-                yc = psf_bounds.center().y + centre_offset
+                psf_xc = psf_bounds.center().x
+                psf_yc = psf_bounds.center().y
         
                 # Draw the PSF image
-                bulge_psf_profile.drawImage(p_bulge_psf_image[0],
-                                            offset=(-centre_offset,-centre_offset),
+                bulge_psf_profile.drawImage(p_bulge_psf_image[0][psf_bounds],
                                             add_to_image=True,
                                             method='no_pixel')
-                disk_psf_profile.drawImage( p_disk_psf_image[0],
-                                            offset=(-centre_offset,-centre_offset),
+                disk_psf_profile.drawImage( p_disk_psf_image[0][psf_bounds],
                                             add_to_image=True,
                                             method='no_pixel')
                 
