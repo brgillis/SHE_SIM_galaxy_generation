@@ -1,5 +1,4 @@
-"""
-    @file compress_image.py
+""" @file compress_image.py
 
     Created 23 Jul 2015
 
@@ -7,7 +6,7 @@
 
     ---------------------------------------------------------------------
 
-    Copyright (C) 2015, 2016 Bryan R. Gillis
+    Copyright (C) 2015 Bryan R. Gillis
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -28,31 +27,27 @@ import subprocess
 import SHE_SIM_galaxy_image_generation.magic_values as mv
 
 
-def compress_image(image_name,nx=None,lossy=False):
+def compress_image(image_name, nx=None, lossy=False):
+    """ Compresses an image using fpack.
+
+        Requires: image_name <string>
+
+        Optional: nx <int> (number of pixels per tile, assuming square tiles)
+                  lossy <bool> (whether or not to allow lossy compression)
+
     """
-        @brief Compresses an image using fpack.
-    
-        @param image_name
-            <string> Filename of the image to be compressed
-        
-        @param nx
-            <int> Number of pixels per tile, assuming square tiles. Default None
-        @param lossy
-            <bool> Whether or not to allow lossy compression. Default False
-    
-    """
-    
+
     cmd = mv.rm_command + image_name + ".fz"
-    subprocess.call(cmd,shell=True)
-    
-    if(lossy):
+    subprocess.call(cmd, shell=True)
+
+    if lossy:
         cmd = mv.fpack_lossy_command + image_name
-    else:        
-        if(nx==None):
+    else:
+        if nx is None:
             cmd = mv.fpack_lossless_command + image_name
         else:
-            cmd = mv.fpack_lossless_command + "-t " + str(nx[0])+","+str(nx[1]) + " " + image_name
-        
-    subprocess.call(cmd,shell=True)
+            cmd = mv.fpack_lossless_command + "-t " + str(nx[0]) + "," + str(nx[1]) + " " + image_name
+
+    subprocess.call(cmd, shell=True)
     cmd = mv.rm_command + image_name
-    subprocess.call(cmd,shell=True)
+    subprocess.call(cmd, shell=True)

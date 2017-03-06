@@ -28,16 +28,16 @@ import galsim
 
 def is_early_galsim_version():
     """ Tests if the installed version of galsim is 1.0.x or earlier.
-    
+
         Requires: (nothing)
-        
+
         Returns: <bool> (True if galsim.version is 1.0.x or lower, otherwise False)
     """
-    
+
     # Try to check for a version tag first
-    if(hasattr(galsim,'version')):
+    if(hasattr(galsim, 'version')):
         ver = galsim.version
-    elif(hasattr(galsim,'__version__')):
+    elif(hasattr(galsim, '__version__')):
         ver = galsim.__version__
     else:
         # No version tag. So, check for the presence of the 'wcs' attribute, which
@@ -46,10 +46,10 @@ def is_early_galsim_version():
             return False
         else:
             return True
-    
+
     # Continuing the path where we did find a version tag and set it to the ver variable
-    if(ver[0]=='0'): # Version 0.X.X
+    if(ver[0] == '0'): # Version 0.X.X
         return True
-    if(ver[0:3]=='1.0'): # Version 1.0.X
+    if(ver[0:3] == '1.0'): # Version 1.0.X
         return True
     return False # Version 1.1.0 or higher

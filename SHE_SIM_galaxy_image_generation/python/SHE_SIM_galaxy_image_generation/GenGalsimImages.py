@@ -24,13 +24,13 @@
 """
 
 import argparse
-import ElementsKernel.Logging as log
 
+from SHE_SIM_galaxy_image_generation import magic_values as mv
 from SHE_SIM_galaxy_image_generation.config.config_default import (allowed_options,
                                                             allowed_fixed_params,
                                                             allowed_survey_settings)
 from SHE_SIM_galaxy_image_generation.run_from_config import run_from_config_file_and_args
-from SHE_SIM_galaxy_image_generation import magic_values as mv
+from icebrgpy.logging import getLogger
 
 def defineSpecificProgramOptions():
     """
@@ -46,6 +46,8 @@ def defineSpecificProgramOptions():
     parser.add_argument('--config-file-name', type=str, default="",
                         help='Filename of the configuration file to use for values not specified ' +
                         'in the options here.')
+    parser.add_argument('--profile',action='store_true',
+                        help='Store profiling data for execution.')
 
     # Add in each allowed option, with a null default
     for option in allowed_options:
@@ -72,13 +74,13 @@ def mainMethod(args):
     """
     @brief
         The "main" method for this program, to generate galaxy images.
-        
+
     @details
         This method is the entry point to the program. In this sense, it is
         similar to a main (and it is why it is called mainMethod()).
     """
 
-    logger = log.getLogger(mv.logger_name)
+    logger = getLogger(mv.logger_name)
 
     logger.info('#')
     logger.info('# Entering GenGalsimImages mainMethod()')
@@ -90,9 +92,16 @@ def mainMethod(args):
         logger.info('Using default configurations.')
     else:
         logger.info('Using configurations from file ' + config_file_name + '.')
-
-    run_from_config_file_and_args(config_file_name, args)
+        
+    if args.profile:
+        import cProfile
+        cProfile.runctx("run_from_config_file_and_args(config_file_name, args)",{},
+                        {"run_from_config_file_and_args":run_from_config_file_and_args,
+                         "config_file_name":config_file_name,"args":args},filename="gen_galsim_images.prof")
+    else:
+        run_from_config_file_and_args(config_file_name, args)
 
     logger.info('Exiting GenGalsimImages mainMethod()')
 
     return
+

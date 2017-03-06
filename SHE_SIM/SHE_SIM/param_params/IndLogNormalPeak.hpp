@@ -27,6 +27,7 @@
 #define SHE_SIM_GAL_PARAMS_PARAM_PARAMS_INDLOGNORMALPEAK_HPP_
 
 #include <initializer_list>
+#include <sstream>
 
 #include "SHE_SIM/common.hpp"
 #include "SHE_SIM/ParamParam.hpp"
@@ -65,6 +66,19 @@ public:
 
 	// Get the name of this
 	virtual name_t name() const override { return "lognormal_peak"; };
+
+	virtual std::vector<flt_t> get_parameters() const override
+	{
+		return std::vector<flt_t>({_l10_peak,_l10_stddev});
+	}
+
+	virtual str_t get_parameters_string() const override
+	{
+		std::stringstream ss("");
+		ss << "log_10(Peak): " << _l10_peak << ", "
+				<< "sigma (log_10): " << _l10_stddev;
+		return ss.str();
+	}
 
 	// Get the value
 	virtual flt_t get_independently( gen_t & gen = IceBRG::rng ) const override

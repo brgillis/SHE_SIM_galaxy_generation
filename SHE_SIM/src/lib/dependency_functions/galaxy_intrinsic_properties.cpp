@@ -28,6 +28,7 @@
 #endif
 
 #include <cassert>
+#include <cmath>
 #include <stdexcept>
 
 #include "IceBRG_main/logging.hpp"
@@ -55,7 +56,7 @@ flt_t generate_rotation( flt_t const & , flt_t const & , flt_t const & , flt_t c
 flt_t generate_tilt( flt_t const & , flt_t const & , flt_t const & , flt_t const & ,
 				         flt_t const & , flt_t const & , gen_t & rng  )
 {
-	return IceBRG::drand( dv::tilt_min, dv::tilt_max, rng );
+	return 180./M_PI*std::acos(IceBRG::drand( dv::tilt_cos_min, dv::tilt_cos_max, rng ));
 }
 
 flt_t get_central_abs_mag_vis( flt_t const & cluster_mass, flt_t const & redshift )

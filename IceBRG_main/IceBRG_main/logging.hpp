@@ -24,17 +24,19 @@
 #ifndef ICEBRG_MAIN_ICEBRG_MAIN_LOGGING_HPP_
 #define ICEBRG_MAIN_ICEBRG_MAIN_LOGGING_HPP_
 
+#define LOGGER_NAME "IceBRG"
+
 #if defined(ELEMENTS_LINKER_LIBRARY) or defined(_FORTIFY_SOURCE) or defined(_GNU_SOURCE)
 
 #include "ElementsKernel/Logging.h"
 
 #define ICEBRG_LOG_TRIVIAL(mode) \
-  Elements::Logging::getLogger().mode()
+  Elements::Logging::getLogger(LOGGER_NAME).mode()
 #define ICEBRG_LOG(mode,program) \
   Elements::Logging::getLogger(#program).mode()
 
 #define ICEBRG_WARN_TRIVIAL() \
-  Elements::Logging::getLogger().warn()
+  Elements::Logging::getLogger(LOGGER_NAME).warn()
 #define ICEBRG_WARN(program) \
   Elements::Logging::getLogger(#program).warn()
 

@@ -1,9 +1,8 @@
-"""
-    @file cutouts.py
+""" @file /disk2/brg/Program_Files/workspace/Generate_GalSim_Images/SHE_SIM_galaxy_image_generation/cutouts.py
 
     Created 14 Mar 2016
 
-    Contains a function to make an image containing galaxy cutouts.
+    @TODO: File docstring
 
     ---------------------------------------------------------------------
 
@@ -26,60 +25,46 @@
 from __future__ import division
 
 import galsim
-import numpy as np
 
 from SHE_SIM_galaxy_image_generation.galaxy import is_target_galaxy
+import numpy as np
 
-def make_cutout_image( image, options, galaxies, otable,
-                       centre_offset = 0 ):
-    """
-        @brief Makes an image containing cutouts of all galaxies in the provided image.
-        
-        @param image
-            <galsim.Image> The image from which to get galaxy cutouts
-        @param options
-            <dict> Dictionary containing the options used for this run.
-        @param galaxies
-            <list<SHE_SIM.galaxy>> List of galaxies, so we know what positions to cut out around
-        @param otable
-            <astropy.Table> Table of output data, so we can modify it with change galaxy positions.
-        @param centre_offset
-            <float> How much the galaxy's centre position is offset from the pixel coordinates
-            of its centre. Default 0
-    """
+
+def make_cutout_image(image, options, galaxies, otable,
+                      centre_offset=0):
 
     # Get a list of only the target galaxies
     target_galaxies = []
     for galaxy in galaxies:
         if is_target_galaxy(galaxy, options):
             target_galaxies.append(galaxy)
-    
+
     # Figure out how to set up the grid, making it as square as possible
     num_target_galaxies = len(target_galaxies)
-    
+
     ncols = int(np.ceil(np.sqrt(num_target_galaxies)))
     nrows = int(np.ceil(num_target_galaxies / ncols))
-    
+
     stamp_size_pix = options['stamp_size']
-    
+
     cutout_image_npix_x = ncols * stamp_size_pix
     cutout_image_npix_y = nrows * stamp_size_pix
-    
-    cutout_image = galsim.Image( cutout_image_npix_x,
-                                 cutout_image_npix_y,
-                                 dtype = image.dtype,
-                                 scale = image.scale )
-    
+
+    cutout_image = galsim.Image(cutout_image_npix_x,
+                                cutout_image_npix_y,
+                                dtype=image.dtype,
+                                scale=image.scale)
+
     # Add each target galaxy to the cutout image
-    
+
     icol = -1
     irow = 0
-    
+
     full_x_size = image.xmax
     full_y_size = image.ymax
-    
+
     for galaxy in target_galaxies:
-        
+
         # Increment position first
         icol += 1
         if icol >= ncols:
@@ -87,54 +72,54 @@ def make_cutout_image( image, options, galaxies, otable,
             irow += 1
             if irow >= nrows:
                 raise Exception("More galaxies than expected when printing cutouts.")
-        
+
         # Determine cutout's bounds
-        cutout_bounds = galsim.BoundsI( icol*stamp_size_pix+1, (icol+1)*stamp_size_pix,
-                                        irow*stamp_size_pix+1, (irow+1)*stamp_size_pix)
-    
+        cutout_bounds = galsim.BoundsI(icol * stamp_size_pix + 1, (icol + 1) * stamp_size_pix,
+                                       irow * stamp_size_pix + 1, (irow + 1) * stamp_size_pix)
+
         # Determine galaxy's bounds
         xp = galaxy.get_param_value("xp")
         yp = galaxy.get_param_value("yp")
-        
+
         xp_i = int(xp)
         yp_i = int(yp)
-        
+
         x_sp_shift = xp - xp_i
         y_sp_shift = yp - yp_i
-    
+
         # Determine boundaries
         xl = xp_i - stamp_size_pix // 2
         xh = xl + stamp_size_pix - 1
         yl = yp_i - stamp_size_pix // 2
         yh = yl + stamp_size_pix - 1
-    
+
         # Check if the stamp crosses an edge and adjust as necessary
         x_shift = 0
-        if (xl < 1):
+        if xl < 1:
             x_shift = 1 - xl
-        elif (xh > full_x_size):
+        elif xh > full_x_size:
             x_shift = full_x_size - xh
         xh += x_shift
         xl += x_shift
-        
+
         y_shift = 0
-        if (yl < 1):
+        if yl < 1:
             y_shift = 1 - yl
-        elif (yh > full_y_size):
+        elif yh > full_y_size:
             y_shift = full_y_size - yh
         yh += y_shift
         yl += y_shift
-        
+
         gal_bounds = galsim.BoundsI(xl, xh, yl, yh)
-        
+
         # Add the galaxy's stamp to the cutout image
         cutout_image[cutout_bounds] += image[gal_bounds]
-        
+
         # Adjust the galaxy's x and y centre coordinates in output table
-        index = ( otable["ID"] == galaxy.get_full_ID() )
-        otable["x_center_pix"][index] = icol*stamp_size_pix + 1 + stamp_size_pix // 2 - x_shift + \
+        index = (otable["ID"] == galaxy.get_full_ID())
+        otable["x_center_pix"][index] = icol * stamp_size_pix + 1 + stamp_size_pix // 2 - x_shift + \
             x_sp_shift + centre_offset
-        otable["y_center_pix"][index] = irow*stamp_size_pix + 1 + stamp_size_pix // 2 - y_shift + \
+        otable["y_center_pix"][index] = irow * stamp_size_pix + 1 + stamp_size_pix // 2 - y_shift + \
             y_sp_shift + centre_offset
-    
+
     return cutout_image

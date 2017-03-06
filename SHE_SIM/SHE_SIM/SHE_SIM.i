@@ -35,6 +35,8 @@
 	/* Include the headers in the wrapper code */
 	#include "SHE_SIM/common.hpp"
 	#include "SHE_SIM/ParamHierarchyLevel.hpp"
+	#include "SHE_SIM/ParamGenerator.hpp"
+	#include "SHE_SIM/ParamParam.hpp"
 	#include "SHE_SIM/levels/Cluster.hpp"
 	#include "SHE_SIM/levels/ClusterGroup.hpp"
 	#include "SHE_SIM/levels/Field.hpp"
@@ -53,6 +55,8 @@
 // Parse the header files to generate wrappers
 %include "SHE_SIM/common.hpp"
 %include "SHE_SIM/ParamHierarchyLevel.hpp"
+%include "SHE_SIM/ParamGenerator.hpp"
+%include "SHE_SIM/ParamParam.hpp"
 %include "SHE_SIM/levels/Cluster.hpp"
 %include "SHE_SIM/levels/ClusterGroup.hpp"
 %include "SHE_SIM/levels/Field.hpp"

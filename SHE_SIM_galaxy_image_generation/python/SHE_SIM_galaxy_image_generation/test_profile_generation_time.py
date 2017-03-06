@@ -26,42 +26,47 @@
 
 import sys
 
-from SHE_SIM_galaxy_image_generation.utility import timing
 import galsim
+import pyfftw
 import numpy as np
+import cProfile
 
+num_runs = 1000
+gsparams = galsim.GSParams()
 
-use_gaus = False
+n = 32
+scale = 1
 
-def rand(lo, hi):
-    return lo + (hi - lo) * np.random.random_sample();
+center = n - (n+1)//2
+
+def run_generation_tests():
+    
+    psf_image = galsim.fits.read("/home/brg/Data/test_psf.fits")
+    psf_prof = galsim.InterpolatedImage(psf_image,scale=0.02)
+    
+    for _ in range(num_runs):
+        
+        gal_prof = galsim.Sersic(n=2,scale_radius=2,trunc=9,flux=1.)
+        gal_prof = gal_prof.shear(g1=0.3,g2=0)
+        
+        convolved_image = galsim.Image(n,n,scale=scale)
+        
+        convolved_prof = galsim.Convolve([gal_prof,psf_prof],gsparams=gsparams)
+        convolved_prof.drawImage(convolved_image,offset=(-0.5,-0.5))
+        
+    galsim.fits.write(convolved_image,"/home/brg/Data/test_galaxy.fits")
+    
+    print("Done!")
+        
+    return
 
 def main(argv):
     """ @TODO main docstring
     """
-
-    for _i in range(100):
-        hlr = rand(0.1, 0.2)
-        n = rand(0.4, 6.2)
-        g_shear = rand(0.01, 0.04)
-        beta_deg_shear = rand(0, 180)
-        g_ell = rand(0.1, 0.4)
-        beta_deg_ell = rand(0, 180)
-
-        if use_gaus:
-            gal_profile = galsim.Gaussian(sigma=hlr,
-                                        flux=1.)
-        else:
-            gal_profile = galsim.Sersic(n=n,
-                                        half_light_radius=hlr,
-                                        flux=1.)
-
-        shear_ell = galsim.Shear(g=g_ell, beta=beta_deg_ell * galsim.degrees)
-        shear_lensing = galsim.Shear(g=g_shear, beta=beta_deg_shear * galsim.degrees)
-
-        gal_profile = gal_profile.shear(shear_ell + shear_lensing)
-
-
+    
+    import cProfile
+    cProfile.runctx("run_generation_tests()",{},
+                    {"run_generation_tests":run_generation_tests},filename="/home/brg/Data/profile_gen.prof")
 
 if __name__ == "__main__":
     main(sys.argv)

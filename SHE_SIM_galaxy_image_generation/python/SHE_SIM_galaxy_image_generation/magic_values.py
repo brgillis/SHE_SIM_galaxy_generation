@@ -22,19 +22,25 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
-    
+
+# Version info
+version_label = 'SS_VER'
+version_str = '1.0.3'
+
+galsim_version_label = 'GS_VER'
+
 # Lists of allowed values for certain configuration parameters
 allowed_image_types = ['32f', '64f']
 
 # Hard bounds for input
-min_num_images    = 1
-min_image_size   = 2
-min_pixel_scale  = 0.0001
+min_num_images = 1
+min_image_size = 2
+min_pixel_scale = 0.0001
 
 default_output_folder = './sims/'
 default_output_file_name_base = 'simulated_image'
 default_magnitude_limit = 24.5
-default_num_parallel_threads = -1 # -1 uses all available CPUs
+default_num_parallel_threads = 1
 default_details_output_format = 'fits'
 default_image_datatype = '32f'
 default_random_seed = 8241573
@@ -51,6 +57,7 @@ default_sky_level = 32570.
 default_exp_time = 565. # seconds
 default_psf_size = 0.085
 
+default_truncation_radius_factor = 4.5
 
 default_data_dir = "./data"
 
