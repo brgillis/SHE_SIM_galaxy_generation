@@ -535,6 +535,10 @@ def print_galaxies_and_psfs(image,
                 # (well, before noise) pixelized image
                 final_gal = galsim.Convolve([gal_profile, disk_psf_profile],
                                               gsparams=default_gsparams)
+                
+                # Use dummy values for psf centre
+                psf_xc = -1
+                psf_yc = -1
 
             if not options['mode'] == 'stamps':
                 if is_target_gal:
@@ -617,6 +621,8 @@ def print_galaxies_and_psfs(image,
                              ID=galaxy.get_full_ID(),
                              x_center_pix=xc + xp_sp_shift,
                              y_center_pix=yc + yp_sp_shift,
+                             psf_x_center_pix=psf_xc,
+                             psf_y_center_pix=psf_yc,
                              hlr_bulge_arcsec=bulge_size,
                              hlr_disk_arcsec=disk_size,
                              magnitude=galaxy.get_param_value('apparent_mag_vis'),
