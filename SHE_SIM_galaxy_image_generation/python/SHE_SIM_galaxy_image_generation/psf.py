@@ -47,6 +47,8 @@ seds = {4.0:'sbc',
         1.8:'sb3',
         }
 
+psf_center_offset = (0,-2)
+
 allowed_ns = np.array((1.8, 2.0, 2.56, 2.71, 3.0, 3.5, 4.0))
 allowed_zs = np.array((0., 0.5, 1.0, 1.5, 2.0))
 
@@ -59,7 +61,8 @@ def load_psf_model_from_file(sed, z=0.0, data_dir=mv.default_data_dir):
 
     model = galsim.fits.read(join(data_dir, mv.psf_model_path, model_filename))
 
-    return galsim.InterpolatedImage(model, scale=mv.psf_model_scale)
+    return galsim.InterpolatedImage(model, scale=mv.psf_model_scale,
+                                    offset=psf_center_offset)
 
 @lru_cache()
 def get_background_psf_profile():

@@ -32,6 +32,8 @@ from SHE_SIM_galaxy_image_generation import magic_values as mv
 names_and_dtypes = (('ID', 'i8', 'K'),
             ('x_center_pix', 'f4', 'E'),
             ('y_center_pix', 'f4', 'E'),
+            ('psf_x_center_pix', 'f4', 'E'),
+            ('psf_y_center_pix', 'f4', 'E'),
             ('hlr_bulge_arcsec', 'f4', 'E'),
             ('hlr_disk_arcsec', 'f4', 'E'),
             ('bulge_ellipticity', 'f4', 'E'),
