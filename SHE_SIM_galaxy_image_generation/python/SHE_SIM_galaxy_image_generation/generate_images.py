@@ -114,15 +114,17 @@ def generate_images(survey, options):
 
     return
 
-def print_galaxies(image,
-                 options,
-                 centre_offset,
-                 num_dithers,
-                 dithers,
-                 full_x_size,
-                 full_y_size,
-                 pixel_scale,
-                 otable):
+def print_galaxies_and_psfs(image,
+                            options,
+                            centre_offset,
+                            num_dithers,
+                            dithers,
+                            p_bulge_psf_image,
+                            p_disk_psf_image,
+                            full_x_size,
+                            full_y_size,
+                            pixel_scale,
+                            otable):
     """
         @brief Prints galaxies onto a new image and stores details on them in the output table.
 
@@ -232,11 +234,16 @@ def print_galaxies(image,
     else:
         num_ratio = 1
 
-    if (options['mode'] == 'stamps') and (not options['details_only']):
+    # Figure out how to set up the grid for galaxy/psf stamps, making it as square as possible
+    ncols = int(np.ceil(np.sqrt(num_target_galaxies)))
+    nrows = int(np.ceil(num_target_galaxies / ncols))
+    
+    # Indices to keep track of row and column we're drawing galaxy/psf to
+    icol = -1
+    irow = 0
 
-        # Figure out how to set up the grid, making it as square as possible
-        ncols = int(np.ceil(np.sqrt(num_target_galaxies)))
-        nrows = int(np.ceil(num_target_galaxies / ncols))
+    # Only do galaxy stamp image in stamps mode and not details_only
+    if (options['mode'] == 'stamps') and (not options['details_only']):
 
         stamp_size_pix = options['stamp_size']
 
@@ -258,15 +265,28 @@ def print_galaxies(image,
                                 "Increase the stamp size to at least " +
                                 str(int(2 * bg_aperture_rad_pix + 1)) + " pixels.")
 
-        icol = -1
-        irow = 0
 
-        # Replace the images we've set up with stamp images
+        # Replace the dithers we've generated with properly-sized ones
         for di in range(num_dithers):
             dithers[di] = galsim.Image(stamp_image_npix_x,
-                                         stamp_image_npix_y,
-                                         dtype=dithers[di].dtype,
-                                         scale=dithers[di].scale)
+                                       stamp_image_npix_y,
+                                       dtype=dithers[di].dtype,
+                                       scale=dithers[di].scale)
+            
+    # Set up bulge and disk psf images
+    psf_stamp_size_pix = options['psf_stamp_size']
+
+    psf_stamp_image_npix_x = ncols * psf_stamp_size_pix
+    psf_stamp_image_npix_y = nrows * psf_stamp_size_pix
+    
+    p_bulge_psf_image.append(galsim.Image(psf_stamp_image_npix_x,
+                                          psf_stamp_image_npix_y,
+                                          dtype=dithers[0].dtype,
+                                          scale=dithers[0].scale/options['psf_scale_factor']))
+    p_disk_psf_image.append( galsim.Image(psf_stamp_image_npix_x,
+                                          psf_stamp_image_npix_y,
+                                          dtype=dithers[0].dtype,
+                                          scale=dithers[0].scale/options['psf_scale_factor']))
 
     if options['render_background_galaxies']:
         logger.info("Printing " + str(num_target_galaxies) + " target galaxies and " +
@@ -327,24 +347,32 @@ def print_galaxies(image,
 
             # Get the position of the galaxy, depending on whether we're in field or stamp mode
 
-            if (options['mode'] == 'stamps') and is_target_gal:
+            if is_target_gal:
 
-                # Increment position first
+                # Increment position
                 icol += 1
                 if icol >= ncols:
                     icol = 0
                     irow += 1
                     if irow >= nrows:
-                        raise Exception("More galaxies than expected when printing cutouts.")
+                        raise Exception("More galaxies than expected when printing stamps.")
+                
+                # Adjust galaxy position in stamp mode
+                if (options['mode'] == 'stamps'): 
 
-                xp_init = galaxy.get_param_value("xp")
-                yp_init = galaxy.get_param_value("yp")
-
-                xp_sp_shift = xp_init - int(xp_init)
-                yp_sp_shift = yp_init - int(yp_init)
-
-                xp = xp_sp_shift + stamp_size_pix // 2 + icol * stamp_size_pix
-                yp = yp_sp_shift + stamp_size_pix // 2 + irow * stamp_size_pix
+                    xp_init = galaxy.get_param_value("xp")
+                    yp_init = galaxy.get_param_value("yp")
+        
+                    xp_sp_shift = xp_init - int(xp_init)
+                    yp_sp_shift = yp_init - int(yp_init)
+        
+                    xp = xp_sp_shift + stamp_size_pix // 2 + icol * stamp_size_pix
+                    yp = yp_sp_shift + stamp_size_pix // 2 + irow * stamp_size_pix
+                
+                # Get psf position regardless    
+                psf_xp = stamp_size_pix // 2 + icol * stamp_size_pix
+                psf_yp = stamp_size_pix // 2 + irow * stamp_size_pix
+                
 
             elif options['mode'] == 'stamps':
 
@@ -467,6 +495,32 @@ def print_galaxies(image,
                     final_disk = galsim.InterpolatedImage(galsim.Image(final_disk_image, scale=pixel_scale),
                                                                        flux=gal_I * (1 - bulge_fraction),
                                                                        x_interpolant='nearest')
+                    
+                # Now draw the PSFs for this galaxy onto those images
+                
+                # Determine boundaries on the PSF image
+                xl = xp_i - psf_stamp_size_pix // 2 + 1
+                xh = xl + psf_stamp_size_pix - 1
+                yl = yp_i - psf_stamp_size_pix // 2 + 1
+                yh = yl + psf_stamp_size_pix - 1
+        
+                psf_bounds = galsim.BoundsI(xl, xh, yl, yh)
+        
+                # Get centers, correcting by 1.5 - 1 since Galsim is offset by 1, .5 to move from
+                # corner of pixel to center
+                xc = psf_bounds.center().x + centre_offset
+                yc = psf_bounds.center().y + centre_offset
+        
+                # Draw the PSF image
+                bulge_psf_profile.drawImage(p_bulge_psf_image[0],
+                                            offset=(-centre_offset,-centre_offset),
+                                            add_to_image=True,
+                                            method='no_pixel')
+                disk_psf_profile.drawImage( p_disk_psf_image[0],
+                                            offset=(-centre_offset,-centre_offset),
+                                            add_to_image=True,
+                                            method='no_pixel')
+                
             else:
                 # Just use a single sersic profile for background galaxies
                 # to make them more of a compromise between bulges and disks
@@ -637,9 +691,10 @@ def generate_image(image, options):
 
     centre_offset = -0.5
 
-    # Set up
+    # Setup
 
     file_name_base = join(options['output_folder'], options['output_file_name_base'] + '_')
+    psf_file_name_base = join(options['output_folder'], options['psf_file_name_base'] + '_')
 
     # General setup from config
     num_dithers = len(get_dither_scheme(options['dithering_scheme']))
@@ -651,13 +706,14 @@ def generate_image(image, options):
     full_x_size = int(image.get_param_value("image_size_xp"))
     full_y_size = int(image.get_param_value("image_size_yp"))
     pixel_scale = image.get_param_value("pixel_scale")
-    for _ in xrange(num_dithers):
-        if options['image_datatype'] == '32f':
-            dithers.append(galsim.ImageF(full_x_size , full_y_size, scale=pixel_scale))
-        elif options['image_datatype'] == '64f':
-            dithers.append(galsim.ImageD(full_x_size , full_y_size, scale=pixel_scale))
-        else:
-            raise Exception("Bad image type slipped through somehow.")
+    if not options['details_only']:
+        for _ in xrange(num_dithers):
+            if options['image_datatype'] == '32f':
+                dithers.append(galsim.ImageF(full_x_size , full_y_size, scale=pixel_scale))
+            elif options['image_datatype'] == '64f':
+                dithers.append(galsim.ImageD(full_x_size , full_y_size, scale=pixel_scale))
+            else:
+                raise Exception("Bad image type slipped through somehow.")
 
     # Fill in the galaxies within the image
     image.autofill_children()
@@ -686,10 +742,12 @@ def generate_image(image, options):
     otable = Table(init_cols, names=output_table.get_names(),
                    dtype=output_table.get_dtypes())
 
-    pixel_scale = image.get_param_value('pixel_scale')
-
-    galaxies = print_galaxies(image, options, centre_offset, num_dithers, dithers,
-                   full_x_size, full_y_size, pixel_scale, otable)
+    # Print the galaxies and psfs
+    p_bulge_psf_image = []
+    p_disk_psf_image = []
+    galaxies = print_galaxies_and_psfs(image, options, centre_offset, num_dithers, dithers,
+                                       p_bulge_psf_image, p_disk_psf_image,
+                                       full_x_size, full_y_size, pixel_scale, otable)
 
     image_ID = image.get_full_ID()
 
@@ -774,6 +832,19 @@ def generate_image(image, options):
         logger.info("Finished printing combined image.")
 
     logger.info("Finished printing image " + str(image.get_local_ID()) + ".")
+    
+    # Output the psf images
+    for label, p_psf_image in (("bulge", p_bulge_psf_image), ("disk", p_disk_psf_image) ):
+        for psf_image in p_psf_image:
+            logger.info("Printing "+label+" psf image")
+        
+            # Get the base name for this combined image
+            psf_file_name = psf_file_name_base + label + '_' + str(i) + '.fits'
+        
+            # Output the new image
+            galsim.fits.write(psf_image, psf_file_name)
+        
+            logger.info("Finished printing "+label+" psf image.")
 
     # We no longer need this image's children, so clear it to save memory
     image.clear()
