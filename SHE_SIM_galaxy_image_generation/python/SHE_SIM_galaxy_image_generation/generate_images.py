@@ -175,13 +175,13 @@ def print_galaxies_and_psfs(image,
 
     # If we're aiming for a certain number of target galaxies, adjust as necessary
     if options['num_target_galaxies'] > 0:
-        num_ratio = options['num_target_galaxies'] / num_target_galaxies
+        num_ratio = options['num_target_galaxies'] * (1. / num_target_galaxies)
 
         if num_ratio > 1:
 
             # Add new galaxies
-            num_extra_target_galaxies = int((num_ratio - 1) * num_target_galaxies)
-            if options['mode'] == 'field':
+            num_extra_target_galaxies = options['num_target_galaxies'] - num_target_galaxies
+            if options['mode'] != 'stamps':
                 num_extra_background_galaxies = 0
             else:
                 num_extra_background_galaxies = int((num_ratio - 1) * num_background_galaxies)
@@ -218,7 +218,7 @@ def print_galaxies_and_psfs(image,
         elif num_ratio < 1:
 
             # Remove galaxies from the lists
-            num_extra_target_galaxies = int((1 - num_ratio) * num_target_galaxies)
+            num_extra_target_galaxies = num_target_galaxies - options['num_target_galaxies'] 
             num_extra_background_galaxies = int((1 - num_ratio) * num_background_galaxies)
 
             for _ in range(num_extra_target_galaxies):
@@ -839,7 +839,7 @@ def generate_image(image, options):
             logger.info("Printing "+label+" psf image")
         
             # Get the base name for this combined image
-            psf_file_name = psf_file_name_base + label + '_' + str(i) + '.fits'
+            psf_file_name = psf_file_name_base + label + '.fits'
         
             # Output the new image
             galsim.fits.write(psf_image, psf_file_name)
