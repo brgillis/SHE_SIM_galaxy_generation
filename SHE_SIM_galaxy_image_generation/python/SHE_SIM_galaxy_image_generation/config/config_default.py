@@ -24,7 +24,6 @@
 """
 
 import SHE_SIM
-
 import SHE_SIM_galaxy_image_generation.magic_values as mv
 
 
@@ -35,33 +34,41 @@ __all__ = ['load_default_configurations']
 def str2bool(v):
     return v.lower() in ("yes", "true", "t", "1")
 
-allowed_options = { 'compress_images': (0, int),
+allowed_options = { 'data_dir': (mv.default_data_dir, str),
+                    'chromatic_psf': (True, str2bool),
+                    'compress_images': (0, int),
                     'num_target_galaxies': (0, int),
-                    'data_dir': (mv.default_data_dir, str),
                     'details_only': (False, str2bool),
                     'details_output_format': ('fits', str),
                     'dithering_scheme': ('none', str),
-                    'exp_time': (565., float),
-                    'gain': (3.3, float),
                     'image_datatype': (mv.default_image_datatype, str),
                     'magnitude_limit': (mv.default_magnitude_limit, float),
                     'mode': ('field', str),
                     'num_parallel_threads': (-1, int),
                     'output_folder': (mv.default_output_folder, str),
                     'output_file_name_base': ('simulated_image', str),
-                    'read_noise': (5.4, float),
+                    'psf_file_name_base': ('simulated_image_psfs', str),
+                    'psf_model': ('euclid', str),
+                    'psf_stamp_size': (256, int),
+                    'psf_scale_factor': (5, int),
+                    'psf_variety': ('multiple', str),
                     'render_background_galaxies': (True, str2bool),
                     'seed': (mv.default_random_seed, int),
                     'shape_noise_cancellation': (False, str2bool),
                     'stamp_size': (250, int),
                     'stamp_size_factor': (4.5, float),
-                    'suppress_noise': (False, str2bool) }
+                    'suppress_noise': (False, str2bool),
+                    'gain': (3.3, float),
+                    'exp_time': (565., float),
+                    'read_noise': (5.4, float) }
 
 allowed_option_values = { 'compress_images': (0, 1, 2),
                           'details_output_format': ('none', 'fits', 'ascii', 'both'),
                           'dithering_scheme': ('none', '2x2'),
                           'image_type': ('32f', '64f'),
-                          'mode': ('field', 'stamps', 'cutouts')}
+                          'mode': ('field', 'stamps', 'cutouts'),
+                          'psf_model': ('euclid', 'galsim'),
+                          'psf_variety': ('multiple', 'single')}
 
 allowed_fixed_params = ('num_images',
                         'num_clusters',
@@ -119,7 +126,6 @@ allowed_survey_settings = (# Survey level
                             'galaxy_type',
                             'physical_size_bulge',
                             'physical_size_disk',
-                            'psf_model',
                             'redshift',
                             'rotation',
                             'rp',
@@ -151,6 +157,15 @@ generation_levels = { 'survey': 0,
                       'pair': 6 ,
                       'galaxy': 7 }
 
+generation_levels_inverse = {0: 'Survey',
+                             1: 'Image Group',
+                             2: 'Image',
+                             3: 'Cluster/Field Group',
+                             4: 'Cluster/Field',
+                             5: 'Galaxy Group',
+                             6: 'Galaxy Pair',
+                             7: 'Galaxy'}
+
 
 def load_default_configurations():
     """This function loads a default set of configuration parameters. If you wish to run
@@ -158,10 +173,6 @@ def load_default_configurations():
        do so, ensure that all lines are entered in lower-case, which is what the program
        will be expecting.
     """
-
-    print "No configuration script loaded. The script will proceed using the set of"
-    print "configuration parameters hardcoded into it. These can be viewed and edited in"
-    print "the file SHE_SIM_galaxy_image_generation/magic_values.py."
 
     options = {}
     for option in allowed_options:
