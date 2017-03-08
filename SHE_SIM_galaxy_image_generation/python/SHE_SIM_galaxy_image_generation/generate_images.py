@@ -276,8 +276,12 @@ def print_galaxies_and_psfs(image,
     # Set up bulge and disk psf images
     psf_stamp_size_pix = options['psf_stamp_size']
 
-    psf_stamp_image_npix_x = ncols * psf_stamp_size_pix
-    psf_stamp_image_npix_y = nrows * psf_stamp_size_pix
+    if options['single_psf']:
+        psf_stamp_image_npix_x = psf_stamp_size_pix
+        psf_stamp_image_npix_y = psf_stamp_size_pix
+    else:
+        psf_stamp_image_npix_x = ncols * psf_stamp_size_pix
+        psf_stamp_image_npix_y = nrows * psf_stamp_size_pix
     
     p_bulge_psf_image.append(galsim.Image(psf_stamp_image_npix_x,
                                           psf_stamp_image_npix_y,
@@ -372,8 +376,12 @@ def print_galaxies_and_psfs(image,
                     yp = yp_sp_shift + stamp_size_pix // 2 + irow * stamp_size_pix
                 
                 # Get psf position regardless    
-                psf_xp = psf_stamp_size_pix // 2 + icol * psf_stamp_size_pix
-                psf_yp = psf_stamp_size_pix // 2 + irow * psf_stamp_size_pix
+                if options['single_psf']:
+                    psf_icol = psf_irow = 0
+                else:
+                    psf_icol, psf_irow = icol, irow
+                psf_xp = psf_stamp_size_pix // 2 + psf_icol * psf_stamp_size_pix
+                psf_yp = psf_stamp_size_pix // 2 + psf_icol * psf_stamp_size_pix
                 
 
             elif options['mode'] == 'stamps':
@@ -514,14 +522,15 @@ def print_galaxies_and_psfs(image,
                 psf_yc = psf_bounds.center().y
         
                 # Draw the PSF image
-                bulge_psf_profile.drawImage(p_bulge_psf_image[0][psf_bounds],
-                                            add_to_image=True,
-                                            method='no_pixel',
-                                            offset=(0,centre_offset))
-                disk_psf_profile.drawImage( p_disk_psf_image[0][psf_bounds],
-                                            add_to_image=True,
-                                            method='no_pixel',
-                                            offset=(centre_offset,centre_offset))
+                if (not options['single_psf']) or (icol+irow==0):
+                    bulge_psf_profile.drawImage(p_bulge_psf_image[0][psf_bounds],
+                                                add_to_image=False,
+                                                method='no_pixel',
+                                                offset=(0,centre_offset))
+                    disk_psf_profile.drawImage( p_disk_psf_image[0][psf_bounds],
+                                                add_to_image=False,
+                                                method='no_pixel',
+                                                offset=(centre_offset,centre_offset))
                 
             else:
                 # Just use a single sersic profile for background galaxies
