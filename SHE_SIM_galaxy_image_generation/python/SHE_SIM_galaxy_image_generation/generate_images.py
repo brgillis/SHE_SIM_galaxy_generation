@@ -254,29 +254,32 @@ def print_galaxies(image,
         if (not is_target_gal) and (not options['render_background_galaxies']):
             continue
 
+        # Get some galaxy info to avoid repeating method calls
         gal_I = get_I(galaxy.get_param_value('apparent_mag_vis'),
                       'mag_vis',
                       gain=options['gain'],
                       exp_time=options['exp_time'])
-
-        # Set up the unsheared profiles for the psf and galaxy
-        if is_target_gal:
-            bulge_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
-                                                galaxy.get_param_value('redshift'),
-                                                True,
-                                                False,
-                                                data_dir=options['data_dir'])
-            disk_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
-                                                galaxy.get_param_value('redshift'),
-                                                False,
-                                                False,
-                                                data_dir=options['data_dir'])
+        if options['single_psf']:
+            gal_n = 1
+            gal_z = 0
         else:
-            bulge_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
-                                                galaxy.get_param_value('redshift'),
-                                                True,
-                                                True,
-                                                data_dir=options['data_dir'])
+            gal_n = galaxy.get_param_value('sersic_index')
+            gal_z = galaxy.get_param_value('redshift')
+        
+
+        # Set up the profiles for the psf
+        bulge_psf_profile = get_psf_profile(n=gal_n,
+                                            z=gal_z,
+                                            bulge=True,
+                                            use_background_psf=not (is_target_gal and options['euclid_psf']),
+                                            data_dir=options['data_dir'])
+        if options['chromatic_psf']:
+            disk_psf_profile = get_psf_profile(n=gal_n,
+                                               z=gal_z,
+                                               bulge=False,
+                                               use_background_psf=not (is_target_gal and options['euclid_psf']),
+                                               data_dir=options['data_dir'])
+        else:
             disk_psf_profile = bulge_psf_profile
 
         # Get the position of the galaxy, depending on whether we're in field or stamp mode
