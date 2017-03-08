@@ -374,6 +374,11 @@ def print_galaxies_and_psfs(image,
         
                     xp = xp_sp_shift + stamp_size_pix // 2 + icol * stamp_size_pix
                     yp = yp_sp_shift + stamp_size_pix // 2 + irow * stamp_size_pix
+                      
+                else:
+    
+                    xp = galaxy.get_param_value("xp")
+                    yp = galaxy.get_param_value("yp")
                 
                 # Get psf position regardless    
                 if options['single_psf']:
