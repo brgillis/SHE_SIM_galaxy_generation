@@ -318,32 +318,34 @@ def print_galaxies_and_psfs(image,
                             str(num_background_galaxies) + " background galaxies.")
             num_background_galaxies_printed += 1
 
+        # Get some galaxy info to avoid repeating method calls
         gal_I = get_I(galaxy.get_param_value('apparent_mag_vis'),
                       'mag_vis',
                       gain=options['gain'],
                       exp_time=options['exp_time'])
+        if options['single_psf']:
+            gal_n = 1
+            gal_z = 0
+        else:
+            gal_n = galaxy.get_param_value('sersic_index')
+            gal_z = galaxy.get_param_value('redshift')
 
         if not options['details_only']:
 
-            # Set up the unsheared profiles for the psf and galaxy
-            if is_target_gal:
-                bulge_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
-                                                    galaxy.get_param_value('redshift'),
-                                                    True,
-                                                    False,
-                                                    data_dir=options['data_dir'])
-                disk_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
-                                                    galaxy.get_param_value('redshift'),
-                                                    False,
-                                                    False,
-                                                    data_dir=options['data_dir'])
+            # Set up the profiles for the psf
+            bulge_psf_profile = get_psf_profile(n=gal_n,
+                                                z=gal_z,
+                                                bulge=True,
+                                                use_background_psf=not (is_target_gal and options['euclid_psf']),
+                                                data_dir=options['data_dir'])
+            if options['chromatic_psf']:
+                disk_psf_profile = get_psf_profile(n=gal_n,
+                                                   z=gal_z,
+                                                   bulge=False,
+                                                   use_background_psf=not (is_target_gal and options['euclid_psf']),
+                                                   data_dir=options['data_dir'])
             else:
-                bulge_psf_profile = get_psf_profile(galaxy.get_param_value('sersic_index'),
-                                                    galaxy.get_param_value('redshift'),
-                                                    True,
-                                                    True,
-                                                    data_dir=options['data_dir'])
-                disk_psf_profile = bulge_psf_profile
+                    disk_psf_profile = bulge_psf_profile
 
             # Get the position of the galaxy, depending on whether we're in field or stamp mode
 
@@ -368,11 +370,6 @@ def print_galaxies_and_psfs(image,
         
                     xp = xp_sp_shift + stamp_size_pix // 2 + icol * stamp_size_pix
                     yp = yp_sp_shift + stamp_size_pix // 2 + irow * stamp_size_pix
-                    
-                else:
-
-                    xp = galaxy.get_param_value("xp")
-                    yp = galaxy.get_param_value("yp")
                 
                 # Get psf position regardless    
                 psf_xp = psf_stamp_size_pix // 2 + icol * psf_stamp_size_pix
@@ -519,10 +516,12 @@ def print_galaxies_and_psfs(image,
                 # Draw the PSF image
                 bulge_psf_profile.drawImage(p_bulge_psf_image[0][psf_bounds],
                                             add_to_image=True,
-                                            method='no_pixel')
+                                            method='no_pixel',
+                                            offset=(0,centre_offset))
                 disk_psf_profile.drawImage( p_disk_psf_image[0][psf_bounds],
                                             add_to_image=True,
-                                            method='no_pixel')
+                                            method='no_pixel',
+                                            offset=(centre_offset,centre_offset))
                 
             else:
                 # Just use a single sersic profile for background galaxies
