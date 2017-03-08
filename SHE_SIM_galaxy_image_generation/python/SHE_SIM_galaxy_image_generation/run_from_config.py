@@ -42,8 +42,6 @@
     what's going on.
 """
 
-profile = True
-
 import subprocess
 
 from SHE_SIM_galaxy_image_generation import magic_values as mv
@@ -62,10 +60,6 @@ try:
     have_pyfftw = True
 except ImportError as _e:
     have_pyfftw = False
-
-
-if profile:
-    import cProfile
 
 def clean_quotes(s):
     if not isinstance(s, basestring): return s
@@ -139,15 +133,8 @@ def run_from_survey_and_options(survey, options):
         except IOError as _e:
             pass
 
-    if profile:
-        def run_generate_images():
-            generate_images(survey, options)
-        # We have the input we want, now generate the images
-        cProfile.runctx('run_generate_images()', None, locals(),
-                        filename="profiling_data.prof", sort="time")
-    else:
-        # We have the input we want, now generate the images
-        generate_images(survey, options)
+    # We have the input we want, now generate the images
+    generate_images(survey, options)
 
     # Save fftw wisdom
     if have_pyfftw:
